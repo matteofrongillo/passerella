@@ -40,6 +40,37 @@
     \end{figure*}
 }
 
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=1.1pt] (char) {#1};}
+}
+\newcommand\angstrom{\mbox{\normalfont\AA}}
+\newcommand\namebond[4][5pt]{\chemmove{\path(#2)--(#3)node[midway,sloped,yshift=#1]{#4};}}
+\newcommand\arcbetweennodes[3]{
+    \pgfmathanglebetweenpoints{\pgfpointanchor{#1}{center}}{\pgfpointanchor{#2}{center}}
+    \let#3\pgfmathresult
+}
+\newcommand\arclabel[6][stealth-stealth,shorten <=1pt,shorten >=1pt]{
+    \chemmove{
+        \arcbetweennodes{#4}{#3}\anglestart \arcbetweennodes{#4}{#5}\angleend
+        \draw[#1]([shift=(\anglestart:#2)]#4)arc(\anglestart:\angleend:#2);
+        \pgfmathparse{(\anglestart+\angleend)/2}\let\anglestart\pgfmathresult
+        \node[shift=(\anglestart:#2+1pt)#4,anchor=\anglestart+180,rotate=\anglestart-90,
+        inner sep=0pt,outer sep=-8.5pt]at(#4){#6};
+    }
+}
+
+% originale
+\newcommand\arclabeltwo[6][stealth-stealth,shorten <=1pt,shorten >=1pt]{
+    \chemmove{
+        \arcbetweennodes{#4}{#3}\anglestart \arcbetweennodes{#4}{#5}\angleend
+        \draw[#1]([shift=(\anglestart:#2)]#4)arc(\anglestart:\angleend:#2);
+        \pgfmathparse{(\anglestart+\angleend)/2}\let\anglestart\pgfmathresult
+        \node[shift=(\anglestart:#2+1pt)#4,anchor=\anglestart+180,rotate=\anglestart+90,
+        inner sep=0pt,outer sep=0pt]at(#4){#6};
+    }
+}
+
+% === TEXT ===
 \title{\textbf{Chimica \\ Passerella 2023-24}}
 \author{Matteo Frongillo}
 
@@ -54,6 +85,7 @@
         {periodic_table.pdf}
     \end{flushleft}
 \end{center}
+
 \pagebreak
 
 \subsection{Organizzazione della tavola periodica}
@@ -346,13 +378,13 @@ particelle molto piccole (0.2 a 2 nm), le quali non sono abbastanza grandi per d
     tutti gli atomi di uno stesso elemento hanno lo stesso numero atomico.
     Il numero atomico corrisponde anche al numero di elettroni.
         \begin{figure}[h]
-            \centering \fbox{numero atomico = numero $p^+$}\: \textrightarrow\ $_Z$E
+            \centering \fbox{numero atomico = numero $p^+$}\: \textrightarrow\ $_Z$X
         \end{figure} \\
     Il numero di massa ($A$) è la \underline{somma del numero di protoni e neutroni} presenti
     in un atomo.\\
     {\color{red}Il numero di neutroni varia in base all'isotopo preso in considerazione!}
         \begin{figure}[h]
-            \centering \fbox{numero di massa = numero $p^+$ + $n^0$}\: \textrightarrow\ $^A_Z$E
+            \centering \fbox{numero di massa = numero $p^+$ + $n^0$}\: \textrightarrow\ $^A_Z$X
         \end{figure} \\
     Il numero di neutroni è dunque calcolabile sottraendo il numero atomico dal numero di massa.
         \begin{figure}[h]
@@ -361,13 +393,14 @@ particelle molto piccole (0.2 a 2 nm), le quali non sono abbastanza grandi per d
 
 \hypertarget{ioni}{}
 \subsection{Gli ioni}
-    Gli ioni sono i risultati del quale un atomo perde o guadagna uno o più elettroni.
-    Questo fenomeno viene chiamato ionizzazione: atomi completamente ionizzati vengono comunemente
-    chiamati particelle cariche.\\
-    Gli ioni caricati negativamente, ossia gli atomi che guadagnano almeno un elettrone, vengono
-    chiamati \textbf{anioni} (E$^{n-}$), mentre quelli caricati positivamente,
-    ossia gli atomi che perdono uno o più elettroni, sono chiamati \textbf{cationi} (E$^{n+}$).
-    I gas ionizzati vengono chiamati generalmente \textbf{plasma}.
+    Gli ioni si formano quando un atomo perde o guadagna uno o più elettroni.
+    Questo fenomeno viene chiamato ionizzazione e gli atomi che la subiscono diventano
+    particelle cariche.\\
+    Gli ioni che acquisiscono elettroni, quindi presentano una carica negativa, sono chiamati
+    \textbf{anioni} (X$^{n-}$).\\
+    Al contrario, gli atomi che perdono elettroni, quindi presentano
+    una carica negativa, sono definiti \textbf{cationi} (X$^{n+}$).\\
+    Quando i gas si ionizzano, formano uno stato della materia conosciuto come \textbf{plasma}.
 
 \subsection{Struttura dell'atomo}
 \begin{figure*}[h!]
@@ -429,7 +462,7 @@ e le forze nucleari attrattive tra protoni e neutroni.\\
 Al fine di raggiungere una maggiore stabilità, i nuclei \textbf{radionuclidi} (isotopi intabili) vanno
 in contro a un \textbf{decadimento radioattivo}. Questo fenomeno si chiama \textbf{radioattivià}.
 
-\subsection{Decadimento $\alpha$} 
+\subsubsection{\large Decadimento $\alpha$} 
 Vengono emessi \textbf{nuclei di elio} ($^4_2$He). \\
 Con l'emissione di particelle $\alpha$ il numero di massa ($A$) diminuisce di quattro unità
 e il numero atomico ($Z$) di due.
@@ -444,7 +477,7 @@ e il numero atomico ($Z$) di due.
     }
 \end{center}
 
-\subsection{Decadimento $\beta^-$}
+\subsubsection{\large Decadimento $\beta^-$}
 Quando \underline{un neutrone si trasforma in protone} si ha l'emissione di un elettrone negativo
 ($e^-$): $n^0 \rightarrow p^++^{\ \: 0}_{-1}e$
 \begin{center}
@@ -453,7 +486,7 @@ Quando \underline{un neutrone si trasforma in protone} si ha l'emissione di un e
     }
 \end{center}
 
-\subsection{Decadimento $\beta^+$}
+\subsubsection{\large Decadimento $\beta^+$}
 Quando \underline{un protone si trasforma in neutrone} si ha l'emissione di un elettrone positivo
 ($e^+$): $p^+ \rightarrow n^0+^{0}_{1}e$
 \begin{center}
@@ -462,7 +495,7 @@ Quando \underline{un protone si trasforma in neutrone} si ha l'emissione di un e
     }
 \end{center}
 
-\subsection{Emissione $\gamma$}
+\subsubsection{\large Decadimento $\gamma$}
 Nel decadimento $\gamma$ vengono emessi \textbf{fotoni a energia elevata} ($^0_0\gamma$).
 Con l'emissione di queste particelle il numero di massa e il numero atomico rimangono invariati.
 \begin{center}
@@ -563,11 +596,11 @@ I composti sono costituiti da atomi o ioni di elementi differenti uniti in propo
         \begin{figure*}[h!]
             \begin{center}
                 \includegraphics[width=.25\textwidth]{Composto ionico.png}\\
-                \fbox{\schemestart
+                \fbox{
                     \chemfig{\Charge{90=\.}{Na} + \Charge{90=\.,0=\|,-90=\|,180=\|}{Cl}} \textrightarrow\ 
                     \chemleft[\chemfig{Na}\chemright]$^+$\
                     \chemleft[\chemfig{\Charge{90=\|,0=\|,-90=\|,180=\|}{Cl}}\chemright]$^-$
-                \schemestop}
+                }
                 
             \end{center}
         \end{figure*}
@@ -738,7 +771,7 @@ elettroni fino a raggiungere questa conigurazione.
 {\footnotesize Per la definizione di elettronegatività
 \hyperlink{elettronegatività}{\color{blue}{\underline{vedi 4.7}}}.}\\
 I composti ionici si originano dalla forza di attrazione elettrostatica tra ioni di segno opposto.
-Durante la forma di un composto ionico avviene un trasferimento di elettroni tra gli atomi coinvolti:
+Durante la formazione di un composto ionico avviene un trasferimento di elettroni tra gli atomi coinvolti:
 \begin{itemize}
     \item Un atomo cede uno o più elettroni e carica positivamente (catione);
     \item L'altro atomo prende gli elettroni ceduti e si carica negativamente (anione).
@@ -749,14 +782,43 @@ Durante la forma di un composto ionico avviene un trasferimento di elettroni tra
         ($|\Delta E_N|$) tra due atomi è maggiore di 1.7
     \end{minipage}
 }
-Se per esempio si facesse reagire del sodio e del cloro si formerebbe un composto solido.
+Se per esempio si facesse reagire del sodio e del cloro si formerebbe un composto ionico:
+\figbox{
+    \begin{minipage}{.4\textwidth}
+        \centering $\Delta E_N$ = 3.16 (Cl) - 0.93 (Na) = 2.21\\ \phantom{} \\
+        \chemfig{\Charge{90=\.}{Na} + \Charge{90=\.,0=\|,-90=\|,180=\|}{Cl}} \textrightarrow\ 
+        \chemleft[\chemfig{Na}\chemright]$^+$\
+        \chemleft[\chemfig{\Charge{90=\|,0=\|,-90=\|,180=\|}{Cl}}\chemright]$^-$
+    \end{minipage}
+}
 
+\subsection{Legame covalente}
 
+Il legame covalente si forma attraverso la condivisione di elettroni tra due atomi. Durante la
+formazione di una molecola, gli elettroni vengono attratti da entrambi i nuclei.
+Con il diminuire della distanza tra nucleo e nucleo, aumenterà la densità elettronica probabile
+nello spazio.
+\figbox{\parbox{\textwidth}
+    {Il legame covalente può essere di due tipi:
+        \begin{itemize}
+            \item \textbf{Legame covalente puro}: si forma tra atomi con $|\Delta E_N|$ compreso tra 0 
+                (due atomi uguali) e 0.45;
+            \item \textbf{Legame covalente polare}: si forma tra atomi con $|\Delta E_N|$ tra 0.45 
+                e 1.7 non compresi.
+        \end{itemize}
+    }
+}\\
+Se si facessero reagire due atomi di ossigeno con uno di carbonio si otterrebbe un legame
+covalente polare:
+\figbox{
+    \begin{minipage}{.4\textwidth}
+        \centering $\Delta E_N$ = 3.44 (O) - 2.55 (C) = 0.89\\ \phantom{} \\
+        \chemfig{\Charge{135=\|,-135=\|}{O}=C=\Charge{45=\|,-45=\|}{O}}
+    \end{minipage}
+}
 
-
-
-
-\pagebreak
+\subsection{Valori di legame}
+\phantom{}
 \begin{center}
     \begin{tikzpicture}
         \draw[thick, -] (0,0) -- (15,0);
@@ -766,20 +828,90 @@ Se per esempio si facesse reagire del sodio e del cloro si formerebbe un compost
         \draw (15 cm, 5pt) -- (15 cm, -3pt);
     
         \node at (0, 0.5) {0};
-        \node at (5, 0.5) {0.4};
+        \node at (5, 0.5) {0.45};
         \node at (10, 0.5) {1.7};
         \node at (2.5, -0.3) {Legame covalente puro};
         \node at (7.5, -0.3) {Legame covalente polare};
         \node at (12.5, -0.3) {Legame ionico};
     \end{tikzpicture}
 \end{center}
+\phantom{} 
+
+\subsection{Energia potenziale}
+L'energia potenziale di una molecola varia in base alla distanza tra i nuclei atomici.
+L'energia, a causa delle forze di repulsione, aumenta quando i nuclei sono eccessivamente vicini,
+mentre raggiunge il minimo quando si trovano a una distanza ottimale l'uno dall'altro.
+Quando l'energia potenziale è minima, allora la molecola è nella sua configurazione più stabile.
+\begin{figure*}[h!]
+\centering \includegraphics[width=.8\textwidth]{grafico legame covalente.png}
+\end{figure*}\\
+Da questo grafico si enuncia che idealmente la reazione chimica tra due atomi avvenga quando 
+i loro nuclei si trovano alla distanza ideale e che questo processo sia esotermico (libera energia).
+
+\subsection{Numero di ossidazione}
+Il numero di ossidazione (N.O) rappresenta la carica formale che si può attribuire a un elemento
+in un composto, supponendo che tutti i legami siano di tipo ionico, in modo da assegnare gli
+elettroni di legame all'elemento più elettronegativo.
+\figbox{\parbox{\textwidth}
+    {\begin{itemize}
+        \item N.O $<$ 0\ \textrightarrow\ Ione negativo oppure l'atomo ruba l'elettrone a un atomo meno
+            elettronegativo;
+        \item N.O = 0\ \textrightarrow\ L'atomo non ha legami oppure il legame ha una forza
+            intramolecolare $|\Delta E_N|=0$;
+        \item N.O $>$ 0\ \textrightarrow\ Ione positivo oppure l'atomo cede l'elettrone a un atomo più
+            elettronegativo.
+    \end{itemize}}
+}
+\pagebreak
+
+\subsection{Carica formale}
+La carica formale (FC) è un concetto usato per descrivere la carica elettrica di un atomo
+all'interno di una molecola, basandosi sull'ipotesi che gli elettroni di legame siano distribuiti
+equamente tra gli atomi, indipendemente dalla loro elettronegatività.
+\figbox{
+    $FC = N-(\overline{C}+\frac{C}{2})$
+}\\
+dove:
+\begin{itemize}
+    \item $N$ = numero di elettroni di valenza dell'atomo neutro;
+    \item $\overline{C}$ = numero di elettroni di valenza non condivisi;
+    \item $C$ = numero di elettroni di legame condivisi.
+\end{itemize}
+\pagebreak
+
+\section{Geometria molecolare VSEPR}
+La geometria di una molecola può essere rappresentata ricorrendo al modello VSEPR
+(Valence Shell Electron Pair Repulsion), il quale principio è basato sulla repulsione degli
+elettroni di valenza, i quali tendono a collocarsi alla maggior distanza possibile l'uno
+dall'altro.
 
 
+\fbox{
+    \makecell[l]{ 
+        \hspace*{.5cm}Geometria \hspace*{1.65cm} Prospettiva \hspace*{1.05cm} Modello a sfere \\ \\
+        Geometria lineare: \qquad
+        \chemfig{\Charge{90=\|,-90=\|}{O}=C=\Charge{90=\|,-90=\|}{O}} \qquad
+        \chemfig{@{1}\circled{O}=@{2}\circled{C}=@{3}\circled{O}}
+        \arclabel{-0.5cm}{1}{2}{3}{\footnotesize180\textdegree} \\ \\ \\
+        Triangolare planare: \hspace*{.175cm}
+        \chemleft[
+            \chemfig{
+                {\Charge{90=\|,-180=\|}{O}}
+                =[:-45]C(-[:-90]{\Charge{0=\|,-90=\|,-180=\|}{O}})
+                -[:45]\Charge{45=\|,135=\|,-45=\|}{O}
+            } 
+        \chemright]$^{2-}$ \hspace*{.35cm}
+        \chemfig{
+            \circled{O}
+            =[:-45]@{2}\circled{C}(-[:-90]@{1}\circled{O})
+            -[:45]@{3}\circled{O}
+            \arclabeltwo{0.5cm}{1}{2}{3}{\footnotesize120\textdegree}
+        }
+    }
+}
 
 
-
-
-
+    
 
 
 
