@@ -49,24 +49,13 @@
     \pgfmathanglebetweenpoints{\pgfpointanchor{#1}{center}}{\pgfpointanchor{#2}{center}}
     \let#3\pgfmathresult
 }
-\newcommand\arclabel[6][stealth-stealth,shorten <=1pt,shorten >=1pt]{
+\newcommand\arclabel[8][stealth-stealth,shorten <=1pt,shorten >=1pt]{
     \chemmove{
         \arcbetweennodes{#4}{#3}\anglestart \arcbetweennodes{#4}{#5}\angleend
         \draw[#1]([shift=(\anglestart:#2)]#4)arc(\anglestart:\angleend:#2);
         \pgfmathparse{(\anglestart+\angleend)/2}\let\anglestart\pgfmathresult
-        \node[shift=(\anglestart:#2+1pt)#4,anchor=\anglestart+180,rotate=\anglestart-90,
-        inner sep=0pt,outer sep=-8.5pt]at(#4){#6};
-    }
-}
-
-% originale
-\newcommand\arclabeltwo[6][stealth-stealth,shorten <=1pt,shorten >=1pt]{
-    \chemmove{
-        \arcbetweennodes{#4}{#3}\anglestart \arcbetweennodes{#4}{#5}\angleend
-        \draw[#1]([shift=(\anglestart:#2)]#4)arc(\anglestart:\angleend:#2);
-        \pgfmathparse{(\anglestart+\angleend)/2}\let\anglestart\pgfmathresult
-        \node[shift=(\anglestart:#2+1pt)#4,anchor=\anglestart+180,rotate=\anglestart+90,
-        inner sep=0pt,outer sep=0pt]at(#4){#6};
+        \node[shift=(\anglestart:#2+1pt)#4,anchor=\anglestart+180,rotate=\anglestart#7,
+        inner sep=0pt,outer sep=#8]at(#4){#6};
     }
 }
 
@@ -877,6 +866,18 @@ dove:
     \item $\overline{C}$ = numero di elettroni di valenza non condivisi;
     \item $C$ = numero di elettroni di legame condivisi.
 \end{itemize}
+
+\subsection{Formula di struttura semplificata}
+Le strutture delle molecole organiche {\color{red}METTERE HYPERLINK ORGANICA} possono essere scritte
+nella loro formula semplificata:
+\figbox{
+    \chemfig{H-C(-[:90]H)(-[:-90]H)-C(-[:90]H)(-[:-90]H)-C(-[:90]H)(-[:-90]H)-O-H}\
+    \textrightarrow\ CH$_3$CH$_2$CH$_2$OH\ \textrightarrow\
+    \chemfig{-[:45]-[:-45]-[:45]OH}
+}
+
+
+
 \pagebreak
 
 \section{Geometria molecolare VSEPR}
@@ -884,38 +885,92 @@ La geometria di una molecola può essere rappresentata ricorrendo al modello VSE
 (Valence Shell Electron Pair Repulsion), il quale principio è basato sulla repulsione degli
 elettroni di valenza, i quali tendono a collocarsi alla maggior distanza possibile l'uno
 dall'altro.
+\vspace*{1.9cm}
 
-
-\fbox{
-    \makecell[l]{ 
-        \hspace*{.5cm}Geometria \hspace*{1.65cm} Prospettiva \hspace*{1.05cm} Modello a sfere \\ \\
-        Geometria lineare: \qquad
-        \chemfig{\Charge{90=\|,-90=\|}{O}=C=\Charge{90=\|,-90=\|}{O}} \qquad
-        \chemfig{@{1}\circled{O}=@{2}\circled{C}=@{3}\circled{O}}
-        \arclabel{-0.5cm}{1}{2}{3}{\footnotesize180\textdegree} \\ \\ \\
-        Triangolare planare: \hspace*{.175cm}
-        \chemleft[
+\begin{center}
+    \fbox{
+        \makecell[l]{ 
+            \hspace*{.5cm}Geometria
+            \hspace*{1.65cm}
+            Prospettiva
+            \hspace*{1.05cm}
+            Modello a sfere \\ \\
+            Geometria lineare: \qquad
             \chemfig{
-                {\Charge{90=\|,-180=\|}{O}}
-                =[:-45]C(-[:-90]{\Charge{0=\|,-90=\|,-180=\|}{O}})
-                -[:45]\Charge{45=\|,135=\|,-45=\|}{O}
-            } 
-        \chemright]$^{2-}$ \hspace*{.35cm}
-        \chemfig{
-            \circled{O}
-            =[:-45]@{2}\circled{C}(-[:-90]@{1}\circled{O})
-            -[:45]@{3}\circled{O}
-            \arclabeltwo{0.5cm}{1}{2}{3}{\footnotesize120\textdegree}
+                \Charge{90=\|,-90=\|}{O}=C=\Charge{90=\|,-90=\|}{O}
+            } \qquad
+            \chemfig{
+                @{1}\circled{O}=@{2}\circled{C}=@{3}\circled{O}
+            } \arclabel{-0.5cm}{1}{2}{3}{\footnotesize180\textdegree}{-90}{-8.5pt} \\ \\ \\
+            Triangolare planare:
+            \hspace*{.175cm}
+            \chemleft[
+                \chemfig{
+                    {\Charge{90=\|,-180=\|}{O}}
+                    =[:-45]C(-[:-90]{\Charge{0=\|,-90=\|,-180=\|}{O}})
+                    -[:45]\Charge{45=\|,135=\|,-45=\|}{O}
+                } 
+            \chemright]$^{2-}$
+            \hspace*{.35cm}
+            \chemfig{
+                @{0}\circled{O}
+                -[:-45]@{1}\circled{C}(-[:-90]@{2}\circled{O})
+                =[:45]@{3}\circled{O}
+            } \arclabel{0.5cm}{0}{1}{2}{\footnotesize120\textdegree}{-202.5}{0} \\ \\ \\
+            Tetraedrica:
+            \hspace*{1.85cm}
+            \chemfig{
+                H-[:-90]C(<:[:-135]H)(<[:-90]H)(-[:-45]H)
+            }
+            \hspace*{1cm}
+            \chemfig{
+                @{0}\circled{H}-[:-90]@{1}\circled{C}(-[:-165]@{2}\circled{H})(-[:-90]\circled{H})(-[:-15]\circled{H})
+            } \arclabel{.6cm}{0}{1}{2}{\footnotesize107.3\textdegree}{-142.5}{2pt} \\ \\ \\
+            Piramidale triangolare:
+            \hspace*{.16cm}
+            \chemfig{
+                \Charge{90=\|}{N}(<:[:-135]H)(<[:-90]H)(-[:-45]H)
+            }
+            \hspace*{1cm}
+            \chemfig{
+                @{0}\circled{N}(-[:-165]\circled{H})(-[:-90]@{1}\circled{H})(-[:-15]@{2}\circled{H})
+            } \arclabel{.7cm}{1}{0}{2}{\footnotesize109\textdegree}{-270}{.5} \\ \\ \\
+            Piegata:
+            \hspace*{2.4cm}
+            \chemfig{
+                \Charge{45=\|,135=\|}{O}(-[:-45]H)(-[:-135]H)
+            }
+            \hspace*{1.15cm}
+            \chemfig{
+                @{1}\circled{O}(-[:-30]@{2}\circled{H})(-[:-150]@{0}\circled{H})
+            } \arclabel{.6cm}{0}{1}{2}{\footnotesize104.5\textdegree}{-270}{.5} \\ \\ \\
+            Bipiramidale trigonale:
+            \hspace*{.075cm}
+            \chemfig{
+                Cl-[:-90]P(-Cl)(-[:-90]Cl)(<[:-135]Cl)(<:[:135]Cl)
+            }
+            \hspace*{.95cm}
+            \chemfig{
+                @{3}\circled{Cl}-[:-90]@{1}\circled{P}(-@{4}\circled{Cl})(-[:-90]\circled{Cl})
+                (-[:-135]@{0}\circled{Cl})(-[:135]@{2}\circled{Cl})
+            }
+            \arclabel{.5cm}{0}{1}{2}{\footnotesize120\textdegree}{-180}{.5} 
+            \arclabel{.6cm}{3}{1}{4}{\footnotesize90\textdegree}{-45}{2} \\ \\ \\
+            Ottaedrica:
+            \hspace*{1.75cm}
+            \chemfig{
+                F-[:-90]S(-[:-90]F)(<:[:30]F)(<:[:150]F)(<[:-150]F)(<[:-30]F)
+            }
+            \hspace*{1.05cm}
+            \chemfig{
+                \circled{F}-[:-90]@{1}\circled{S}(-[:-90]@{0}\circled{F})(-[:30]\circled{F})(-[:150]\circled{F})
+                (-[:-150]\circled{F})(-[:-30]@{2}\circled{F})
+            }
+            \arclabel{.6cm}{0}{1}{2}{\footnotesize90\textdegree}{-299}{1} \\
+            \phantom{}
         }
     }
-}
-
-
-    
-
-
-
-
+\end{center}
 \pagebreak
 
 \section{Termochimica}
