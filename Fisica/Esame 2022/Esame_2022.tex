@@ -9,7 +9,10 @@
 \usepackage[italian]{babel}
 \usepackage{enumitem}
 \usepackage{parskip}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
 \usepackage{tikz}
+\usetikzlibrary{decorations.text}
 \usetikzlibrary{arrows}
 \usetikzlibrary{shapes}
 \newcommand*\circled[1]{\tikz[baseline=(char.base)]{
@@ -258,7 +261,7 @@ un'altezza $h = 30.0$ cm, quando viene liberato (consideralo puntiforme).
 \pagebreak
 
 \subsection*{Esercizio 2}
-\textbf{2a} \\
+\textbf{2a)} \\
 
 \hspace*{0.85cm}\textbf{LEGGE DEI GAS PV=nRT} \\
 \begin{equation*}
@@ -287,22 +290,109 @@ un'altezza $h = 30.0$ cm, quando viene liberato (consideralo puntiforme).
     \end{align*}
     \item \begin{align*}
         &\circled{C} \Rightarrow \circled{D} \\ \\
-        &\frac{V_C \cdot 3p_A}{2T_B} = \frac{V_C \cdot p_D}{T_A}
-        \Rightarrow p_D = \frac{3p_A \cdot T_A}{2T_B}
-        \Rightarrow p_D = \frac{3(3\cdot10^5\ Pa) \cdot 300\ K}{2\cdot 600\ K}
-        \Rightarrow p_D = 2.25\cdot10^5\ Pa
+        &\frac{V_C \cdot 2p_A}{3T_B} = \frac{V_C \cdot p_D}{T_A}
+        \Rightarrow p_D = \frac{2p_A \cdot T_A}{3T_B}
+        \Rightarrow p_D = \frac{2(3\cdot10^5\ Pa) \cdot 300\ K}{3\cdot 600\ K}
+        \Rightarrow p_D = 10^5\ Pa
     \end{align*}
     \item \hspace{0.85cm}$\circled{D} \Rightarrow \circled{A}$
 \end{enumerate}
 \pagebreak
-\textbf{2b} \\
-\begin{figure*}[h]
-    \centering
-    \includegraphics[width=.8\textwidth]{Esercizio 2 risolto.png}
-    \vspace{0.4cm}
-\end{figure*}
+\textbf{2b)} \\
 
-\textbf{2c} \\
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+    \begin{axis}[
+        title={\textbf{2b} Ciclo di Carnot},
+        xlabel={Volume ($10^{-2}\ \text{m}^3$)},
+        ylabel={Pressione ($10^5$ Pa)},
+        xmin=0, xmax=0.03,
+        ymin=80000, ymax=350000,
+        xtick={0.008, 0.016, 0.024},
+        ytick={100000, 200000, 300000},
+        grid style=dashed,
+        ]
+
+        % Adding points
+        \addplot[
+            color=blue,
+            mark=*,
+            mark size=1.5pt,
+            only marks,
+            point meta=explicit symbolic,
+            nodes near coords,
+            visualization depends on={value \thisrow{anchor} \as \myanchor},
+            every node near coord/.append style={font=\footnotesize, anchor=\myanchor}
+        ] table[meta=label] {
+            x       y       label   anchor
+            0.008   300000  300K    south
+            0.016   300000  600K    south
+            0.024   200000  600K    west
+            0.024   100000  300K    west
+        };
+        
+        % Connecting points
+
+        \addplot[
+            color=red, 
+            thick,
+            no marks,
+            -stealth,
+            line width=.3mm
+        ] coordinates {
+            (0.008, 300000)
+            (0.016, 300000)
+        };
+        \node at (axis cs:0.012, 310000) {\tiny Isobara};
+
+        \addplot[
+            color=red,
+            thick,
+            no marks,
+            -stealth,
+            line width=.3mm,
+            smooth,
+            tension=1
+        ] coordinates {
+            (0.016, 300000)
+            (0.018, 235000)
+            (0.024, 200000)
+        };
+        \node at (axis cs:0.020, 250000) {\tiny Isoterma};
+        
+        \addplot[
+            color=red,
+            thick,
+            no marks,
+            -stealth,
+            line width=.3mm
+        ] coordinates {
+            (0.024, 200000)
+            (0.024, 100000)
+        };
+        \node at (axis cs:0.02625, 150000) {\tiny Isocora};
+        
+        \addplot[
+            color=red,
+            thick,
+            no marks,
+            -stealth,
+            line width=.3mm,
+            smooth,
+            tension=1
+        ] coordinates {
+            (0.024, 100000)
+            (0.012, 170000)
+            (0.008, 300000)
+        };
+        \node at (axis cs:0.009, 170000) {\tiny Isoterma};
+        
+    \end{axis}
+    \end{tikzpicture}
+\end{figure}
+
+\textbf{2c)} \\
 
 \begin{enumerate}[label=\textbf{.\roman*)}]
     \item Il gas si espande tramite lavoro meccanico, di conseguenza si riscalda.
@@ -310,8 +400,44 @@ un'altezza $h = 30.0$ cm, quando viene liberato (consideralo puntiforme).
         dunque rimane invariata.
     \item La temperatura diminuisce a causa di uno scambio di calore.
 \end{enumerate}
+\pagebreak
 
+\subsection*{Esercizio 3}
 
+\begin{enumerate}[label=\textbf{3\alph*)}]
+    \item $\vec{F}=m\cdot g \Rightarrow F=0.2kg \cdot 9.81 \frac{N}{kg}=1.962N \\ \\
+        \Delta x=\frac{F}{k} \Rightarrow \Delta x=\frac{1.962N}{30\frac{N}{m}}
+        = 0.0654m = 65.4mm$
+    \item \phantom{}
+        \begin{figure*}[h!]
+            \hspace*{.75cm} \includegraphics*[width=.25\textwidth]{Esercizio 3 - Forze.png}
+        \end{figure*}
+    \item $\vec{F}_g = \vec{F}_A + \vec{F}_k \Rightarrow m g = \rho g V + k \Delta x' $
+    \item $1.962N = 870 \frac{kg}{m^3} \cdot 9.81 \frac{N}{kg} \cdot 0.012 m^2 \cdot 0.03m + 
+    30 \frac{N}{m} \cdot \Delta x' \Rightarrow \Delta x' = -0.037m = -3.7cm$\\
+    La molla si comprime di 3.7 cm.
+\end{enumerate}
+\pagebreak
+
+\subsection*{Esercizio 4}
+\begin{enumerate}[label=\textbf{4a.\alph*)}]
+    \item $\vec{F}_N = m\cdot g\cdot cos(\alpha) \Rightarrow F_N = 0.15kg \cdot 9.81 \frac{N}{kg}
+        \cdot cos(30$\textdegree) = 1.28 N
+    \item $\frac{v^2}{2}=g\Delta h \Rightarrow v=\sqrt{2gh} =2.4\frac{m}{s}$
+    \item $h'= h$\ \textrightarrow\ Non essendoci attrito l'energia cinetica rimane invariata.
+    \item $U_K = \frac{k\Delta x^2}{2}=\frac{29.43 \frac{N}{m} \cdot (0.025m)^2}{2} = 9.2 \cdot 10^{-3} J$
+    \item $k= \frac{m\cdot g\cdot sin(\alpha)}{\Delta x}=29.43 \frac{N}{m}$
+\end{enumerate} \phantom{}\\
+\begin{enumerate}[label=\textbf{4b.\alph*)}]
+    \item $m\cdot g\cdot sin(\alpha)\cdot \mu = k\Delta x' \Rightarrow
+        \mu= \frac{k\Delta x'}{m\cdot g\cdot sin(\alpha)} \Rightarrow
+        \mu= \frac{29.43 \frac{N}{m}\cdot 0.02m}{0.74N}=0.8$
+    \item TODO
+    \item $\frac{k(\Delta x')^2}{2}=mgh'+ \vec{F}_k \Rightarrow
+        \frac{k\Delta x'^2}{2}=mgh'+\mu m\cdot g\cdot cos(\alpha)\frac{h'}{sin(\alpha)}\\
+        h'=\frac{\frac{1}{2} k\Delta x^2}{mg+\mu \cdot mg \frac{cos(\alpha)}{sin(\alpha)}}
+        \Rightarrow h'=1.68*10^{-3}=1.68mm$
+\end{enumerate}
 
 
 
