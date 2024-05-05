@@ -1,0 +1,141 @@
+\documentclass{article}
+
+\usepackage[fleqn]{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage[italian]{babel}
+\usepackage{enumitem}
+\usepackage{parskip}
+\usepackage{chemfig}
+\usepackage{pdfpages}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{fancybox}
+\usepackage{makecell}
+\usepackage{soul}
+\usepackage{sankey}
+
+\geometry{
+    a4paper,
+    total={170mm, 257mm},
+    left=20mm,
+    top=20mm
+}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=blue,
+    pdftitle={Chimica}
+}
+
+% === COMMANDS ===
+\newcommand{\figbox}[1]{
+    \begin{figure*}[h!]
+        \begin{center}
+            \fbox{#1}
+        \end{center}
+    \end{figure*}
+}
+
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=1.1pt] (char) {#1};}
+}
+\newcommand\angstrom{\mbox{\normalfont\AA}}
+\newcommand\namebond[4][5pt]{\chemmove{\path(#2)--(#3)node[midway,sloped,yshift=#1]{#4};}}
+\newcommand\arcbetweennodes[3]{
+    \pgfmathanglebetweenpoints{\pgfpointanchor{#1}{center}}{\pgfpointanchor{#2}{center}}
+    \let#3\pgfmathresult
+}
+\newcommand\arclabel[8][stealth-stealth,shorten <=1pt,shorten >=1pt]{
+    \chemmove{
+        \arcbetweennodes{#4}{#3}\anglestart \arcbetweennodes{#4}{#5}\angleend
+        \draw[#1]([shift=(\anglestart:#2)]#4)arc(\anglestart:\angleend:#2);
+        \pgfmathparse{(\anglestart+\angleend)/2}\let\anglestart\pgfmathresult
+        \node[shift=(\anglestart:#2+1pt)#4,anchor=\anglestart+180,rotate=\anglestart#7,
+        inner sep=0pt,outer sep=#8]at(#4){#6};
+    }
+}
+
+% === TEXT ===
+\title{\textbf{Biologia \\ Passerella 2023-24}}
+\author{Matteo Frongillo}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\pagebreak
+
+\section{Gli organismi}
+
+\section{Sistema vivente}
+La classificazione di sistema vivente è suddivisa in due macrocategorie:
+\begin{itemize}
+    \item \textbf{Visione meccanicistica}: Un sistema vivente è riconosciuto come tale
+        se possiede questi elementi:
+        \begin{itemize}
+            \item Basi cellulari;
+            \item Ha una forma e una funzione;
+            \item Codice genetico (XNA);
+            \item Scambio di materia e di energia;
+            \item Ciclo vitale e riproduzione;
+            \item Reazione agli stimoli;
+            \item Omeostasi;
+            \item Evoluzione e varietà.
+        \end{itemize}
+    \item \textbf{Visione sistemica}: Un sistema vivente è riconosciuto come tale
+        se possiede questi elementi:
+        \begin{itemize}
+            \item Schema autopoietico;
+            \item Struttura dissipativa;
+            \item Processo cognitivo.
+        \end{itemize}
+\end{itemize}
+
+\subsection{Sistema autopoietico}
+Il sistema autopoietico è un ciclo logico composto da componenti molecolari,
+da un sistema confinato e da reti di reazioni metaboliche.\\
+Il sistema autoconfinato rappresenta l'entità che mantiere la propria struttura
+attraverso la continua rigenerazione e ristrutturazopme dei suoi componenti.
+... ... ...
+
+
+\subsection{Le caratteristiche}
+Un organismo è un essere vivente che possiede le seguenti caratteristiche:
+\begin{itemize}
+    \item Si nutre
+\end{itemize}
+
+
+
+
+
+\pagebreak
+\begin{tikzpicture}
+    \begin{sankeydiagram}[start style=arrow,end style=arrow]
+        \sankeynodestart{quantity=15, name=node1, at={0,0}}
+        \node[left=0.5cm, above, rotate=90] (label1) {CH$_2$O + O$_2$};
+        
+        \sankeyadvance{node1}{2cm}
+        \sankeyfork{node1}{5/node2, 10/node3}
+
+        \sankeyturn{node2}{90}
+        \sankeyadvance{node2}{.2cm}
+        \sankeyend{node2}
+        \node[above=2.1cm, right=2cm] (label2) {Energia};
+
+        \sankeyturn{node3}{0}
+        \sankeyadvance{node3}{1cm}
+        \sankeyend{node3}
+        \node[above=-0.26cm, right=3.5cm] (label2) {CO$_2$ + H$_2$O};
+    \end{sankeydiagram}.
+\end{tikzpicture}
+
+    
+    
+
+\end{document}
