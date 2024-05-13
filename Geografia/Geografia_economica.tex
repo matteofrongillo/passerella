@@ -16,6 +16,7 @@
 \usepackage{fancybox}
 \usepackage{makecell}
 \usepackage{soul}
+\usetikzlibrary{decorations.pathreplacing}
 \geometry{    
     a4paper,    
     total={170mm, 257mm},    
@@ -550,7 +551,7 @@ crescente tra Stati Uniti e Cina.
 
 \subsubsection{Riassunto grafico: La geografia del comportamento}
 \figbox{
-    \includegraphics[width=1\textwidth]{media/SchemaP1.png}
+    \includegraphics[width=0.95\textwidth]{media/SchemaP1.png}
 }
 \pagebreak
 
@@ -801,16 +802,203 @@ L'allargamento porta con sé tensioni interne, specialmente riguardo il controll
 le relazioni con l'Occidente. Il futuro dei BRICS potrebbe ridefinire il loro ruolo nella
 governance globale, con eventi come il G20 che serviranno da palcoscenico per promuovere
 interessi del Sud Globale.
+\pagebreak
 
 \subsection{Riassunto: La Globalizzazione tra XX e XXI secolo}
-\begin{figure*}[h!]
-    \centering
-    \includegraphics[width=1\textwidth]{media/brics.png}
-\end{figure*}
-[TODO]
+\subsubsection{Schema riassuntivo}
+%=== GRAFICO POLARISMO ===
+\begin{tikzpicture}
+    \tikzset{box style/.style={draw, thick, rectangle, rounded corners, fill=blue!10, text=blue, font=\fontsize{12}{14}\selectfont}}
+    \tikzset{line style/.style={line width=2pt, color=blue}}
 
+    \draw[line style, fill=blue!10, rounded corners] (0,0) rectangle (15,1.5);
+    \draw[thick] (4.075,-0.2) -- (4.075,1.8);
+    \draw[thick] (8.9,-0.2) -- (8.9,1.8);
 
+    \node[box style, anchor=west, minimum width=3.9cm, minimum height=1.2cm] at (0.1, 0.75) {Bipolarismo};
+    \node[box style, anchor=west, minimum width=4.7cm, minimum height=1.2cm] at (4.12, 0.75) {Unipolarismo};
+    \node[box style, anchor=west, minimum width=5.9cm, minimum height=1.2cm] at (8.95, 0.75) {Multipolarismo};
+\end{tikzpicture}
 
+%=== GRAFICO MULTILATERALISMO ===
+\begin{tikzpicture}
+    \tikzset{box style/.style={draw, thick, rectangle, rounded corners, fill=red!10, text=red, font=\fontsize{12}{14}\selectfont}}
+    \tikzset{line style/.style={line width=2pt, color=red}}
+
+    \draw[line style, fill=blue!10, rounded corners] (0,0) rectangle (15,1.5);
+
+    \node[box style, anchor=west, minimum width=12.15cm, minimum height=1.2cm] at (0.1, 0.75) {Multilateralismo};
+    \node[box style, anchor=west, minimum width=1cm, minimum height=1.2cm] at (13.85, 0.75) {};
+\end{tikzpicture}
+
+%=== LINEA DEL TEMPO ===
+\begin{tikzpicture}
+    \draw[thick] (0,0) -- (15,0);
+
+    \foreach \x/\text in {0/1945, 1.5/1972, 3.67/1989-91, 8.475/2001, 11.85/2016, 13.45/2020}
+        \draw (\x,-0.1) -- (\x,0.1) node[above] {\text};
+
+    \node at (1.5,-0.35) {Nixon/Mao};
+    \node at (3.67,-0.35) {Fine Guerra};
+    \node at (3.67,-0.75) {Fredda};
+    \draw[thick] (3.67,0.6) -- (3.67,1.5);
+    \node at (8.475,-0.35) {9/11};
+    \node at (8.475,-0.75) {Cina \textrightarrow OMC};
+    \draw[thick] (8.475,0.6) -- (8.475,1.5);
+    \node at (11.85,-0.35) {Trump};
+    \draw[thick] (11.85,0.6) -- (11.85,1.5);
+    \node at (13.45,-0.35) {Biden};
+    \draw[thick] (13.45,0.6) -- (13.45,1.5);
+    \node at (15,0) [right] {Oggi};
+
+    %=== Legenda 1945 ===
+    {\color{red}
+    \node at (1.15,-1.5) {$\Delta$ Bretton Woods};
+    \node at (0.385,-2) {$\Delta$ ONU};
+    \node at (0.325,-2.5) {$\bullet$ BM};
+    \node at (0.38,-3) {$\bullet$ FMI};
+    \node at (1.22,-3.5) {$\bullet$ GATT \textrightarrow WTO};
+    }
+
+    %=== Legenda 1989 ===
+    {\color{blue}
+    \node at (5.22,-1.5) {$\mapsto$ Iperpotenza USA};
+    \node at (4.7,-2) {$\Delta$ Economico};
+    \node at (4.48,-2.5) {$\Delta$ Militare};
+    \node at (4.6,-3) {$\Delta$ Culturale};
+    }
+    
+    \draw[decorate, decoration={brace, amplitude=5pt, mirror}, line width=1pt] 
+    (6,-2.7) -- (6,-1.8) node [black,midway,xshift=-0.6cm] {};
+    \node[align=left, anchor=west] at (6.15, -2.28) {Hard power};
+
+    \draw[decorate, decoration={brace, amplitude=4pt, mirror}, line width=1pt] 
+    (6,-3.2) -- (6,-2.8) node [black,midway,xshift=-0.6cm] {};
+    \node[align=left, anchor=west] at (6.15, -3.05) {Soft power};
+
+\end{tikzpicture}
+
+\subsubsection{Lista degli eventi}
+\begin{itemize}
+    \item Il bipolarismo conclude con la fine della Guerra fredda
+        \begin{itemize}[label=\textrightarrow]
+            \item 1989 - 1991: Dissoluzione dell'Unione Sovietica
+            \item 1991 - 2001: Unipolarismo
+        \end{itemize}
+    \item Multilateralismo: Insieme di Stati e Nazioni che collaborano per un obiettivo comune
+        \begin{itemize}[label=\textrightarrow]
+            \item 09.11.2001: Crollo delle Torri Gemelle mostra gli USA come Stato vulnerabile:\\
+                Iperpotenza culturale {\color{red}{\circled{--}}}
+            \item 2001: Cina entra nell'OMC\ \textrightarrow\ Stati Uniti non sono più i più forti
+                economicamente:\\ Iperpotenza economica {\color{red}{\circled{--}}}
+            \item 2001 - 2008: G. W. Bush potenzia l'esercito statunitense (Guerra al Terrore):\\
+                Iperpotenza militare {\color{green}{\circled{+}}}
+            \item 2007: Invasione dell'Iraq fa perdere molti uomini agli USA, influendo sulla soft power:\\
+                Iperpotenza militare e culturale {\color{red}{\circled{--}\circled{--}}}
+        \end{itemize}
+\end{itemize}
+\pagebreak
+
+\section{Storia e interpretazioni del concetto di sviluppo}
+\subsection{Interpretazioni teoriche del sottosviluppo}
+\subsubsection{Inferiorità culturale}
+La teoria dell'inferiorità culturale vedeva i popoli colonizzati o in via di colonizzazione
+culturalmente inferiori. Questa disparità culturale ha portato all'idea che senza l'influenza
+europea i popoli colonizzati non avrebbero potuto raggiungere la civiltà e un maggiore sviluppo
+del paese autonomamente.
+
+\subsubsection{Determinismo ambientale}
+Il determinismo ambientale è un concetto che attribuisce la casua del sottosviluppo culturale
+dei popoli colonizzati a cause naturali, quali il clima caldo, i suoli aridi e la scarsità
+delle risorse, implicando che l'ambiente modelli inevitabilmente il progresso sociale ed
+economico dei paesi.
+
+\subsubsection{Confutazione del determinismo ambientale}
+Le evidenze suggeriscono che le condizioni naturali avverse non siano uniche dei paesi poveri:\\
+Paesi prosperi come la Svizzera o Israele superano le difficoltà ambientali, come le catene 
+montuose o i terreni aridi, mentre altri paesi ricchi scarseggiano in risorse.
+
+Di conseguenza, alcuni di questi paesi confutano la teoria che, nonostante i fattori naturali
+influenzino la ricchezza di uno stato, essi non predestinano al sottosviluppo.
+
+\subsection{L'aiuto e la cooperazione allo sviluppo}
+\subsubsection{Il discorso inaugurale di Truman (1949)}
+Dal documento: \href{https://github.com/matteofrongillo/passerella/blob/main/Geografia/media/011_Truman 1949 Sviluppo.pdf?raw=true}
+{Estratto del discorso inaugurale del presidente Harry Truman}
+
+Lo \textbf{sviluppo} viene visto da Truman come \underline{l'applicazione del progresso
+scientifico e industriale per migliorare le} \underline{condizioni di vita}, strettamente 
+collegato all'utilizzo più efficace delle risorse umane e naturali e alla prosperità e alla pace
+di uno Stato.
+
+Il \textbf{sottosviluppo} invece lo descrive in termini di povertà estrema, condizioni di vita
+miserabili, economie primitive e statiche, malnutrizione e malattie. Per un Paese, il
+sottosviluppo è visto come un ostacolo e una minaccia non solo per il Paese che lo sperimenta,
+ma anche per quelli più prosperi.
+
+L'approccio proposto da Truman per l'aiuto allo sviluppo fu quello di un aiuto basato sulla
+condivisione delle conoscenze tecniche degli Stati Uniti con i paesi più poveri, assistendoli
+nel loro sviluppo autonomo. Il piano considerava un partenariato internazionale e l'investimento
+di capitali da parte degli Stati Uniti nelle regioni sottosviluppate, equilibrando le garanzie
+per gli investitori e la protezione degli interessi locali.
+
+L'aiuto allo sviluppo degli Stati Uniti era concepita come un'operazione collettiva e
+cooperativa, in opposizione all'antico imperialismo, mirato a un negoziato equo e democratico
+tra USA e paesi sottosviluppati che traeva vantaggi reciproci.
+
+\subsubsection{Le ragioni del sottosviluppo secondo Truman}
+\begin{itemize}
+    \item Inferiorità culturale:\\
+        I paesi non hanno evoluto le loro usanze e la loro cultura e questo li impedisce di
+        svilupparsi ulteriormente e di integrarsi per uno sviluppo;
+    \item Geodeterminismo:\\
+        Le cattive condizioni naturali non contribuiscono allo sviluppo;
+    \item Rostow:\\
+        Mancanza di infrastrutture per la produzione e la mancanza di conoscenze;
+    \item Dipendenza estera:\\
+        Con l'esistenza di paesi già evoluti è difficile che una nazione sottosviluppata
+        non dipenda da loro.
+\end{itemize}
+
+\subsubsection{Elementi di contesto}
+\begin{itemize}
+    \item Contesto post-seconda guerra mondiale, con gli USA emergenti come potenza 
+        vincitrice e relativamente intatta, a differenza dell’Europa, che aveva subito danni 
+        notevoli e riceveva aiuti tramite il Piano Marshall;
+    \item L’inizio della Guerra Fredda, contrassegnato da tensioni ideologiche e geopolitiche 
+        crescenti tra gli USA e l’URSS, che ha influito sulla politica estera statunitense e 
+        sulle relazioni internazionali;
+    \item La situazione dei paesi di recente indipendenza, molti dei quali erano emergenti dal 
+        colonialismo e cercavano un posto nel nuovo ordine mondiale, spesso come arena 
+        di influenza tra le due superpotenze.
+\end{itemize}
+
+\subsubsection{Il ruolo degli Stati Uniti nel dopoguerra}
+\begin{itemize}
+    \item Potenza post-bellica:\\
+        Gli USA sono consolidati non solo come superpotenza militare ma anche come 
+        pilastro dell’economia mondiale, emergendo meno danneggiati rispetto ad altre 
+        nazioni belligeranti, in particolare quelle europee;
+    \item Leadership economica:\\
+        La devastazione europea apre le porte agli USA per assumere un ruolo di 
+        leadership nell’economia globale, fornendo loro una possibilità di influenzare e 
+        modellare le politiche economiche internazionali;
+    \item Il Piano Marshall:\\
+        Questo programma d’aiuti è stato un chiaro segnale dell’intenzione americana di 
+        aiutare nella ricostruzione dell’Europa post-guerra, promuovendo il recupero e la 
+        stabilità economica come antidoto alla possibile espansione dell’influenza sovietica;
+    \item Contrasto al Comunismo:\\
+        L’intervento economico americano in Europa è motivato anche da obiettivi 
+        geopolitici, in particolare la volontà di arginare la diffusione del comunismo e 
+        assicurare che le nazioni europee rimanessero allineate con gli ideali occidentali e 
+        lontane dall’orbita sovietica.
+\end{itemize}
+
+\subsection{Il modello di sviluppo classico (Rostow)}
+Il modello di Rostow propone un modello lineare di sviluppo economico in 5 fasi, dalla 
+società tradizionale alla società di consuma di massa. Rostow sottolinea che la crescita
+economica è il motore principale del passaggio di una società da uno stadio di sviluppo al
+successivo.
 
 
 
