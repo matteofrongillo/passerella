@@ -17,6 +17,7 @@
 \usepackage{makecell}
 \usepackage{soul}
 \usepackage{ulem}
+\usepackage{wrapfig}
 \usetikzlibrary{decorations.pathreplacing}
 \geometry{    
     a4paper,    
@@ -46,6 +47,22 @@
     }
 }
 
+\newcommand\hr{\vspace{0.1cm}\par\vspace{-.5\ht\strutbox}\noindent\hrulefill\par\vspace{0.1cm}}
+
+% Fill the remaining space of a wrapfigure
+\newcommand{\wrapfill}{
+    \par
+    \ifnum \value{WF@wrappedlines} > 0
+        \addtocounter{WF@wrappedlines}{-1}%
+        \null\vspace{
+            \arabic{WF@wrappedlines}
+            \baselineskip
+        }
+        \WFclear
+    \fi
+    \phantom{}
+}
+
 % === TEXT ===
 
 \title{\textbf{Geografia economica\\Passerella 23-24}}
@@ -60,7 +77,7 @@
 \section{Il Novecento}
 \subsection{Il secolo breve di Hobsbawm}
 
-Il termine "secolo" può essere inteso in senso letterale, come un periodo di 100 anni, oppure può
+Il termine ``secolo'' può essere inteso in senso letterale, come un periodo di 100 anni, oppure può
 descrivere un periodo di eventi e carattristiche omogenee che definiscono un'epoca, anch'essa
 di circa 100 anni.\\
 Secondo l'autore E. J. Hobsbawn, il secolo breve da lui ampiamente studiato inizia nell'anno
@@ -281,7 +298,7 @@ Le dirette conseguenze agli accordi di Bretton Woods furono la nascita dei segue
 \end{itemize}
 
 \subsubsection{I ``Trenta gloriosi"}
-Il termine "Trenta gloriosi" si riferisce al periodo di notevole crescita economica in Europa
+Il termine ``Trenta gloriosi'' si riferisce al periodo di notevole crescita economica in Europa
 dal 1950 al 1973.
 
 Quest'era è caratterizzata dalla ricostruzione post-bellica, dall'espansione dell'economia di
@@ -528,11 +545,11 @@ una maggiore transnazionalizzazione e diminuendo il controllo statale.
             - Delocalizzazione \\
         \hline 
         \begin{tabular}{@{}l@{}}
-            - Mercati specifici "nazionali", seppur \\
+            - Mercati specifici ``nazionali'', seppur \\
             \; comunicanti
         \end{tabular} & 
         \begin{tabular}{@{}l@{}}
-            - Mercati "transnazionali" \\
+            - Mercati ``transnazionali'' \\
             \; (Stati come ostacolo)
         \end{tabular} \\
         \hline
@@ -713,15 +730,15 @@ parte sconfessato o relativizzato quella visione, come l’autore spiega nell’
 Nel libro di Huntington Lo scontro delle civiltà si delinea una visione del mondo decisamente
 originale che si pone in netto contrasto soprattutto con La fine della storia e l'ultimo uomo
 di Francis Fukuyama. Se infatti nell'opera di Fukuyama veniva tratteggiata una vera e propria 
-"fine della storia" con l'avvento della globalizzazione guidata dalle liberaldemocrazie 
+``fine della storia'' con l'avvento della globalizzazione guidata dalle liberaldemocrazie 
 occidentali, secondo Huntington, al contrario, la fine della guerra fredda, non solo non avrebbe
 portato all'affermarsi di un modello unico, ma anzi avrebbe liberato le diverse civiltà dal
 giogo del bipolarismo politico ed ideologico U.S.A. - U.R.S.S., lasciandole ben più libere di
 svilupparsi autonomamente con modi e tempi differenti tra loro.
 
 Tale situazione, secondo Huntington, non sarebbe tuttavia caratterizzata da una pacifica
-convivenza […]. L'osservazione di Huntington è quindi proprio che "gli equilibri di potere tra
-le diverse civiltà stanno mutando" mentre "l'influenza relativa dell'occidente è in calo".
+convivenza […]. L'osservazione di Huntington è quindi proprio che ``gli equilibri di potere tra
+le diverse civiltà stanno mutando'' mentre l'``influenza relativa dell'occidente è in calo''.
 Le diverse civiltà […] stanno infatti riorientandosi sia su basi ideologiche (ed è questo il
 caso del comunismo di mercato che caratterizza quella Sinica) sia, soprattutto, su basi 
 religiose (come succede per quella Islamica). L'idea stessa di una civiltà che si afferma sulle
@@ -1133,7 +1150,219 @@ Dal documento: \href{https://github.com/matteofrongillo/passerella/blob/main/Geo
 \end{enumerate}
 
 \subsection{Indicatori e indici di sviluppo}
-...
+\subsubsection{Definizione di Indice e Indicatore}
+\begin{itemize}
+    \item \textbf{Indicatori:} Misurano singoli aspetti di un fenomeno (es. PIL pro capite);
+    \item \textbf{Indici:} Combinano più indicatori per valutare
+        complessivamente un fenomeno (es. ISU, HPI, MPI).
+\end{itemize}
+
+\subsubsection{Indici e indicatori economici}
+\begin{itemize}
+    \item \textbf{PIL pro capite:}\\
+        Indicatore che misura il valore totale dei beni e servizi prodotti in un paese, diviso
+        per la popolazione.\\
+        Indica la ricchezza media per persona;
+    \item \textbf{Coefficiente di Gini:}\\
+        Indicatore che misura la disuguaglianza nella distribuzione del reddito all'interno di
+        un paese. Valori più alti indicano maggiore disuguaglianza;
+    \item \textbf{Tasso di povertà:}\\
+        Indicatore che mostra la percentuale della popolazione che vive al di sotto della
+        soglia di povertà estrema (meno di \$1,90 al giorno).
+\end{itemize}
+
+\subsubsection{Indici e indicatori sociali/umani e ambientali}
+\begin{itemize}
+    \item \textbf{Tasso di alfabetizzazione:}\\
+        Indicatore che mostra la percentuale della popolazione sopra i 15 anni che sa leggere
+        e scrivere. Indica il livello di istruzione;
+    \item \textbf{Livello di democrazia:}\\
+        Indicatore che valuta il grado di democrazia in un paese basato su vari indicatori
+        di diritti politici e libertà civili;
+    \item \textbf{Indice di Sviluppo Umano (ISU):}\\
+    È un indice che combina PIL pro capite, tasso di alfabetizzazione e aspettativa di
+    vita per valutare il benessere complessivo della popolazione;
+    \item \textbf{Happy Planet Index (HPI):}\\
+        Indice che misura il benessere e la sostenibilità ambientale considerando aspettativa
+        di vita, soddisfazione della vita e impatto ecologico;
+    \item \textbf{Indice di povertà multidimensionale (MPI):}\\
+        Indice che valuta la povertà considerando vari fattori come salute, istruzione e 
+        standard di vita, piuttosto che solo il reddito.
+\end{itemize}
+\pagebreak
+
+\subsubsection{Human Development Report}
+%=== HDR 2019-1 ===
+\setlength{\intextsep}{0pt}%
+\begin{wrapfigure}{l}{0.5\textwidth}
+    \includegraphics[width=.5\textwidth]{media/hdr2019_1.png}
+    \vspace{-1cm}
+\end{wrapfigure}
+\textbf{HDR 2019-1}
+
+\textbf{Titolo}: Aspettativa di vita e istruzione primaria e terziaria per gruppi di sviluppo umano,
+2015-2017
+
+\textbf{Descrizione}: Questo grafico mostra la variazione dell'aspettativa di vita alla nascita e a
+70 anni, la percentuale della popolazione con istruzione primaria e terziaria, e le
+sottoscrizioni mobili in base ai gruppi di sviluppo umano (basso, medio, alto, molto alto).
+\wrapfill
+
+%=== HDR 2019-2 ===
+\setlength{\intextsep}{0pt}%
+\begin{wrapfigure}{l}{0.5\textwidth}
+    \includegraphics[width=.5\textwidth]{media/hdr2019_2.png}
+    \vspace{-1cm}
+\end{wrapfigure}
+\textbf{HDR 2019-2}
+
+\textbf{Titolo}: Impronta ecologica per gruppi di sviluppo umano, 2016
+
+\textbf{Descrizione}: Questo grafico mostra l'impronta ecologica dei paesi in relazione al loro
+indice di sviluppo umano, evidenziando come i paesi con alto sviluppo umano tendano ad avere
+un'impronta ecologica maggiore.
+\wrapfill
+
+%=== HDR 2020-1 ===
+\setlength{\intextsep}{0pt}%
+\begin{wrapfigure}{l}{0.5\textwidth}
+    \includegraphics[width=.5\textwidth]{media/hdr2020_1.png}
+    \vspace{-1cm}
+\end{wrapfigure}
+\textbf{HDR 2020-1}
+
+\textbf{Titolo}: Pressione materiale e sviluppo umano, 2019
+
+\textbf{Descrizione}: Questo grafico illustra la relazione tra l'indice di sviluppo umano e
+l'impronta materiale pro capite, indicando che i paesi con un più alto sviluppo umano
+esercitano una maggiore pressione materiale sul pianeta.
+\wrapfill
+\pagebreak
+
+%=== HDR 2020-2 ===
+\setlength{\intextsep}{0pt}%
+\begin{wrapfigure}{l}{0.5\textwidth}
+    \includegraphics[width=.5\textwidth]{media/hdr2020_2.png}
+    \vspace{-1cm}
+\end{wrapfigure}
+\textbf{HDR 2020-2}
+
+\textbf{Titolo}: Declino del capitale naturale e aumento del PIL e del capitale umano, 1992-2014
+
+\textbf{Descrizione}: Questo grafico mostra il declino del capitale naturale rispetto
+all'aumento del PIL pro capite, della popolazione e del capitale umano, mettendo in evidenza
+la perdita di risorse naturali nel tempo.
+\wrapfill
+
+%=== HDR 2020-3 ===
+\setlength{\intextsep}{0pt}%
+\begin{wrapfigure}{l}{0.5\textwidth}
+    \includegraphics[width=.5\textwidth]{media/hdr2020_3.png}
+    \vspace{-1cm}
+\end{wrapfigure}
+\textbf{HDR 2020-3}
+
+\textbf{Titolo}: Indice di Sviluppo Umano aggiustato per le pressioni planetarie (PHDI)
+
+\textbf{Descrizione}: Questo grafico spiega come l'indice di sviluppo umano viene aggiustato
+tenendo conto delle pressioni ambientali, come le emissioni di CO2 e l'impronta materiale pro
+capite, per creare il PHDI.
+\wrapfill
+
+%=== HDR 2020-4 ===
+\setlength{\intextsep}{0pt}%
+\begin{wrapfigure}{l}{0.5\textwidth}
+    \includegraphics[width=.5\textwidth]{media/hdr2020_4.png}
+    \vspace{-1cm}
+\end{wrapfigure}
+\textbf{HDR 2020-4}
+
+\textbf{Titolo}: Confronto tra l'Indice di Sviluppo Umano e l'Indice di Sviluppo Umano
+aggiustato per le pressioni planetarie, 2019
+
+\textbf{Descrizione}: Questo grafico confronta i valori dell'Indice di Sviluppo Umano con
+quelli aggiustati per le pressioni planetarie, evidenziando le differenze nei paesi con
+diversi livelli di sviluppo.
+\wrapfill
+
+%=== HDR 2020-5 ===
+\setlength{\intextsep}{0pt}%
+\begin{wrapfigure}{l}{0.5\textwidth}
+    \includegraphics[width=.5\textwidth]{media/hdr2020_5.png}
+    \vspace{-1cm}
+\end{wrapfigure}
+\textbf{HDR 2020-5}
+
+\textbf{Titolo}: Evoluzione dell'Indice di Sviluppo Umano e delle pressioni planetarie,
+1990-2019
+
+\textbf{Descrizione}: Questo grafico mostra l'evoluzione dell'Indice di Sviluppo Umano e delle
+pressioni planetarie dal 1990 al 2019, evidenziando la connessione tra lo sviluppo umano e
+l'aumento delle pressioni ambientali.
+\wrapfill
+
+\subsubsection{Che cos'è lo sviluppo? - \textit{A. Greiner, G. Dematteis, C. Lanza, A. Vanolo}}
+Dal documento: \href{https://github.com/matteofrongillo/passerella/blob/main/Geografia/media/031_Sviluppo-testo.pdf?raw=true}
+{Geografia umana: Un approccio visuale}
+
+\textbf{\large Fenomeno complesso:}
+\begin{itemize}
+    \item \textbf{Latouche:}\\
+        Rappresenta una visione critia e decrescista dello sviluppo, che valorizza la diversità
+        culturale e territoriale e mette in discussione i modelli dominanti occidentali.
+        Latouche sostiene che lo sviluppo non debba essere misurato solo con indicatori
+        economici, ma debba includere anche aspetti sociali, culturali e ambientali;
+    \item \textbf{Happy Planet Index (HPI):}\\
+        Questo indice valuta il benessere umano tenendo conto della sostenibilità ambientale.
+        Misura l'aspettativa di vita, la soddisfazione della vita e l'impronta ecologica,
+        riconoscendo così la complessità del benessere umano che non può essere ridotto solo
+        a parametri economici.
+\end{itemize}
+
+\textbf{\large Semplificazione della complessità:}
+\begin{itemize}
+    \item \textbf{Lo sviluppo di un paese è pari alla sua crescita economica:}\\
+        Questa visione riduce il concetto di sviluppo a un singolo indicatore economico,
+        senza considerare altri aspetti come la distribuzione del reddito o la qualità della
+        vita;
+    \item \textbf{Determinare lo sviluppo di un paese tramite il PIL pro capite:}\\
+        Utilizzare il PIL come unico indicatore di sviluppo è un chiaro esempio di
+        semplificazione della complessità. Il PIL misura solo la produzione economica,
+        ignorando aspetti umani come la salute, l'istruzione e la sostenibilità;
+    \item \textbf{Stadi di sviluppo (Rostow):}\\
+        La teoria di Rostow propone una sequenza di stadi universali attraverso cui tutti i
+        paesi devono passare per svilupparsi. Questa visione lineare e deterministica
+        semplifica la complessità delle diverse esperienze di sviluppo nei paesi poveri;
+    \item \textbf{Visioni liberiste:}\\
+        Le visioni liberiste promuovono il libero mercato e la crescita economica come le vie
+        principali per raggiungere lo sviluppo. Tendono a ignorare le disuguaglianze sociali e
+        gli impatti ambientali negativi della crescita economica;
+    \item \textbf{Visioni marxiste:}\\
+        Anche se opposte alle visioni liberiste, le visioni marxiste semplificano la
+        complessità riducendo lo sviluppo a una questione di lotta di classe e cambiamento
+        delle strutture economiche. Si concentrano principalmente sulla distribuzione della
+        ricchezza e sulle dinamiche di potere economico, spesso trascurando gli aspetti 
+        culturali e ambientali.
+\end{itemize}
+\pagebreak
+
+\section{Demografia e flussi di persone}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
