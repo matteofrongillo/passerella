@@ -18,6 +18,7 @@
 \usepackage{soul}
 \usepackage{ulem}
 \usepackage{wrapfig}
+\usepackage{subcaption}
 \usetikzlibrary{decorations.pathreplacing}
 \geometry{    
     a4paper,    
@@ -1479,9 +1480,9 @@ popolazione di uno Stato:
 
 %=== PIRAMIDE A BASE ALLARGATA ===
 \setlength{\intextsep}{0pt}%
-\begin{wrapfigure}{r}{.4\textwidth}
-    \includegraphics[width=.4\textwidth]{media/piramide a base allargata.png}
-    \vspace{-1cm}
+\begin{wrapfigure}{r}{.35\textwidth}
+    \includegraphics[width=.35\textwidth]{media/piramide a base allargata.png}
+    \vspace{-2.5cm}
 \end{wrapfigure}
 \textbf{Piramide a base allargata}
 
@@ -1494,9 +1495,9 @@ popolazione di uno Stato:
 
 %=== PIRAMIDE ===
 \setlength{\intextsep}{0pt}%
-\begin{wrapfigure}{l}{.4\textwidth}
-    \includegraphics[width=.4\textwidth]{media/piramide demografica.png}
-    \vspace{-1cm}
+\begin{wrapfigure}{l}{.35\textwidth}
+    \includegraphics[width=.35\textwidth]{media/piramide demografica.png}
+    \vspace{-2.5cm}
 \end{wrapfigure}
 \textbf{Piramide}
 
@@ -1509,9 +1510,9 @@ popolazione di uno Stato:
 
 %=== CAMPANA ===
 \setlength{\intextsep}{0pt}%
-\begin{wrapfigure}{r}{.4\textwidth}
-    \includegraphics[width=.4\textwidth]{media/campana.png}
-    \vspace{-1cm}
+\begin{wrapfigure}{r}{.35\textwidth}
+    \includegraphics[width=.35\textwidth]{media/campana.png}
+    \vspace{-2.5cm}
 \end{wrapfigure}
 \textbf{Campana}
 
@@ -1524,9 +1525,9 @@ popolazione di uno Stato:
 
 %=== URNA ===
 \setlength{\intextsep}{0pt}%
-\begin{wrapfigure}{l}{.4\textwidth}
-    \includegraphics[width=.4\textwidth]{media/urna demografica.png}
-    \vspace{-1cm}
+\begin{wrapfigure}{l}{.35\textwidth}
+    \includegraphics[width=.35\textwidth]{media/urna demografica.png}
+    \vspace{-2.4cm}
 \end{wrapfigure}
 \textbf{Urna}
 
@@ -1542,12 +1543,38 @@ popolazione di uno Stato:
 \subsubsection{Eventi eccezionali}
 \begin{itemize}
     \item Guerre:\\
-        Comportano allo stringimento della parte bassa-centrale;
+        Caduti in guerra, tassi di natalità diminuiscono;
     \item Baby boom:\\
-        Sostanzioso allargamento della base;
+        Sostanzioso allargamento di una fascia d'età, solitamente non influenzato dalla
+        morte naturale;
     \item Medoti contraccettivi:\\
-        Propensione a una geometria ad urna.
+        Restringimento di una fascia di età, dato dalla decisione di una coppia di avere figli.
 \end{itemize}
+\phantom{}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{media/demo_guerra.png}
+      \caption{Caso di guerra}
+      \label{fig:immagine1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{media/demo_baby boom.png}
+      \caption{Caso di baby boom}
+      \label{fig:immagine2}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{media/demo_contraccettivi.png}
+      \caption{Introduzione contraccettivi}
+      \label{fig:immagine3}
+    \end{subfigure}
+\end{figure}
 
 \subsubsection{Situazioni di immigrazioni ed emigrazioni}
 \begin{itemize}
@@ -1564,8 +1591,291 @@ popolazione di uno Stato:
             buona parte del PIL.
     \end{itemize}
 \end{itemize}
+\phantom{}
+
+\begin{figure*}[ht!]
+    \centering
+    \includegraphics[width=1\textwidth]{media/demo_kuwait.png}
+    \caption*{Immigranti nella fascia 25-35 che lasciano il Paese al termine della
+        carriera lavorativa\\ \textrightarrow\ Crescita economica del Kuwait dovuta dalla forza
+        lavoro estera.}
+\end{figure*}
+\pagebreak
+\begin{figure*}[ht!]
+    \centering
+    \includegraphics[width=1\textwidth]{media/demo_nepal.png}
+    \caption*{Il numero di nepalesi che lasciano il Paese per lavoro aumenta di anno in anno\\
+    \textrightarrow\ La quantità di denaro inviata in Nepal dagli emigranti corrisponde a
+    circa un quarto del PIL.}
+\end{figure*}
 
 \subsection{Le migrazioni internazionali}
+\subsubsection{Definizioni dei termini}
+\begin{itemize}
+    \item \textbf{Migrante:}\\
+        Persona che modifica il proprio Stato di residenza indipendentemente dalla ragione o
+        dallo statuto legale;
+    \item \textbf{Rifugiato:}\\
+        Persona che si trova fuori dal proprio Paese d'origine per paura di persecuzioni, a
+        causa di un confritto, di violenza generalizzata o altre circostanze con impatto
+        sull'ordine pubblico e che, pertanto, richiede protezione internazionale;
+    \item \textbf{Richiedente d'asilo:}\\
+        Persona che ha lasciato il Paese d'origine e ha inoltrato una richiesta d'asilo in un
+        paese terzo, ma sono ancora in attesa di una decisione da parte delle autorità
+        competenti riguardo al riconoscimento del loro status di rifugiati;
+    \item \textbf{Profugo:}\\
+        Persona che per diverse ragioni (guerra, povertà, calamità naturali, ...) ha lasciato
+        il proprio Paese ma non è nelle condizioni di richiedere la protezione internazionale.
+\end{itemize}
+
+\subsubsection{Ragioni delle migrazioni individuali}
+\begin{itemize}
+    \item \textbf{Ragioni forzate:} paura, persecuzione, guerra, catastrofi naturali;
+    \item \textbf{Ragioni volontarie:} lavoro, stile di vita, cultura, famiglia e affetti;
+    \item \textbf{Ragioni economiche e fiscali:} povertà.
+\end{itemize}
+
+\subsection{Migrazioni in uno Stato}
+\subsubsection{Flussi vs. Stock}
+\paragraph*{Flusso:} \phantom{}
+
+I flussi indicano il numero di persone che oltrepassano il confine di uno
+Stato, indipendentemente se verso l'interno o verso l'esterno.\\
+È come se ci fosse un contatore posto al confine che conteggia ogni persona che passa.
+\paragraph*{Stock:} \phantom{}
+
+Gli stocks indicano il numero di tutte le persone che si trovano all'interno di uno Stato in un
+determinato momento.\\
+È come se venisse scattata una fotografia dello Stato e si contassero
+tutte le persone presenti nello scatto.
+\pagebreak
+\subsubsection{Cosa comporta l'emigrazione dei cittadini di uno Stato}
+Elementi positivi per lo Stato che perde cittadini:
+\begin{itemize}
+    \item Rimesse finanziarie (emigrati mandano soldi nel paese natio, es. per i parenti).
+\end{itemize} \phantom{}
+
+Elementi negativi per lo Stato che perde cittadini:
+\begin{itemize}
+    \item Perdita delle tradizioni;
+    \item Cambiamento della struttura demografica:
+        \begin{itemize}
+            \item Minore natalità;
+            \item Maggiore invecchiamento della popolazione;
+        \end{itemize}
+    \item Fura di cervelli.
+\end{itemize}
+
+\subsubsection{Cosa comporta l'immigrazione dei cittadini in uno Stato}
+Elementi positivi per lo Stato che guadagna cittadini:
+\begin{itemize}
+    \item Maggiore forza lavoro;
+    \item Maggiore diversità etnica, culturale e religiosa;
+    \item Minore invecchiamento della popolazione.
+\end{itemize} \phantom{}
+
+Elementi negativi per lo Stato che guadagna cittadini:
+\begin{itemize}
+    \item Maggiore disoccupazione;
+    \item Perdita delle tradizioni;
+    \item Difficoltà nell'integrazione di nuove culture e usante;
+    \item Segregazione e discriminazione.
+\end{itemize}
+\pagebreak
+
+\section{Altri flussi e attori importanti del sistema mondo}
+\subsection{Il commercio mondiale}
+\subsubsection{Preconoscenze}
+\begin{itemize}
+    \item Le percentuali dei volumi del commercio per i diversi vettori di trasporto:
+        \begin{itemize}
+            \item Camion: 9\%
+            \item Treno: 5\%
+            \item Nave: 85\%
+            \item Aereo: 1\%
+        \end{itemize}
+    \item Il commercio marittimo planetario si sviluppa nel XVIII\textdegree secolo;
+    \item Nel XIX\textdegree secolo vengono costruiti i grandi canali navigabili di Suez e di
+        Panama;
+    \item Tra il 1950 e il 2017, il peso totale delle merci trasportate dal commercio mondiale
+        è aumentato del 2000\%;
+\end{itemize} \phantom{}
+
+\subsubsection{Definizioni di stretto e istmo}
+\textbf{Stretto:} Zona d'acqua minima che collega due masse d'acqua.
+%
+%\phantom{}
+%\begin{tikzpicture}
+%    % Draw the land masses
+%    \draw[thick] (0,1) .. controls (1,0.5) and (2,0.5) .. (3,1);
+%    \draw[thick] (0,-1) .. controls (1,-0.5) and (2,-0.5) .. (3,-1);
+%
+%    % Draw the water in between
+%    \fill[blue!20] (0,-1) .. controls (1,-0.5) and (2,-0.5) .. (3,-1) --
+%                    (3,1) .. controls (2,0.5) and (1,0.5) .. (0,1) -- cycle;
+%
+%    % Add labels for the lands
+%    \node at (1.5, 1) {TERRA 1};
+%    \node at (1.5, -1) {TERRA 2};
+%
+%    % Add labels for the seas
+%    \node at (-0.75, 0) {MARE};
+%    \node at (3.75, 0) {MARE};
+%\end{tikzpicture}
+%\vspace{.5cm}
+
+\textbf{Istmo:} Zona di terra minima che collega due masse di terra.
+%
+%\phantom{}
+%\begin{tikzpicture}
+%    % Draw the water masses
+%    \draw[thick] (0,1) .. controls (1,0.5) and (2,0.5) .. (3,1);
+%    \draw[thick] (0,-1) .. controls (1,-0.5) and (2,-0.5) .. (3,-1);
+%
+%    % Draw the land in between
+%    \fill[green!20] (0,-1) .. controls (1,-0.5) and (2,-0.5) .. (3,-1) --
+%                    (3,1) .. controls (2,0.5) and (1,0.5) .. (0,1) -- cycle;
+%
+%    % Add labels for the seas
+%    \node at (1.5, 1) {MARE 1};
+%    \node at (1.5, -1) {MARE 2};
+%
+%    % Add labels for the lands
+%    \node at (-0.75, 0) {TERRA};
+%    \node at (3.75, 0) {TERRA};
+%\end{tikzpicture}
+
+
+
+\subsubsection{Esempi di stretti e canali}
+%=== MAPPA ===
+\setlength{\intextsep}{0pt}%
+\begin{wrapfigure}{r}{.65\textwidth}
+    \includegraphics[width=.65\textwidth]{media/mappa_stretti.png}
+    \vspace{-2.5cm}
+\end{wrapfigure}
+Le posizioni sulla cartina indicano:
+
+\begin{enumerate}[label=\Alph*:]
+    \item Canale di Suez;
+    \item Canale di Panama;
+    \item Stretto di Malacca;
+    \item Stretto di Ormuz;
+    \item Bab el Mandeb.
+\end{enumerate}
+\wrapfill
+
+\subsection{La nuova Via della seta cinese}
+\subsubsection{I pro della Via della seta per la Cina}
+\begin{itemize}
+    \item Nuovo collegamento via treno tra Londra e Cina percorribile in soli 15 giorni;
+    \item B.R.I. = Belt and Road Initiative / O.B.O.R. = One Belt One Road:\\
+        Progetto globale di sviluppo inftrastrutturale lanciato dalla Cina nel 2013, il quale
+        mira a migliorare la connettività e la cooperazione tra i paesi dell'Asia, Europa e 
+        Africa attraverso la costruzione di reti di trasporto, energia e telecomunicazioni;
+    \item Scambio di materiali: acciaio, cemento e alluminio;
+    \item La Cina sfrutta la soft power per migliorare la prorpia immagine:
+        \begin{itemize}
+            \item Inizia a far parte dell'OMS (Organizzazione Mondiale della Sanità);
+            \item Inizia a prender parte ai campionati mondiali calcistici;
+            \item Inizia ad aprirsi nel mondo social;
+            \item Altro;
+        \end{itemize}
+    \item Con la messa in atto del B.R.I. aumentano gli scambi internazionali con la Cina:
+        \begin{itemize}
+            \item Appropriazioni momentanee di territori esteri gestiti dalla Cina;
+            \item Nuovi sbocchi verso il mare per la Cina, fondamentali in caso di tensioni
+                (politiche) nei pressi dello Stretto di Malacca o altri luoghi marittimi;
+            \item Costruzione di nuove centrali energetiche nei territori esteri, le quali
+                trasferiscono buona parte dell'energia prodotta verso la Cina;
+            \item Costruzione degli edifici, ferrovie o autostrade estere commissionate ai di
+                team edili cinesi, le quali quando saranno in disuso saranno gestite dalla
+                Cina e a suo favore;  
+        \end{itemize}
+    \item Esempi di paesi che hanno aderito alla nuova Via della seta:
+    \begin{itemize}
+        \item Pakistan ha aderito a uno sviamento che permette lo sbocco sul mare e il libero
+            commercio marittimo alla Cina, con annesse centrali energetiche nei pressi delle
+            autostrade e delle ferrovie che forniscono energia sia alle reti urbane sia alla
+            Cina.
+        \item Myanmar ha concesso degli sbocchi alternativi alla Cina così da garantirle
+            l'accesso a zone marittime e portuali nel caso che lo Stretto di Malacca non fosse
+            più navigabile a causa di conflitti politici o naturali;
+        \item Laos e Uganda, nonostante abbiano entrambe aderito agli accordi bilaterali con
+            la Cina, i soldi messi a disposizione dalla Cina non sono stati investiti nello
+            sviluppo dei paesi ma solo nella creazione di infrastrutture e reti di mobilità
+            utili al commercio cinese.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Domande e risposte sui pro per la Cina}
+\begin{enumerate}
+    \item Quali obiettivi espliciti ed impliciti perseguita il progetto B.R.I.?
+        \begin{itemize}
+            \item Aumentare gli scambi internazionali con la Cina, in modo da costruire e
+                sfruttare più vie alternative possibili;
+            \item Aumentare il ruolo della Cina nel mondo;
+            \item Vie di comunicazione e vie energetiche in entrata verso la Cina;
+            \item Ridurre i tempi per gli scambi commerciali.
+        \end{itemize}
+    \item Quali attori potrebbero trarre più vantaggi che svantaggi da questo progetto?
+        \begin{itemize}
+            \item La Cina è lo Stato principale a trarre più vantaggio;
+            \item Ne traggono in parte vantaggio i paesi d'arrivo che ne hanno aderito.
+        \end{itemize}
+    \item Quali attori potrebbero invece subire più svantaggi che vantaggi?
+        \begin{itemize}
+            \item I paesi d'arrivo che non sono stati in grado di risarcire entro il tempo
+                limite il prestito monetario della Cina;
+            \item I paesi che vengono esclusi dal progetto (es. USA);
+            \item La forza-lavoro viene meno nel paese d'arrivo;
+            \item L'ambiente viene inquinato molto.
+        \end{itemize}
+    \item Che rivelanza assume il progetto nel processo di globalizzazione?
+        \begin{itemize}
+            \item Accelera il commercio globale;
+            \item Potrebbe aiutare economicamente paesi in via di sviluppo.
+        \end{itemize}
+\end{enumerate}
+
+\subsection{Le società transnazionali}
+\newpage
+
+\begin{figure}[ht]
+    \centering
+    \begin{tikzpicture}
+
+        \definecolor{darkgreen}{rgb}{0.0, 0.5, 0.0}
+
+        \draw[thick, ->] (0,5) -- (7,5) node[anchor=west] {oggi};
+
+        % Draw the horizontal lines with arrows
+        \draw[thick, red, ->] (0,4) -- (7,4);
+        \draw[thick, red,] (0,4.25) -- (0,3.75);
+        \draw[thick, darkgreen, ->] (1,3) -- (7,3);
+        \draw[thick, darkgreen,] (1,3.25) -- (1,2.75);
+        \draw[thick, blue, ->] (2,2) -- (7,2);
+        \draw[thick, blue,] (2,2.25) -- (2,1.75);
+        \draw[thick, orange, ->] (3,1) -- (7,1);
+        \draw[thick, orange] (3,1.25) -- (3,0.75);
+
+
+        % Add labels for each section
+        \node[anchor=west, red] at (7.5, 4) {A) \underline{Commercio materie prime} $\rightarrow$ settore I};
+        \node[anchor=west, darkgreen] at (7.5, 3) {B) \underline{Delocalizzazione della produzione} $\rightarrow$ settore II};
+        \node[anchor=west, blue] at (7.5, 2) {C) \underline{Gestione internazionale dei servizi} $\rightarrow$ settore III};
+        \node[anchor=west, orange] at (7.5, 1) {D) \underline{Gruppi complessi} (I + II + III)};
+
+    \end{tikzpicture}
+\end{figure}
+
+\vspace{1cm}
+
+\begin{itemize}
+    \item \textbf{Vantaggi produttivi:} riduzione dei costi
+    \item \textbf{Vantaggi commerciali:} accesso ai mercati
+    \item \textbf{Vantaggi fiscali:} ottimizzazione fiscale
+\end{itemize}
 
 
 
