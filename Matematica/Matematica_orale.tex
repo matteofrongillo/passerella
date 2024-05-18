@@ -1,0 +1,824 @@
+\documentclass{article}
+
+\usepackage[fleqn]{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage[italian]{babel}
+\usepackage{enumitem}
+\usepackage{parskip}
+\usepackage{chemfig}
+\usepackage{pdfpages}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{fancybox}
+\usepackage{makecell}
+\usepackage{pgfplots}
+\usepackage{soul}
+\usepackage{ulem}
+\usepackage{wrapfig}
+\usepackage{subcaption}
+\usetikzlibrary{decorations.pathreplacing}
+
+\usepackage{frongillo}
+\usepackage{stellar}
+
+\geometry{
+    a4paper,
+    total={170mm, 257mm},
+    left=20mm,
+    top=20mm
+}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=blue,
+    pdftitle={Chimica}
+}
+
+% === TEXT ===
+\title{\textbf{Matematica - Esame orale \\ Passerella 2023-24}}
+\author{Matteo Frongillo, Paolo Bettelini}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\pagebreak
+
+\part{Analisi}
+
+\section{Limiti}
+
+\subsection{Concetto di limite di una funzione reale (interpretazione geometrica)}
+
+\subsubsection{Determinare la definizione formale di limite}
+
+\sdefinition{Limite di una funzione reale}{
+    Data una funzione \(f:D\to \mathbb{R}\),
+    il limte \[L=\lim_{x\to c}f(x)\] esiste se dato un
+    \(\epsilon >0\) arbitrariamente piccolo, esiste un altro valore \(\delta >0\) tale che
+    \[
+        0<|x-c|<\delta
+        \implies
+        |f(x)-L|<\epsilon
+    \]
+}
+
+\subsubsection{Disegnare geometricamente il limite:}\phantom{}
+
+\begin{tikzpicture}[
+    declare function={
+        func(\x) = \x*\x / 10 + 1;
+        LimX=4.25;
+        Epsilon=0.7;
+        Delta=0.5;
+        LimY={func(LimX)};
+        Width=7.5;
+        Height=5;
+    }
+]
+    \draw[->] (0, -0.25) -- (0, Height) node[right] {\(y\)};
+    \draw[->] (-0.25, 0) -- (Width, 0) node[above] {\(x\)};
+
+    \draw[-, dashed] (LimX, 0) -- (LimX, LimY);
+    \draw[-, dashed] (0, LimY) node[left] {\(L\)} -- (LimX, LimY);
+
+    \draw[-] (0, {LimY + Epsilon}) node[left] {\(L + \epsilon\)} -- (Width, {LimY + Epsilon});
+    \draw[-] (0, {LimY - Epsilon}) node[left] {\(L - \epsilon\)} -- (Width, {LimY - Epsilon});
+
+    \draw[-] ({LimX - Delta}, 0) node[below] {\(\scriptstyle c - \delta\)} -- ({LimX - Delta}, Height);
+    \draw[-] ({LimX + Delta}, 0) node[below] {\(\scriptstyle c + \delta\)} -- ({LimX + Delta}, Height);
+
+    \fill [green, opacity=0.2] (0,{LimY - Epsilon}) rectangle (Width, {LimY + Epsilon});
+    \fill [red, opacity=0.2] ({LimX - Delta}, 0) rectangle ({LimX + Delta}, Height);
+
+    \draw[domain=-0.25:6, smooth, variable=\x, blue, thick] plot ({\x}, {func(\x)});
+\end{tikzpicture}
+
+A parole possiamo dire che il limite esiste (ed è pari ad un valore che chiamiamo \(L\))
+se la seguente condizione è soddisfatta:
+\begin{enumerate}
+    \item Scegliamo un \(\epsilon\) arbitrariamente piccolo e costruiamo l'intervallo \([L-\epsilon;L+\epsilon]\).
+        Questo intervallo è un range attorno al valore effettivo del limite,
+        ossia un intervallo nell'immagini della nostra funzione, come da disegno (striscia verde).
+    \item Se il limite esiste effettivamente, allora possiamo trovare un'altro intervallo (questa volta
+        nel dominio, ossia sull'asse x al posto che sull'asse y) tale che le \textit{immagini}
+        della funzione date dalle x in questo intervallo, siano un sottoinsieme dell'intervallo
+        \([L-\epsilon;L+\epsilon]\). Questo intervallo è rappresentato dalla striscia rossa nel disegno,
+        e possiamo definirne la grandezza scegliendo un \(\delta > 0\).
+\end{enumerate}
+
+In maniera informale, possiamo dire che il limite esiste se per ogni striscia verde (arbitrariamente piccola),
+esiste una striscia rossa tale che le immagini della striscia rossa facciano interamente parte della striscia verde.
+Ciò viene precisamente espresso dall'espressione
+\[
+    0<|x-c|<\delta
+    \implies
+    |f(x)-L|<\epsilon
+\]
+Che significa: Quando ci troviamo nella striscia rossa (\(0<|x-c|<\delta\)),
+ossia quando la distanza assoluta dal punto del limite \(c\) è minore di \(\delta\),
+allora avremo necessariamente la condizione che le immagini si trovino nella striscia verde
+(\(|f(x)-L|<\epsilon\)), ossia che la differenza fra i valori della funzione nei nostri punti e il
+valore del limite effettivo sia minore di \(\epsilon\).
+
+\textbf{\color{red}Importante:} non è strettamente necessaria che la funzione
+\(f(x)\) sia definita al punto (c), ma solo attorno.
+
+\newpage
+
+\subsection{Asintoti}
+
+\subsubsection{Definizione generale}
+
+\sdefinition{Asintoto}{
+    Un \textit{asintoto} di una curva è una retta tale che quando la funzione tende a un certo valore, finito o
+    infinito, la distanza tra la retta e la funzione tende a 0
+    sia nelle coordinate x e y.
+}
+
+\textbf{\color{red}Importante:} una funziona potrebbe presentare un asintoto orizzontale o obliquo
+solo nella direzione positiva o negativa, o due asintoti diversi nelle direzioni positive e negative.
+Gli asintoti obliqui e orizzontali non sono quindi necessariamente simmetrici.
+
+\subsubsection{Come trovare gli asintoti orizzontali}
+
+Bisogna verificare che il limite della funzione
+all'infinito o meno infinito sia finito:\\
+\[\lim_{x \to \pm\infty} f(x) = a \neq \pm\infty\]
+In questo caso avremo quindi un asintoto orizzontale \(y=a\)
+verso destra, sinistra o ambo le direzioni.
+
+\subsubsection{Come trovare gli asintoti obliqui}
+
+Per studiare gli asintoti obliqui dobbiamo studiare più in generale il concetto di equivalenza asintotica.
+
+\sdefinition{Equivalenza sintotica}{
+    Siano \(f(x)\) e \(g(x)\) due funzioni definite in un intorno di \(x_0\)
+    e \(g(x)\neq 0\) se \(x \neq x_0\).
+    Diciamo che \(f(x)\) e \(g(x)\) sono asintoticamente equivalenti per \(x \to x_0\)
+    se il loro rapporto tende ad 1:
+    \[ \lim_{x \to x_0} \frac{f(x)}{g(x)} = 1 \]
+}
+
+Per gli asintoti obliqui dobbiamo considerare l'equivalenza asintotica
+per \(x \to \pm \infty\).
+Senza perdita di generalità, abbiamo un asintoto obliquo per \(x \to +\infty\)
+se la funzione è asintotica ad una retta \(y=mx+q\) per \(x \to +\infty\).
+L'asintoto è quindi presente se
+\[
+    \lim_{x \to \infty} \frac{f(x)}{mx} = 1
+\]
+Dal momento che non conosciamo la pendenza \(m\) possiamo scrivere 
+\[
+    \lim_{x \to \infty} \frac{f(x)}{x} = m
+\]
+e controllare che \(m\) sia un numero finito.
+È da notare come abbiamo tralasciato il termine \(q\) in quanto l'equivalenza asintotica ne è indipendente.
+
+Una volta stabilistico che \(f(x)\) è asintoticamente equivalente ad una retta con pendenza \(m\),
+possiamo trovare l'ordinata all'origine \(q\) calcolando la differenza fra
+\(f(x)\) e \(mx+q\) con \(x \to \infty\).
+\[
+    q = \lim_{x\to\infty} \left(f(x)-mx\right)
+\]
+E per cui abbiamo stabilito la presenza di un asintoto obliquo verso destra
+con funzione \(y=mx\).
+
+\subsubsection{Come trovare gli asintoti verticali}
+
+Per trovare gli asintoti verticali bisogna guardare il limite tendente da destra e da sinistra al punto
+di interesse, e verificare che i due limiti siano \(+\infty\) o \(-\infty\) (non necessariamente simmetrici).
+
+In tal caso abbiamo un asintoto verticale con funzione \(x=a\) dove \(a\) è il punto di interesse.
+
+Ci sono quindi quattro tipi di geometria attorno all'asintoto a seconda del valore dei limiti.
+
+\begin{tikzpicture}
+
+    % 1. Asintoto verticale con la funzione che va verso ∞ su entrambi i lati
+    \begin{axis}[
+        width=6cm, height=6cm,
+        title={$\frac{1}{x-1}$},
+        domain=0.1:1.9,
+        samples=100,
+        ytick=\empty,
+        axis lines=middle,
+        xmin=0, xmax=2, ymin=-10, ymax=10,
+        every axis y label/.style={at=(current axis.above origin),anchor=south},
+        every axis x label/.style={at=(current axis.right of origin),anchor=west},
+        ]
+        \addplot [thick, red] {1/(x-1)};
+        \draw [dashed] (axis cs:1,-10) -- (axis cs:1,10);
+    \end{axis}
+    
+    % 2. Asintoto verticale con la funzione che va verso -∞ su entrambi i lati
+    \begin{axis}[
+        at={(6cm,0)},
+        width=6cm, height=6cm,
+        title={$\frac{1}{1-x}$},
+        domain=0.1:1.9,
+        samples=100,
+        ytick=\empty,
+        axis lines=middle,
+        xmin=0, xmax=2, ymin=-10, ymax=10,
+        every axis y label/.style={at=(current axis.above origin),anchor=south},
+        every axis x label/.style={at=(current axis.right of origin),anchor=west},
+        ]
+        \addplot [thick, blue] {1/(1-x)};
+        \draw [dashed] (axis cs:1,-10) -- (axis cs:1,10);
+    \end{axis}
+    
+    % 3. Asintoto verticale con la funzione che va verso ∞ da un lato e verso -∞ dall'altro lato
+    \begin{axis}[
+        at={(0,-6cm)},
+        width=6cm, height=6cm,
+        title={$\frac{1}{{(x-1)}^2}$},
+        domain=0.1:1.9,
+        samples=100,
+        ytick=\empty,
+        axis lines=middle,
+        xmin=0, xmax=2, ymin=-10, ymax=10,
+        every axis y label/.style={at=(current axis.above origin),anchor=south},
+        every axis x label/.style={at=(current axis.right of origin),anchor=west},
+        ]
+        \addplot [thick, green] {1/(5*x-5)/(5*x-5)};
+        \draw [dashed] (axis cs:1,-10) -- (axis cs:1,10);
+    \end{axis}
+    
+    % 4. Asintoto verticale con la funzione che si avvicina a un valore finito su un lato e va verso ∞ o -∞ sull'altro lato
+    \begin{axis}[
+        at={(6cm,-6cm)},
+        width=6cm, height=6cm,
+        title={$-\frac{1}{{(x-1)}^2}$},
+        domain=0.1:1.9,
+        samples=100,
+        ytick=\empty,
+        axis lines=middle,
+        xmin=0, xmax=2, ymin=-10, ymax=10,
+        every axis y label/.style={at=(current axis.above origin),anchor=south},
+        every axis x label/.style={at=(current axis.right of origin),anchor=west},
+        ]
+        \addplot [thick, green] {-1/(5*x-5)/(5*x-5)};
+        \draw [dashed] (axis cs:1,-10) -- (axis cs:1,10);
+    \end{axis}
+    
+\end{tikzpicture}
+
+Oltre a questi tipi di geometria, è possibile che la funzione tenda a \(\pm\infty\)
+solo da una parte, come per esempio la funzione \(y=\ln(x)\).
+
+\newpage
+
+\subsection{La continuità di una funzione reale (esempi di discontinuità)}
+
+\subsubsection{Definizione di funzione continua}
+
+\sdefinition{Continuità di una funzione reale}{
+    Data una funzione reale \(f(x)\), la funzione è continua nel punto \(x=c\) se
+    \[
+        \lim_{x\to c} = f(c)
+    \]
+}
+
+In altre parole la funzione è continua nel punto se il limite esiste (sia da destra che da sinistra, coincidendo)
+e la funzione è in qul punto è equivalente al valore del limite.
+Una funzione è continua in un intervallo se è continua in tutti i punti dell'intervallo.
+
+\subsubsection{Esempi di funzione continua}
+\begin{enumerate}
+    \item La funzione \(f(x)=x^4\) ha come \(\lim_{x \to 0} x^4=0\) e \(f(0)=0\):\\
+    \textrightarrow La funzione è continua nel punto 0.
+\end{enumerate}
+
+\subsubsection{Esempi di funzione discontinua}
+\begin{enumerate}
+    \item La funzione \(f(x)=\frac{1}{x}\) non è continua poiche \(f(0)=\text{indeterminato}\).\\
+        Essa è però continua localmente in tutti gli intervalli che non comprendono il suo
+        asintoto verticale, come ad esempio l'intervallo \(x \in [1, +\infty[\).
+    \item Generalmente, se si moltiplica una funzione \(f(x) \cdot \frac{x}{x}\), la funzione
+        rimane la stessa ma si introduce un punto di discontinuità in 0, poiché il limite
+        a 0 esiste ma \(f(0)=\) indeterminato.
+\end{enumerate}
+
+\newpage
+\subsection{Calcolo di limiti (somma, prodotto, ...)}
+
+\subsubsection{Lista delle proprietà dei limiti}
+Assumendo che \(\lim_{x \to a} f(x)\) e \(\lim_{x \to a} g(x)\) esistano e che \(c\) sia
+qualsiasi costante:
+\begin{enumerate}
+    \item \textbf{Linearità:}
+    \begin{equation*}
+        \lim_{x \to a} [c f(x)] = c \lim_{x \to a} f(x)
+    \end{equation*}
+    In altre parole, possiamo ``estrarre'' una costante moltiplicativa da un limite.
+    
+    \item \textbf{Somma e sottrazione:}
+    \begin{equation*}
+        \lim_{x \to a} [f(x) \pm g(x)] = \lim_{x \to a} f(x) \pm \lim_{x \to a} g(x)
+    \end{equation*}
+    Quindi, per calcolare il limite di una somma o differenza, basta prendere il limite delle
+    singole parti e poi sommarle o sottrarle con il segno appropriato. Questo fatto vale per
+    qualsiasi numero di funzioni separate da ``+'' o ``-''.
+    
+    \item \textbf{Moltiplicazione:}
+    \begin{equation*}
+        \lim_{x \to a} [f(x) g(x)] = \lim_{x \to a} f(x) \cdot \lim_{x \to a} g(x)
+    \end{equation*}
+    Calcoliamo i limiti dei prodotti allo stesso modo in cui calcoliamo i limiti delle somme
+    o differenze. Prendiamo semplicemente il limite delle singole parti e poi le
+    moltiplichiamo. Anche in questo caso, questo fatto non è limitato a solo due funzioni.
+    
+    \item \textbf{Divisione:}
+    \begin{equation*}
+        \lim_{x \to a} \left[ \frac{f(x)}{g(x)} \right] = \frac{\lim_{x \to a} f(x)}{\lim_{x \to a} g(x)}, \quad \text{purché } \lim_{x \to a} g(x) \ne 0
+    \end{equation*}
+    Come indicato nella frase, dobbiamo preoccuparci solo del limite nel denominatore che
+    tende a zero quando calcoliamo il limite di un quoziente. Se fosse zero, avremmo un errore
+    di divisione per zero che dobbiamo evitare.
+    
+    \item \textbf{Potenza:}
+    \begin{equation*}
+        \lim_{x \to a} [f(x)]^n = \left[\lim_{x \to a} f(x)\right]^n, \quad \text{dove } n \text{ è un numero reale}
+    \end{equation*}
+    In questa proprietà, \(n\) può essere qualsiasi numero reale (positivo, negativo, intero,
+    frazione, irrazionale, zero, \dots). Nel caso in cui \(n\) sia un numero intero, questa
+    regola può essere vista come un'estensione del caso 3.
+    
+    \item \textbf{Radice:}
+    \begin{equation*}
+        \lim_{x \to a} \left[ \sqrt[n]{f(x)} \right] = \sqrt[n]{\lim_{x \to a} f(x)}
+    \end{equation*}
+    Questo è solo un caso speciale dell'esempio precedente.
+    
+    \item \textbf{Costante:}
+    \begin{equation*}
+        \lim_{x \to a} c = c, \quad \text{c è un numero reale qualsiasi}
+    \end{equation*}
+    Il limite di una costante è semplicemente la costante stessa.
+    
+    \item \textbf{Identità:}
+    \begin{equation*}
+        \lim_{x \to a} x = a
+    \end{equation*}
+    Questa proprietà afferma che il limite dell'identità \(f(x) = x\) quando \(x\)
+    tende ad \(a\) è semplicemente \(a\). Questo è intuitivo, poiché man mano che \(x\) si
+    avvicina ad \(a\), la funzione \(f(x) = x\) si avvicina direttamente al valore \(a\).
+    
+    \item \textbf{Potenza della variabile:}
+    \begin{equation*}
+        \lim_{x \to a} x^n = a^n
+    \end{equation*}
+    Questo è un caso speciale della proprietà 5 usando l'identità \(f(x) = x\).
+\end{enumerate}
+
+\newpage
+\section{Derivate}
+\subsection{Definizione di derivata e applicazione in casi concreti}
+
+\subsubsection{Definzione}
+La derivata è il limite del rapporto incrementale fra due punti la cui distanza orizzontale
+tende a 0, ed equivale alla pendenza della tangente in quel punto.
+
+\subsubsection{Disegno delle secante tra due punti}
+\begin{tikzpicture}[
+    scale=2,
+    declare function={
+        func(\x) = \x*sin(\x r);
+        Width=3;
+        Height=2;
+        Ax=0.75;
+        Bx=2.25;
+        SlopeMargin=0.25;
+        M=(func(Bx) - func(Ax)) / (Bx - Ax);
+        Q=func(Ax) - M * Ax;
+        slopeFunc(\x)=\x * M + Q;
+    }
+]
+    \draw[domain=-0.5:3, smooth, variable=\x, blue, very thick] plot ({\x}, {func(\x)});
+    
+    \draw[->] (0, -0.25) -- (0, Height) node[right] {\(y\)};
+    \draw[->] (-0.25, 0) -- (Width, 0) node[above] {\(x\)};
+
+    \draw[-] (Ax, {func(Ax)}) -- node[below] {\(\Delta x\)} (Bx, {func(Ax)});
+    \draw[-] (Bx, {func(Ax)}) -- node[right] {\(\Delta y\)} (Bx, {func(Bx)});
+    
+    \filldraw [red, thick] ({Ax - SlopeMargin}, {slopeFunc(Ax - SlopeMargin)}) -- ({Bx + SlopeMargin}, {slopeFunc(Bx + SlopeMargin)});
+    
+    \filldraw (Ax,{func(Ax)}) circle (1pt) node[above left] {\(A\)};
+    \filldraw (Bx,{func(Bx)}) circle (1pt) node[above] {\(B\)};
+\end{tikzpicture}
+
+\subsubsection{Regola della potenza}
+Data una funzione \(f(x)=x^n\) la sua derivata è data da \(f'(x)=n\cdot x^{n-1}\)
+
+\subsubsection{Esempio tangente tra due punti}
+In fisica, la velocità è la derivata della posizione e l'accelerazione è la derivata della
+velocità.
+
+\newpage
+\subsection{Significato geometrico e equazione della tangente}
+\subsubsection{Disegno della secante}
+\begin{tikzpicture}[
+    scale=2,
+    declare function={
+        func(\x) = \x*sin(\x r);
+        Width=3;
+        Height=2;
+        Ax=0.75;
+        Bx=2.25;
+        SlopeMargin=0.25;
+        M=(func(Bx) - func(Ax)) / (Bx - Ax);
+        Q=func(Ax) - M * Ax;
+        slopeFunc(\x)=\x * M + Q;
+    }
+]
+    \draw[domain=-0.5:3, smooth, variable=\x, blue, very thick] plot ({\x}, {func(\x)});
+    
+    \draw[->] (0, -0.25) -- (0, Height) node[right] {\(y\)};
+    \draw[->] (-0.25, 0) -- (Width, 0) node[above] {\(x\)};
+
+    \draw[-] (Ax, {func(Ax)}) -- node[below] {\(\Delta x\)} (Bx, {func(Ax)});
+    \draw[-] (Bx, {func(Ax)}) -- node[right] {\(\Delta y\)} (Bx, {func(Bx)});
+    
+    \filldraw [red, thick] ({Ax - SlopeMargin}, {slopeFunc(Ax - SlopeMargin)}) -- ({Bx + SlopeMargin}, {slopeFunc(Bx + SlopeMargin)});
+    
+    \filldraw (Ax,{func(Ax)}) circle (1pt) node[above left] {\(A\)};
+    \filldraw (Bx,{func(Bx)}) circle (1pt) node[above] {\(B\)};
+\end{tikzpicture}
+
+\subsubsection{Disegno della tangente}
+\begin{tikzpicture}[
+    scale=2,
+    declare function={
+        func(\x) = \x*sin(\x r);
+        Width=3;
+        Height=2;
+        Ax=0.75;
+        Bx=1.8;
+        SlopeMargin=0.25;
+        M=(func(Bx) - func(Ax)) / (Bx - Ax);
+        Q=func(Ax) - M * Ax;
+        slopeFunc(\x)=\x * M + Q;
+    }
+]
+    \draw[domain=-0.5:3, smooth, variable=\x, blue, very thick] plot ({\x}, {func(\x)});
+    
+    \draw[->] (0, -0.25) -- (0, Height) node[right] {\(y\)};
+    \draw[->] (-0.25, 0) -- (Width, 0) node[above] {\(x\)};
+
+    \draw[-] (Ax, {func(Ax)}) -- node[below] {\(\Delta x\)} (Bx, {func(Ax)});
+    \draw[-] (Bx, {func(Ax)}) -- node[right] {\(\Delta y\)} (Bx, {func(Bx)});
+    
+    \filldraw [red, thick] ({Ax - SlopeMargin}, {slopeFunc(Ax - SlopeMargin)}) -- ({Bx + SlopeMargin}, {slopeFunc(Bx + SlopeMargin)});
+
+    \filldraw (Ax,{func(Ax)}) circle (1pt) node[above left] {\(a\)};
+\end{tikzpicture}
+
+\subsubsection{Procedimento per calcolare la tangente}
+Data una funzione \(f(a)\)
+\begin{enumerate}
+    \item Calcolare \(f'(a)\) e trovare la pendenza (m) della tangente in quel punto;
+    \item Usare la pendenza per (m) per scrivere l'equazione della tangente
+        \(y=mx+q\) con la pendenza uguale a quella della tangente;
+    \item Spostare la funzione della tangente in orizzontale verso il punto (a)
+        moltiplicando la pendenza (m) = \(f'(a)\) al punto (a) = \(x-a\): 
+        \begin{equation*}
+            y=f'(a)\cdot (x-a)
+        \end{equation*}
+    \item Spostare la funzione della tangente in verticale verso il punto (a)
+        aggiungendo la funzione originale\\ (q) = \(f(a)\): 
+        \begin{equation*}
+            y=f'(a)(x-a)+f(a)
+        \end{equation*}
+\end{enumerate}
+
+\newpage
+\subsection{Regole di derivazione}
+\subsubsection{Lista delle proprietà delle derivate}
+\begin{enumerate}
+    \item \textbf{Derivata di una costante:}
+    \begin{equation*}
+        \frac{d}{dx} [c] = 0
+    \end{equation*}
+    La derivata di una costante è sempre zero.
+    
+    \item \textbf{Linearità:}
+    \begin{equation*}
+        \frac{d}{dx} [cf(x)] = c \frac{d}{dx} f(x)
+    \end{equation*}
+    La derivata di una funzione moltiplicata per una costante è uguale alla costante moltiplicata per la derivata della funzione.
+    
+    \item \textbf{Somma e sottrazione:}
+    \begin{equation*}
+        \frac{d}{dx} [f(x) \pm g(x)] = \frac{d}{dx} f(x) \pm \frac{d}{dx} g(x)
+    \end{equation*}
+    La derivata di una somma o sottrazione di funzioni è uguale alla somma o sottrazione delle derivate delle singole funzioni.
+    
+    \item \textbf{Moltiplicazione:}
+    \begin{equation*}
+        \frac{d}{dx} [f(x) g(x)] = f(x) \frac{d}{dx} g(x) + g(x) \frac{d}{dx} f(x)
+    \end{equation*}
+    La derivata del prodotto di due funzioni è uguale alla derivata del primo termine per il secondo termine più la derivata del secondo termine per il primo termine.
+    
+    \item \textbf{Divisione:}
+    \begin{equation*}
+        \frac{d}{dx} \left[ \frac{f(x)}{g(x)} \right] = \frac{g(x) \frac{d}{dx} f(x) - f(x) \frac{d}{dx} g(x)}{[g(x)]^2}
+    \end{equation*}
+    La derivata del quoziente di due funzioni è data dalla formula del quoziente, che coinvolge le derivate del numeratore e del denominatore.
+    
+    \item \textbf{Potenza:}
+    \begin{equation*}
+        \frac{d}{dx} [f(x)]^n = n [f(x)]^{n-1} \frac{d}{dx} f(x)
+    \end{equation*}
+    La derivata di una funzione elevata a una potenza è uguale al prodotto della potenza per la funzione elevata alla potenza meno uno, moltiplicato per la derivata della funzione.
+    
+    \item \textbf{Radice:}
+    \begin{equation*}
+        \frac{d}{dx} \left[ \sqrt[n]{f(x)} \right] = \frac{1}{n} \left[ f(x) \right]^{\frac{1}{n} - 1} \frac{d}{dx} f(x)
+    \end{equation*}
+    La derivata di una radice ennesima di una funzione è data dalla formula che coinvolge la derivata della funzione stessa.
+    
+    \item \textbf{Funzione composta (Regola della catena):}
+    \begin{equation*}
+        \frac{d}{dx} f(g(x)) = f'(g(x)) \cdot g'(x)
+    \end{equation*}
+    La derivata di una funzione composta è il prodotto della derivata della funzione esterna valutata nella funzione interna, per la derivata della funzione interna.
+        
+    \item \textbf{Derivata della funzione esponenziale:}
+    \begin{equation*}
+        \frac{d}{dx} [e^{f(x)}] = e^{f(x)} \frac{d}{dx} f(x)
+    \end{equation*}
+    La derivata della funzione esponenziale è la funzione esponenziale stessa moltiplicata per la derivata dell'esponente.
+    
+    \item \textbf{Derivata del logaritmo:}
+    \begin{equation*}
+        \frac{d}{dx} [\ln f(x)] = \frac{f'(x)}{f(x)}
+    \end{equation*}
+    La derivata del logaritmo naturale di una funzione è uguale alla derivata della funzione divisa per la funzione stessa.
+\end{enumerate}
+
+\newpage
+\subsection{Teorema di Bernoulli-de l'Hôpital}
+\subsubsection{Definizione del teorema}
+Quando un limite si trova in una delle 7 forme indeterminate, il limite è equivalente al
+limite della derivata del numeratore e del denominatore:
+\begin{equation*}
+    \lim_{x \to x_0} \frac{f(x)}{g(x)} = \text{indeterminato, allora}
+    \lim_{x \to x_0} \frac{f(x)}{g(x)}=\lim_{x \to x_0} \frac{f'(x)}{g'(x)} 
+\end{equation*}
+
+\subsubsection{Le 7 forme indeterminate}
+\begin{center}
+    \[
+        \frac{0}{0}, \quad
+        \frac{\infty}{\infty}, \quad
+        0 \cdot \infty, \quad
+        \infty - \infty, \quad
+        0^0, \quad
+        \infty^0, \quad
+        1^\infty
+    \]
+\end{center}
+
+\subsubsection{Esempio}
+\begin{equation*}
+    \lim_{x \to +\infty} \frac{4x}{2x} = \frac{\infty}{\infty}
+    \overset{\text{BH}}{\longrightarrow} \lim_{x \to +\infty} \frac{4}{2} = 2
+\end{equation*}
+
+\newpage
+\subsection{Studio della monotonia e ricerca degli estremi di una funzione}
+\subsubsection{Definizione monotonia}
+PAOLO PORCODIO SCRIVI TU PF NN SO COSA sia
+
+\subsubsection{CACCA CULO?? NON SO CHE TITOLO METTERe}
+Poiché la derivata \(f'(x)\) rappresenta il tasso di variazione di \(f(x)\), assumendo che
+\(f(a)\) sia definita.
+
+\begin{itemize}
+    \item Se \(f'(a) >; 0\), allora \(f(x)\) è crescente in \(x = a\)
+    \item Se \(f'(a) <; 0\), allora \(f(x)\) è decrescente in \(x = a\)
+    \item Se \(f'(a) = 0\), allora \(f(x)\) è stazionaria in \(x = a\)
+    \item Se \(f'(a)\) non è definita, allora \(f(x)\) è stazionaria in \(x = a\)
+    (punto angoloso)
+\end{itemize}
+
+Un punto critico è quando la funzione è stazionaria.
+
+
+\newpage
+\subsection{Studio della concavità e ricerca dei punti di flesso}
+\subsubsection{Definizione di concavità}
+La concavità di una funzione \(f(x)\) descrive la direzione della sua curvatura, che può
+essere verso l'alto quando \(f''(x)>0\) o verso il basso quando \(f''(x)<0\).\\
+Inoltre la concavità può essere crescente quando nel pressi della concavità \(f'(x)>0\) e 
+decrescente quando \(f'(x)<0\).
+
+\subsubsection{Definizione di punto di flesso}
+Il punto di flesso è il punto in cui la concavità della funzione cambia, ossia dove la
+funzione passa da concava verso l'alto a concava verso il basso o viceversa:
+\begin{equation*}
+    f''(c) = 0 \text{ e } f''(x) \text{ cambia segno in } x=c
+\end{equation*}
+
+\subsubsection{In più}
+Tutti i punti di flesso di una funzione \(f(x)\) sono determinati dove la seconda derivata
+della funzione si annulla \(f''(x)=0\), ma non tutte le seconde derivate che hanno valore 0
+\(f''(x)=0\) sono dei punti di flesso.
+
+\newpage
+\section{Integrali}
+\subsection{Integrale definito e sue applicazioni}
+\subsubsection{Definizione}
+Con integrale definito si può considerare quello di Riemann, il quale può essere definito
+con la somma infinitesimale di rettangoli con base tendente a 0 e l'altezza pari a un punto
+all'interno della base:
+\begin{wrapfigure}{l}{10cm}
+    \begin{center}
+        \begin{tikzpicture}[
+            scale=1.25,
+            declare function={
+                func(\x) = 0.1 * (\x - 2) * (\x - 2) + 2;
+                Width=7.5;
+                Height=5;
+                A = 1;
+                B = 7;
+                N = 7;
+                Delta = {(B-A) / N};
+            }
+        ]
+            \draw[->] (0, 0) -- (0, Height) node[right] {\(y\)};
+            \draw[->] (0, 0) -- (Width, 0) node[above] {\(x\)};
+    
+            \pgfmathtruncatemacro\END{N-1}
+            \foreach \x in {0,1,...,\END} {
+                % rectangle
+                \fill [green, opacity=0.2]
+                    ({A + Delta * \x}, 0) rectangle ({A + Delta * (\x+1)}, {func(A + Delta * (\x + 0.5))});
+                
+                \draw[-] ({A + Delta * \x}, 0)
+                    -- ({A + Delta * \x}, {func(A + Delta * (\x + 0.5))});
+
+                \draw[-, dashed] ({A + Delta * (\x + 0.5)}, 0)
+                    node[below] {\(x_{\x}^*\)}
+                    -- ({A + Delta * (\x + 0.5)}, {func(A + Delta * (\x + 0.5))});
+
+                % line over rectangle
+                \draw[-] ({A + Delta * \x}, {func(A + Delta * (\x + 0.5))})
+                    -- ({A + Delta * (\x+1)}, {func(A + Delta * (\x + 0.5))});
+            }
+    
+            \draw[-, dashed, red, ultra thick] (A, 0) -- (A, {func(A)}) node[above, black] {\(a\)};
+            \draw[-, dashed, red, ultra thick] (B, 0) -- (B, {func(B)}) node[right, black] {\(b\)};
+    
+            \draw[domain=0:Width, smooth, variable=\x, blue, ultra thick] plot ({\x}, {func(\x)});
+        \end{tikzpicture}
+    \end{center}
+\end{wrapfigure}
+\wrapfill
+
+{\color{red}{\textbf{Importante:}}} esistono funzioni che non sono integrabili nel senso di
+Riemann, ad esempio una funzione:
+\[
+    f(x)=
+    \begin{cases}
+    1 & x \in \mathbb{Q} \\
+    0 & x \notin \mathbb{Q}
+    \end{cases}
+\]
+Questa funzione ha un integrale, ma non si può calcolare con la somma di Riemann.
+
+\subsubsection{Keep yapping}
+L'integrale di una funzione non strettamente positiva può essere negativo, infatti i pezzi
+sotto l'asse delle x rappresentano aree con valori negativi, quindi l'integrale rappresenta
+l'area segnata sotto la curva.
+
+\subsubsection{Le sue applicazioni}
+L'integrale di un intervallo di una funzione probabilistica rappresenta la probabilità di
+ritrovarsi in suddetto intervallo.
+
+\newpage
+\subsection{Calcolo di aree di superfici racchiuse tra i grafici di due funzioni}
+Creare una funzione che rappresenti la distanza tra due funzioni \(f(x) e g(x)\) e integrarla.
+
+\subsubsection{Come calcolare l'area}
+\begin{enumerate}
+    \item Calcolare i limiti di integrazione, come ad esempio i punti di intersezioni tra le
+        due funzioni;
+    \item Integrare la differenza delle due funzioni (la più piccola sottratta alla più grande)
+        per avere una superficie positiva ({\color{red}\underline{Occhio al segno!}})
+\end{enumerate}\phantom{}
+
+\begin{wrapfigure}{l}{7.5cm}
+    \begin{tikzpicture}[x=4cm, y=4cm, >=Stealth, declare function={
+        func1(\x) = sin(3.14*\x/2 r);
+        func2(\x) = \x*\x;
+        a=0.25;
+        b=0.9;
+    }]
+        % area under func1 
+        \fill[cyan!30!white] plot[domain=a:b] (\x,{func1(\x)}) -- plot[domain=b:a] (\x,{0}) -- cycle;
+        
+
+        % area under func2
+        \fill[white] plot[domain=a:b] (\x,{func2(\x)}) -- plot[domain=b:a] (\x,{0}) -- cycle;
+        
+        % func1
+        \draw[blue, -, thick] plot[domain=-0.3:1.25] (\x,{func1(\x)});
+        
+        % func2
+        \draw[red, -, thick]  plot[domain=-0.5:1.2] (\x,{func2(\x)});
+
+        \draw[-, dashed] (a, 0) node[below] {\(a\)} -- (a, {func1(a)});
+        \draw[-, dashed] (b, 0) node[below] {\(b\)} -- (b, {func1(b)});
+
+        \draw[-] (-.5,0) -- (1.25, 0)
+            node[below left=4pt] {\(x\)};
+        \draw[-] (0,-.5) -- (0,1.5)
+            node[below left=4pt] {\(y\)};
+    \end{tikzpicture} 
+\end{wrapfigure}
+
+Data una funzione \(y=f(x)\) e \(y=g(x)\), l'area racchiusa dalle due funzioni
+nell'intervallo \(I=[a;b]\) è data da
+\[
+    A=\integral[a][b][f(x)-g(x)][x]
+\]
+assumendo che \(f(x)\geq g(x)\) quando \(x\in I\). \\
+Nota che \(A\geq 0\). \\
+Se \(f(x)<g(x)\) per qualche \(x\in I\), questa formula non funzionerà. Tuttavia, è comunque possibile dividere l'integrale in più integrali in ogni punto in cui \(f(x) - g(x)\) cambia segno.
+Per rimuovere il vincolo del segno potremmo dire
+\[
+    A = \integral[a][b][|f(x)-g(x)|][x]
+\]
+\wrapfill
+
+\subsubsection{Esempio}
+Calcolo dell'area tra le funzioni \(f(x)=x^2\) e \(g(x)=x\)
+\begin{enumerate}
+    \item Trovare i punti di intersezione:
+        \begin{equation*}
+            x^2=x \Rightarrow x^2-x=0 \Rightarrow x(x-1)=0 \longrightarrow
+            x_1=0, x_{2,3}=1
+        \end{equation*}
+    \item Integrare la differenza delle due funzioni (la più grande -- la più piccola):
+        \begin{align*}
+            &A=\integral[0][1][x-x^2][x]\\
+            &A=\integral[0][1][x][x] - \integral[0][1][x^2][x]\\
+            &A=\left[\frac{x^2}{2} - \frac{x^3}{3}\right]_0^1\\
+            &A=(\frac{1^2}{2}-\frac{0^2}{2})-(\frac{1^3}{3}-\frac{0^3}{3})\\
+            &A=\frac{1}{2}-\frac{1}{3}=\frac{1}{6}
+        \end{align*}
+\end{enumerate}
+
+
+
+\newpage
+\subsection{Integrale indefinito, primitve di una funzione}
+\subsubsection{Definizione di integrale indefinito}
+L'operatore per trovare una funzione primitiva è chiamato \textbf{integrale indefinito}
+    \[
+        \integral[f(x)][x]=F(x)+C,
+        \quad C\in\mathbb{R}
+    \]
+La funzione da integrare (integranda) è delimitata dal simbolo dell'integrale \(\int\)
+e un differenziale della variabile di integrazione \(dx\).
+
+Una funzione ha infiniti primitivi, quindi il termine \(+ C\). Questo significa essenzialmente
+che la derivata di una funzione è la stessa quando la funzione è traslata verso l'alto o verso
+il basso, il tasso di cambiamento è lo stesso. Invertendo il processo non conosciamo la
+traslazione verso l'alto o verso il basso della funzione originale.
+\[
+    f(x)=\integral[\frac{df}{dx}][x] + C
+\]
+per qualche specifico \(C\).
+
+\subsubsection{Definizione di primitiva (o antiderivata)}
+La primitiva di una funzione è una funzione tale che la sua derivata è uguale alla funzione
+originale, ossia:
+\[
+    F'(x)=f(x)    
+\]
+
+Trovando una qualsiasi primitiva \(F(x)\), si può trovare una classe di infinite primitive
+aggiungendo una qualsiasi costante:
+\[
+    F(x)+C,
+    \quad C\in\mathbb{R}  
+\]
+
+\subsubsection{Esempio concreto}
+La derivata della posizione è la velocità, ma l'informazione della posizione iniziale \(x_0\)
+viene persa. Facendo l'integrale della velocità per ritrovare \(x(t)\), la costante \(C\)
+rappresenta la posizione iniziale \(x_0\)
+
+
+
+
+\end{document}
