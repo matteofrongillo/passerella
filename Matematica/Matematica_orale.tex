@@ -302,25 +302,26 @@ Una funzione è continua in un intervallo se è continua in tutti i punti dell'i
         asintoto verticale, come ad esempio l'intervallo \(x \in [1, +\infty[\).
     \item Generalmente, se si moltiplica una funzione \(f(x) \cdot \frac{x}{x}\), la funzione
         rimane la stessa ma si introduce un punto di discontinuità in 0, poiché il limite
-        a 0 esiste ma \(f(0)=\) indeterminato.
+        a 0 potrebbe esistere ma la funzione è indeterminata in quel punto indeterminato.
 \end{enumerate}
 
 \newpage
 \subsection{Calcolo di limiti (somma, prodotto, ...)}
 
 \subsubsection{Lista delle proprietà dei limiti}
-Assumendo che \(\lim_{x \to a} f(x)\) e \(\lim_{x \to a} g(x)\) esistano e che \(c\) sia
-qualsiasi costante:
+Assumiamo che \(f(x)\) e \(g(x)\) siano due funzioni reali,
+che \(\lim_{x \to a} f(x)\) e \(\lim_{x \to a} g(x)\) esistano dove \(c \in \mathbb{R}\) e
+\(a \in \text{Dom}_f, a \in \text{Dom}_g\):
 \begin{enumerate}
     \item \textbf{Linearità:}
     \begin{equation*}
-        \lim_{x \to a} [c f(x)] = c \lim_{x \to a} f(x)
+        \lim_{x \to a} c f(x) = c \lim_{x \to a} f(x)
     \end{equation*}
     In altre parole, possiamo ``estrarre'' una costante moltiplicativa da un limite.
     
     \item \textbf{Somma e sottrazione:}
     \begin{equation*}
-        \lim_{x \to a} [f(x) \pm g(x)] = \lim_{x \to a} f(x) \pm \lim_{x \to a} g(x)
+        \lim_{x \to a} \left(f(x) \pm g(x)\right) = \lim_{x \to a} f(x) \pm \lim_{x \to a} g(x)
     \end{equation*}
     Quindi, per calcolare il limite di una somma o differenza, basta prendere il limite delle
     singole parti e poi sommarle o sottrarle con il segno appropriato. Questo fatto vale per
@@ -328,7 +329,7 @@ qualsiasi costante:
     
     \item \textbf{Moltiplicazione:}
     \begin{equation*}
-        \lim_{x \to a} [f(x) g(x)] = \lim_{x \to a} f(x) \cdot \lim_{x \to a} g(x)
+        \lim_{x \to a} \left(f(x) g(x)\right) = \lim_{x \to a} f(x) \cdot \lim_{x \to a} g(x)
     \end{equation*}
     Calcoliamo i limiti dei prodotti allo stesso modo in cui calcoliamo i limiti delle somme
     o differenze. Prendiamo semplicemente il limite delle singole parti e poi le
@@ -336,7 +337,7 @@ qualsiasi costante:
     
     \item \textbf{Divisione:}
     \begin{equation*}
-        \lim_{x \to a} \left[ \frac{f(x)}{g(x)} \right] = \frac{\lim_{x \to a} f(x)}{\lim_{x \to a} g(x)}, \quad \text{purché } \lim_{x \to a} g(x) \ne 0
+        \lim_{x \to a} \left( \frac{f(x)}{g(x)} \right) = \frac{\lim_{x \to a} f(x)}{\lim_{x \to a} g(x)}, \quad \text{purché } \lim_{x \to a} g(x) \ne 0
     \end{equation*}
     Come indicato nella frase, dobbiamo preoccuparci solo del limite nel denominatore che
     tende a zero quando calcoliamo il limite di un quoziente. Se fosse zero, avremmo un errore
@@ -382,106 +383,174 @@ qualsiasi costante:
 \subsection{Definizione di derivata e applicazione in casi concreti}
 
 \subsubsection{Definzione}
-La derivata è il limite del rapporto incrementale fra due punti la cui distanza orizzontale
-tende a 0, ed equivale alla pendenza della tangente in quel punto.
 
-\subsubsection{Disegno delle secante tra due punti}
-\begin{tikzpicture}[
-    scale=2,
-    declare function={
-        func(\x) = \x*sin(\x r);
-        Width=3;
-        Height=2;
-        Ax=0.75;
-        Bx=2.25;
-        SlopeMargin=0.25;
-        M=(func(Bx) - func(Ax)) / (Bx - Ax);
-        Q=func(Ax) - M * Ax;
-        slopeFunc(\x)=\x * M + Q;
-    }
-]
-    \draw[domain=-0.5:3, smooth, variable=\x, blue, very thick] plot ({\x}, {func(\x)});
-    
-    \draw[->] (0, -0.25) -- (0, Height) node[right] {\(y\)};
-    \draw[->] (-0.25, 0) -- (Width, 0) node[above] {\(x\)};
+\sdefinition{Derivata}{
+    La \textit{derivata} di una funzione reale \(f(x)\) è definita come
+    \[
+        f'(x) = \lim_{\Delta x \to 0} \frac{f(x + \Delta x) - f(x)}{\Delta x}
+    \]
+}
 
-    \draw[-] (Ax, {func(Ax)}) -- node[below] {\(\Delta x\)} (Bx, {func(Ax)});
-    \draw[-] (Bx, {func(Ax)}) -- node[right] {\(\Delta y\)} (Bx, {func(Bx)});
+La derivata può essere scritta in diversi modi.
+
+\begin{table}[h]
+    \centering
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabular}{|c|c|c|c|}
+    \hline
+    \textbf{Descrizione} & \textbf{Prima derivata} & \textbf{Seconda derivata} & \textbf{n-esima derivata} \\
+    \hline
+    Notazione di Lagrange & $f'(x)$ & $f''(x)$ & $f^{(n)}(x)$ \\
+    \hline
+    Notazione di Leibniz & $\frac{d}{dx} f(x)$ & $\frac{d^2}{dx^2} f(x)$ & $\frac{d^n}{dx^n} f(x)$ \\
+    \hline
+    Notazione di Newton & $\dot{f}$ & $\ddot{f}$ & $f^{(n)}$ \\
+    \hline
+    \end{tabular}
+    \caption{Notazioni comuni per le derivate}
+    \label{tab:derivate}
+\end{table}
+
+Nota che la notazione di Newton non specifica quale variabile stiamo derivando. Solitamente
+viene utilizzata in fisica per derivare rispettivamente alla variabile temporale \(t\).
+Se abbiamo una funzione \(x^3+a\), potremmo direttamente scrivere \((x^3+a)^{'}\)
+per rappresentarne la prima derivata.
+
+\subsection{Significato geometrico della derivata}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    \begin{minipage}{0.5\textwidth}
+        \begin{tikzpicture}[
+            scale=2,
+            declare function={
+                func(\x) = \x*sin(\x r);
+                Width=3;
+                Height=2;
+                Ax=0.75;
+                Bx=2.25;
+                SlopeMargin=0.25;
+                M=(func(Bx) - func(Ax)) / (Bx - Ax);
+                Q=func(Ax) - M * Ax;
+                slopeFunc(\x)=\x * M + Q;
+            }
+        ]
+            \draw[domain=-0.5:3, smooth, variable=\x, blue, very thick] plot ({\x}, {func(\x)});
+            
+            \draw[->] (0, -0.25) -- (0, Height) node[right] {\(y\)};
+            \draw[->] (-0.25, 0) -- (Width, 0) node[above] {\(x\)};
     
-    \filldraw [red, thick] ({Ax - SlopeMargin}, {slopeFunc(Ax - SlopeMargin)}) -- ({Bx + SlopeMargin}, {slopeFunc(Bx + SlopeMargin)});
+            \draw[-] (Ax, {func(Ax)}) -- node[below] {\(\Delta x\)} (Bx, {func(Ax)});
+            \draw[-] (Bx, {func(Ax)}) -- node[right] {\(\Delta y\)} (Bx, {func(Bx)});
+            
+            \filldraw [red, thick] ({Ax - SlopeMargin}, {slopeFunc(Ax - SlopeMargin)}) -- ({Bx + SlopeMargin}, {slopeFunc(Bx + SlopeMargin)});
+            
+            \filldraw (Ax,{func(Ax)}) circle (1pt) node[above left] {\(A\)};
+            \filldraw (Bx,{func(Bx)}) circle (1pt) node[above] {\(B\)};
+        \end{tikzpicture}
+    \end{minipage}
+    \begin{minipage}{0.5\textwidth}
+        La secante di una funzione \(f(x)\) fra un punto \(A\) e \(B\) è data da
+        \[
+            \frac{\Delta y}{\Delta x} = \frac{f(B)-f(A)}{B-A}
+        \]
+        Più rendiamo \(A\) e \(B\) vicini fra loro, più \(\Delta x\) diminuisce.
+        più il \(\Delta x\)diminuisce, la pendenza della secante è sempre più rappresentativa
+        del tasso di cambiamento di \(f\) nell'intervallo \([A;B]\). \\
+    \end{minipage}
     
-    \filldraw (Ax,{func(Ax)}) circle (1pt) node[above left] {\(A\)};
-    \filldraw (Bx,{func(Bx)}) circle (1pt) node[above] {\(B\)};
+    \begin{minipage}{0.5\textwidth}
+        Quando il \(\Delta x\) della pendenza è infinitesimamente piccolo, abbiamo la pendenza precisa in un punto (istantanea).
+        Questa pendenza è rappresentata dalla retta tangente, che è parallela al punto sulla funzione.
+        \[
+            \lim_{\Delta x \to 0} \frac{\Delta y}{\Delta x}
+        \]
+    \end{minipage}
+    \begin{minipage}{0.5\textwidth}
+        \begin{tikzpicture}[
+            scale=2,
+            declare function={
+                func(\x) = (\x+0.6)*sin((\x+0.6) r)-0.5;
+                Width=3;
+                Height=2;
+                Ax=1.5;
+                slope = -0.19697;
+            }
+        ]
+            \draw[domain=-0.5:2.5, smooth, variable=\x, blue, very thick] plot ({\x}, {func(\x)});
+            
+            \draw[->] (0, -0.25) -- (0, Height) node[right] {\(y\)};
+            \draw[->] (-0.25, 0) -- (Width, 0) node[above] {\(x\)};
+    
+            \draw[domain=0.5:2.5, smooth, variable=\x, red, very thick] plot ({\x}, {slope * \x + func(Ax) - slope * Ax});
+            
+            \filldraw (Ax,{func(Ax)}) circle (1pt) node[above] {\(A\)};
+        \end{tikzpicture}
+    \end{minipage}
+    
+    \begin{minipage}{0.5\textwidth}
+    \begin{tikzpicture}[
+        scale=2,
+        declare function={
+            func(\x) = \x*sin(\x r);
+            Width=3;
+            Height=2;
+            Ax=0.75;
+            Bx=1.8;
+            SlopeMargin=0.25;
+            M=(func(Bx) - func(Ax)) / (Bx - Ax);
+            Q=func(Ax) - M * Ax;
+            slopeFunc(\x)=\x * M + Q;
+        }
+    ]
+        \draw[domain=-0.5:3, smooth, variable=\x, blue, very thick] plot ({\x}, {func(\x)});
+        
+        \draw[->] (0, -0.25) -- (0, Height) node[right] {\(y\)};
+        \draw[->] (-0.25, 0) -- (Width, 0) node[above] {\(x\)};
+    
+        \draw[-] (Ax, {func(Ax)}) -- node[below] {\(\Delta x\)} (Bx, {func(Ax)});
+        \draw[-] (Bx, {func(Ax)}) -- node[right] {\(\Delta y\)} (Bx, {func(Bx)});
+        
+        \filldraw [red, thick] ({Ax - SlopeMargin}, {slopeFunc(Ax - SlopeMargin)}) -- ({Bx + SlopeMargin}, {slopeFunc(Bx + SlopeMargin)});
+    
+        \filldraw (Ax,{func(Ax)}) circle (1pt) node[above left] {\(a\)};
 \end{tikzpicture}
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+    La derivata di una funzione \(f(x)\) è quindi un'altra funzione, \(f'(x)\), che
+    rappresenta il cambiamento di \(f(x)\) in ogni punto. In altre parole, \(f'(x)\)
+    rappresenta la pendenza della tangente in ogni \(x\) di \(f(x)\).
+    Questo è precisamente rappresentato dalla definizione di derivata, ossia la pendenza
+    \(\frac{\Delta y}{\Delta x}\) calcolata con il limite di \(\Delta x \to 0\).
+\end{minipage}
 
-\subsubsection{Regola della potenza}
-Data una funzione \(f(x)=x^n\) la sua derivata è data da \(f'(x)=n\cdot x^{n-1}\)
+\subsubsection{Esempio applicazione}
 
-\subsubsection{Esempio tangente tra due punti}
-In fisica, la velocità è la derivata della posizione e l'accelerazione è la derivata della
-velocità.
-
-\newpage
-\subsection{Significato geometrico e equazione della tangente}
-\subsubsection{Disegno della secante}
-\begin{tikzpicture}[
-    scale=2,
-    declare function={
-        func(\x) = \x*sin(\x r);
-        Width=3;
-        Height=2;
-        Ax=0.75;
-        Bx=2.25;
-        SlopeMargin=0.25;
-        M=(func(Bx) - func(Ax)) / (Bx - Ax);
-        Q=func(Ax) - M * Ax;
-        slopeFunc(\x)=\x * M + Q;
-    }
-]
-    \draw[domain=-0.5:3, smooth, variable=\x, blue, very thick] plot ({\x}, {func(\x)});
-    
-    \draw[->] (0, -0.25) -- (0, Height) node[right] {\(y\)};
-    \draw[->] (-0.25, 0) -- (Width, 0) node[above] {\(x\)};
-
-    \draw[-] (Ax, {func(Ax)}) -- node[below] {\(\Delta x\)} (Bx, {func(Ax)});
-    \draw[-] (Bx, {func(Ax)}) -- node[right] {\(\Delta y\)} (Bx, {func(Bx)});
-    
-    \filldraw [red, thick] ({Ax - SlopeMargin}, {slopeFunc(Ax - SlopeMargin)}) -- ({Bx + SlopeMargin}, {slopeFunc(Bx + SlopeMargin)});
-    
-    \filldraw (Ax,{func(Ax)}) circle (1pt) node[above left] {\(A\)};
-    \filldraw (Bx,{func(Bx)}) circle (1pt) node[above] {\(B\)};
-\end{tikzpicture}
-
-\subsubsection{Disegno della tangente}
-\begin{tikzpicture}[
-    scale=2,
-    declare function={
-        func(\x) = \x*sin(\x r);
-        Width=3;
-        Height=2;
-        Ax=0.75;
-        Bx=1.8;
-        SlopeMargin=0.25;
-        M=(func(Bx) - func(Ax)) / (Bx - Ax);
-        Q=func(Ax) - M * Ax;
-        slopeFunc(\x)=\x * M + Q;
-    }
-]
-    \draw[domain=-0.5:3, smooth, variable=\x, blue, very thick] plot ({\x}, {func(\x)});
-    
-    \draw[->] (0, -0.25) -- (0, Height) node[right] {\(y\)};
-    \draw[->] (-0.25, 0) -- (Width, 0) node[above] {\(x\)};
-
-    \draw[-] (Ax, {func(Ax)}) -- node[below] {\(\Delta x\)} (Bx, {func(Ax)});
-    \draw[-] (Bx, {func(Ax)}) -- node[right] {\(\Delta y\)} (Bx, {func(Bx)});
-    
-    \filldraw [red, thick] ({Ax - SlopeMargin}, {slopeFunc(Ax - SlopeMargin)}) -- ({Bx + SlopeMargin}, {slopeFunc(Bx + SlopeMargin)});
-
-    \filldraw (Ax,{func(Ax)}) circle (1pt) node[above left] {\(a\)};
-\end{tikzpicture}
+In fisica, la funzione della velocità \(v(t)\) rappresenta in ogni punto il cambiamento istantaneo
+della posizione \(x(t)\), e l'accellerazione \(a(t)\) rappresenta in ogni punto il cambiamento
+istantanea della velocità \(v(t)\).
+Di conseguenza abbiamo quindi che \(x'(t)=v(t)\) e \(v'(t)=a(t)\).
+Nota che quando facciamo la derivata della posizione o della velocità, l'informazione
+della posizione iniziale e velocità iniziale vengono persi, in quanto le pendenze
+sono indipendenti da quanto la funzione è spostata in alto o in basso.
 
 \subsubsection{Procedimento per calcolare la tangente}
-Data una funzione \(f(a)\)
+
+Data una funzione \(f(x)\), vogliamo trovare l'equazione della retta tangente al punto \(a\).
+Assumiamo quindi che \(f'(a)\) non sia indeterminato:
 \begin{enumerate}
     \item Calcolare \(f'(a)\) e trovare la pendenza (m) della tangente in quel punto;
     \item Usare la pendenza per (m) per scrivere l'equazione della tangente
@@ -499,44 +568,49 @@ Data una funzione \(f(a)\)
 \end{enumerate}
 
 \newpage
+
 \subsection{Regole di derivazione}
+
 \subsubsection{Lista delle proprietà delle derivate}
+
+Assumiamo che \(f(x)\) e \(g(x)\) siano due funzioni derivabili e \(c\in\mathbb{R}\)
 \begin{enumerate}
     \item \textbf{Derivata di una costante:}
     \begin{equation*}
-        \frac{d}{dx} [c] = 0
+        \frac{d}{dx} c = 0
     \end{equation*}
-    La derivata di una costante è sempre zero.
+    La derivata di una costante è sempre zero, in quanto la pendenza di \(y=c\) è sempre zero.
     
     \item \textbf{Linearità:}
     \begin{equation*}
-        \frac{d}{dx} [cf(x)] = c \frac{d}{dx} f(x)
+        \frac{d}{dx} cf(x) = c \frac{d}{dx} f(x)
     \end{equation*}
     La derivata di una funzione moltiplicata per una costante è uguale alla costante moltiplicata per la derivata della funzione.
     
     \item \textbf{Somma e sottrazione:}
     \begin{equation*}
-        \frac{d}{dx} [f(x) \pm g(x)] = \frac{d}{dx} f(x) \pm \frac{d}{dx} g(x)
+        \frac{d}{dx} \left(f(x) \pm g(x)\right) = \frac{d}{dx} f(x) \pm \frac{d}{dx} g(x)
     \end{equation*}
     La derivata di una somma o sottrazione di funzioni è uguale alla somma o sottrazione delle derivate delle singole funzioni.
     
     \item \textbf{Moltiplicazione:}
     \begin{equation*}
-        \frac{d}{dx} [f(x) g(x)] = f(x) \frac{d}{dx} g(x) + g(x) \frac{d}{dx} f(x)
+        \frac{d}{dx} \left(f(x) g(x)\right) = f(x) \frac{d}{dx} g(x) + g(x) \frac{d}{dx} f(x)
     \end{equation*}
     La derivata del prodotto di due funzioni è uguale alla derivata del primo termine per il secondo termine più la derivata del secondo termine per il primo termine.
     
     \item \textbf{Divisione:}
     \begin{equation*}
-        \frac{d}{dx} \left[ \frac{f(x)}{g(x)} \right] = \frac{g(x) \frac{d}{dx} f(x) - f(x) \frac{d}{dx} g(x)}{[g(x)]^2}
+        \frac{d}{dx} \left( \frac{f(x)}{g(x)} \right) = \frac{g(x) \frac{d}{dx} f(x) - f(x) \frac{d}{dx} g(x)}{[g(x)]^2}
     \end{equation*}
     La derivata del quoziente di due funzioni è data dalla formula del quoziente, che coinvolge le derivate del numeratore e del denominatore.
     
     \item \textbf{Potenza:}
     \begin{equation*}
-        \frac{d}{dx} [f(x)]^n = n [f(x)]^{n-1} \frac{d}{dx} f(x)
+        \frac{d}{dx} x^n = n x^{n-1}
     \end{equation*}
-    La derivata di una funzione elevata a una potenza è uguale al prodotto della potenza per la funzione elevata alla potenza meno uno, moltiplicato per la derivata della funzione.
+    La derivata di una funzione nella forma data ha l'esponente ridotto di un fattore \(1\), e guadagna
+    un coefficiente pari all'esponente iniziale.
     
     \item \textbf{Radice:}
     \begin{equation*}
@@ -564,16 +638,12 @@ Data una funzione \(f(a)\)
 \end{enumerate}
 
 \newpage
+
 \subsection{Teorema di Bernoulli-de l'Hôpital}
-\subsubsection{Definizione del teorema}
-Quando un limite si trova in una delle 7 forme indeterminate, il limite è equivalente al
-limite della derivata del numeratore e del denominatore:
-\begin{equation*}
-    \lim_{x \to x_0} \frac{f(x)}{g(x)} = \text{indeterminato, allora}
-    \lim_{x \to x_0} \frac{f(x)}{g(x)}=\lim_{x \to x_0} \frac{f'(x)}{g'(x)} 
-\end{equation*}
 
 \subsubsection{Le 7 forme indeterminate}
+
+Le sette forme indeterminate sono
 \begin{center}
     \[
         \frac{0}{0}, \quad
@@ -585,6 +655,17 @@ limite della derivata del numeratore e del denominatore:
         1^\infty
     \]
 \end{center}
+
+\subsubsection{Definizione del teorema}
+
+\stheorem{Teorema di Bernoulli-de l'Hôpital}{
+    Consideriamo due funzioni reali \(f(x)\) e \(g(x)\) che sono differenziabili
+    in un intorno di \(x_0\in\mathbb{R}\) (non necessariamente in \(c\)).
+    Senza perdita di generalità, se abbiamo un limite
+    \[ \lim_{x \to x_0} \frac{f(x)}{g(x)} \]
+    dove \(\frac{f(x_0)}{g(x_0)}\) risulta in una forma indeterminata, allora
+    \[ \lim_{x \to x_0} \frac{f(x)}{g(x)} = \lim_{x \to x_0} \frac{f'(x)}{g'(x)} \]
+}
 
 \subsubsection{Esempio}
 \begin{equation*}
