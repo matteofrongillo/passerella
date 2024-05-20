@@ -952,7 +952,7 @@ Due rette sono perpendicolari se e solo se il prodotto dei loro coefficienti ang
     m_1 \cdot m_2 = -1
 \]
 Questo significa che le rette formano un angolo retto (90 gradi) l'una con l'altra. Ad esempio,
-le rette di equazioni \(y = -\frac{1}{2}x + 1\) e \(y = 2x + 3\) sono perpendicolari perché il
+le rette di equazioni \(y = -\frac{1}{2}x + 1\) e \(y = 2x + 1\) sono perpendicolari perché il
 prodotto dei loro coefficienti angolari \(-\frac{1}{2}\) e \(2\) è \(-1\).
 
 \begin{tikzpicture}
@@ -1114,9 +1114,720 @@ e utilizzando le proprietà geometriche dei triangoli.
     \draw[thick, ->] (-3,0) -- (3,0) node[right] {\(x\)};
     \draw[thick, ->] (0,-3) -- (0,3) node[above] {\(y\)};
     \draw[domain=-2.5:2.5, smooth, variable=\x, red] plot ({\x}, {0.5*\x + 1});
-    \filldraw[blue] (1,2) circle (2pt) node[anchor=south] {\(P(x_0, y_0)\)};
-    \draw[dashed] (1,2) -- (1.5,1); %METTERE APPOSTO QUESTO!!!!!
+    \filldraw[blue] (0.8,2.4) circle (1.5pt) node[anchor=south] {\(P(x_0, y_0)\)};
+    \draw[dashed] (0.8,2.4) -- node[anchor=east] {d} (1.2,1.6);
+    \filldraw (1.2,1.6) circle (1.5pt);
 \end{tikzpicture}
+
+\newpage
+\section{Geometria vettoriale}
+\subsection{Vettori linearmente indipendenti (collinearità e complanarità)}
+
+\subsubsection{Vettori linearmente indipendenti}
+Due o più vettori sono linearmente indipendenti se nessuno di essi può essere scritto come
+combinazione lineare degli altri. In termini matematici, i vettori
+\(\vec{v}_1, \vec{v}_2, \ldots, \vec{v}_n\) sono linearmente indipendenti se l'equazione:
+\[
+    c_1 \vec{v}_1 + c_2 \vec{v}_2 + \cdots + c_n \vec{v}_n = \vec{0}
+\]
+implica che \(c_1 = c_2 = \cdots = c_n = 0\).
+
+\subsubsection{Collinearità}
+Due vettori \(\vec{a}\) e \(\vec{b}\) sono collineari se esiste un numero reale \(\lambda\)
+tale che:
+\[
+    \vec{a} = \lambda \vec{b}
+\]
+
+\subsubsection{Complanarità}
+Tre vettori \(\vec{a}, \vec{b}, \vec{c}\) sono complanari se esistono due numeri reali
+\(\lambda\) e \(\mu\) tali che:
+\[
+    \vec{c} = \lambda \vec{a} + \mu \vec{b}
+\]
+
+\begin{tikzpicture}
+    \draw[thick, ->] (0,0) -- (2,1) node[above] {$\vec{a}$};
+    \draw[thick, ->] (0,0) -- (4,2) node[right] {$\vec{b} = 2\vec{a}$};
+    \draw[thick, ->] (0,0) -- (1,2) node[right] {$\vec{c}$};
+    \draw[thick, ->] (0,0) -- (3,6) node[above] {$\vec{d} = 3\vec{c}$};
+\end{tikzpicture}
+
+\newpage
+\subsection{Il prodotto scalare, definizione, calcolo e applicazioni}
+
+\subsubsection{Definizione di prodotto scalare}
+Il prodotto scalare di due vettori \(\vec{a} = (a_1, a_2, a_3)\) e
+\(\vec{b} = (b_1, b_2, b_3)\) è definito come:
+\[
+    \vec{a} \cdot \vec{b} = a_1 b_1 + a_2 b_2 + a_3 b_3
+\]
+A parole, il prodotto scalare è una misura di quanto due vettori puntano nella stessa
+direzione.\\
+È calcolato moltiplicando le componenti corrispondenti dei vettori e sommando i risultati.
+
+
+\subsubsection{Calcolo del prodotto scalare}
+Per i vettori \(\vec{a} = (1, 2, 3)\) e \(\vec{b} = (4, -5, 6)\), il prodotto scalare è:
+\[
+    \vec{a} \cdot \vec{b} = 1 \cdot 4 + 2 \cdot (-5) + 3 \cdot 6 = 4 - 10 + 18 = 12
+\]
+
+\subsubsection{Applicazioni del prodotto scalare}
+Il prodotto scalare è utile per determinare l'angolo \(\theta\) tra due vettori:
+\[
+    \vec{a} \cdot \vec{b} = \lvert\vec{a}\rvert \cdot \lvert\vec{b}\rvert \cos \theta
+\]
+Se \(\vec{a} \cdot \vec{b} = 0\), i vettori sono ortogonali.
+
+\begin{tikzpicture}
+    \draw[thick, ->] (0,0) -- (3,0) node[right] {$\vec{a}$};
+    \draw[thick, ->] (0,0) -- (1,2) node[above] {$\vec{b}$};
+    \draw (1,0) arc (0:63:1) node[midway, right] {$\theta$};
+\end{tikzpicture}
+
+\newpage
+\subsection{Il prodotto vettoriale, definizione, calcolo e applicazioni}
+
+\subsubsection{Definizione di prodotto vettoriale}
+Il prodotto vettoriale di due vettori \(\vec{a}\) e \(\vec{b}\) è un vettore \(\vec{c}\)
+tale che:
+\[
+    \vec{c} = \vec{a} \times \vec{b}
+\]
+e ha una direzione perpendicolare sia a \(\vec{a}\) che a \(\vec{b}\) secondo la regola
+della mano destra.
+
+A parole, il prodotto vettoriale è un vettore che è perpendicolare a entrambi i vettori
+originali e il cui modulo rappresenta l'area del parallelogramma formato dai due vettori.
+
+\subsubsection{Calcolo del prodotto vettoriale}
+Per i vettori \(\vec{a} = (a_1, a_2, a_3)\) e \(\vec{b} = (b_1, b_2, b_3)\),
+il prodotto vettoriale è dato da:
+\[
+    \vec{a} \times \vec{b} = (a_2 b_3 - a_3 b_2, a_3 b_1 - a_1 b_3, a_1 b_2 - a_2 b_1)
+\]
+Ad esempio, per \(\vec{a} = (1, 2, 3)\) e \(\vec{b} = (4, 5, 6)\):
+\[
+    \vec{a} \times \vec{b} = (2 \cdot 6 - 3 \cdot 5, 3 \cdot 4 - 1 \cdot 6, 1 \cdot 5 - 2 \cdot 4) = (12 - 15, 12 - 6, 5 - 8) = (-3, 6, -3)
+\]
+
+\subsubsection{Applicazioni del prodotto vettoriale}
+Il prodotto vettoriale è utile per determinare il vettore normale a un piano definito da due
+vettori.
+
+\begin{tikzpicture}
+    \draw[thick, ->] (0,0,0) -- (2,0,0) node[right] {$\vec{a}$};
+    \draw[thick, ->] (0,0,0) -- (0,2,0) node[above] {$\vec{b}$};
+    \draw[thick, ->] (0,0,0) -- (0,0,2) node[below] {$\vec{a} \times \vec{b}$};
+\end{tikzpicture}
+
+\newpage
+\subsection{Equazione parametrica della retta nello spazio, posizione reciproca tra rette}
+
+\subsubsection{Equazione parametrica della retta}
+L'equazione parametrica di una retta nello spazio è espressa in funzione di un parametro
+\( t \). Se un punto \( \vec{r}_0 = (x_0, y_0, z_0) \) appartiene alla retta e
+\( \vec{d} = (d_x, d_y, d_z) \) è il vettore direzionale della retta,
+l'equazione parametrica è data da:
+\[
+    \vec{r}(t) = \vec{r}_0 + t \vec{d}
+\]
+In forma coordinata, le equazioni parametriche si scrivono come:
+\[
+    \begin{cases}
+        x = x_0 + t d_x \\
+        y = y_0 + t d_y \\
+        z = z_0 + t d_z
+    \end{cases}
+\]
+dove \( t \) è un parametro reale.
+
+\subsubsection{Esempio di equazione parametrica}
+Supponiamo che la retta passi per il punto \( (1, 2, 3) \) e abbia un vettore direzionale \( (4, -2, 1) \). L'equazione parametrica della retta è:
+\[
+    \begin{cases}
+        x = 1 + 4t \\
+        y = 2 - 2t \\
+        z = 3 + t
+    \end{cases}
+\]
+
+\subsubsection{Posizione reciproca tra rette}
+La posizione reciproca tra due rette nello spazio può essere classificata come segue:
+\vspace*{0.2cm}
+\begin{center}
+    \begin{tikzpicture}[
+        level 1/.style = {sibling distance = 4cm},
+        level 2/.style = {sibling distance = 3cm},
+        level 3/.style = {sibling distance = 3cm},
+        level 4/.style = {sibling distance = 3cm}
+    ]
+    \node {\Ovalbox{Rette nello spazio}}
+        child {
+            node {\ovalbox{
+                    \begin{minipage}{.08\textwidth}
+                        \centering Sghembe
+                    \end{minipage}
+                }
+            }
+        }
+        child {
+            node {\ovalbox{
+            \begin{minipage}{.11\textwidth}
+                \centering Complanari
+            \end{minipage}
+                }
+            }
+            child {
+                node {\ovalbox{
+                        \begin{minipage}{.078\textwidth}
+                            \centering Incidenti
+                        \end{minipage}
+                    }
+                }
+            }
+            child {
+                node {\ovalbox{
+                        \begin{minipage}{.078\textwidth}
+                            \centering Parallele
+                        \end{minipage}
+                    }
+                }
+                child {
+                    node {\ovalbox{
+                        \begin{minipage}{.07\textwidth}
+                            \centering Distinte
+                        \end{minipage}
+                        }
+                    }
+                }
+                child {
+                    node {\ovalbox{
+                        \begin{minipage}{.105\textwidth}
+                            \centering Coincidenti
+                        \end{minipage}
+                        }
+                    }
+                }
+            }
+        };
+    \end{tikzpicture}
+\end{center}
+
+\paragraph{Rette incidenti} \phantom{}\\
+Due rette sono incidenti se hanno un punto in comune. Per verificare se due rette sono
+incidenti, si risolvono i loro sistemi di equazioni parametriche per trovare un punto di
+intersezione comune.
+
+\paragraph{Rette parallele} \phantom{}\\
+Due rette sono parallele se i loro vettori direzionali sono proporzionali.
+Se \( \vec{d}_1 \) e \( \vec{d}_2 \) sono i vettori direzionali delle due rette,
+allora le rette sono parallele se esiste un numero reale \(\lambda\) tale che:
+\[
+    \vec{d}_1 = \lambda \vec{d}_2
+\]
+
+\paragraph{Rette sghembe} \phantom{}\\
+Due rette sono sghembe se non sono né incidenti né parallele. Questo significa che non hanno
+punti in comune e non giacciono sullo stesso piano.
+
+\newpage
+\subsubsection{Esempi di posizione reciproca tra rette}
+Consideriamo le seguenti rette:
+\[
+    r \begin{cases}
+        x = t \\
+        y = 1 - t \\
+        z = t
+    \end{cases}
+\quad
+    s \begin{cases}
+        x = 4 + 2s \\
+        y = -1 - s \\
+        z = 2 + s
+    \end{cases}
+\]
+
+\paragraph{Verifica di parallelismo} \phantom{}\\
+I vettori direzionali sono \( \vec{d}_1 = (1, -1, 1) \) e \( \vec{d}_2 = (2, -1, 1) \).
+Poiché \( \vec{d}_1 \neq \lambda \vec{d}_2 \), le rette non sono parallele.
+
+\paragraph{Verifica di intersezione} \phantom{}\\
+Per verificare se le rette sono incidenti, eguagliamo le equazioni parametriche:
+\[
+    \begin{cases}
+        t = 4 + 2s \\
+        1 - t = -1 - s \\
+        t = 2 + s
+    \end{cases}
+\]
+Risolvendo il sistema si trova \(t = 0\) e \(s=1\).
+Usando la seconda equazione per verificare che le due rette siano incidenti, risulta che
+\(1=1\), dunque le due rette \underline{sono incidenti}.
+\vspace*{1cm}
+\begin{center}
+    \begin{tikzpicture}
+        \begin{axis}[
+            view={50}{40},
+            axis lines=center,
+            xlabel={$x$},
+            ylabel={$y$},
+            zlabel={$z$},
+            grid=major,
+            xmin=-2, xmax=6,
+            ymin=-3, ymax=2,
+            zmin=-1, zmax=3,
+            width=12cm,
+            height=12cm,
+            ticklabel style={font=\small},
+            label style={font=\small},
+            xtick=\empty,
+            ytick=\empty,
+            ztick=\empty,
+        ]
+        % Retta r
+        \addplot3[domain=-5:5, samples=50, thick, blue] ({x}, {1-x}, {x});
+        \node[above right, blue] at (axis cs: 2,-1,2) {$r$};
+        
+        % Retta s
+        \addplot3[domain=20:-20, samples=50, thick, red] ({4+2*x}, {-1-x}, {2+x});
+        \node[below left, red] at (axis cs: 6,-2,3) {$s$};
+        
+        % Punto di intersezione
+        \addplot3[only marks, mark=*] coordinates {(0,1,0)};
+        \node at (1.15,1.15,0.3) {(0,1,0)};
+        \end{axis}
+    \end{tikzpicture}
+\end{center}
+
+\newpage
+\subsection{Equazione cartesiana del piano nello spazio}
+
+\subsubsection{Definizione dell'equazione cartesiana}
+L'equazione cartesiana di un piano nello spazio è un'equazione lineare nelle variabili
+\(x\), \(y\) e \(z\). È data da:
+\[
+    ax + by + cz + d = 0
+\]
+dove \(a\), \(b\), \(c\) e \(d\) sono costanti. I coefficienti \(a\), \(b\) e \(c\)
+rappresentano le componenti del vettore normale al piano, \(\vec{n} = (a, b, c)\).
+
+A parole, l'equazione cartesiana di un piano nello spazio descrive tutti i punti
+\((x, y, z)\) che giacciono su un piano specificato da un punto noto e un vettore normale.
+Il vettore normale è perpendicolare alla superficie del piano e definisce l'orientamento del
+piano stesso.
+
+\subsubsection{Determinazione dell'equazione di un piano}
+Per determinare l'equazione cartesiana di un piano, è necessario conoscere un punto
+\((x_0, y_0, z_0)\) sul piano e il vettore normale \(\vec{n} = (a, b, c)\).
+L'equazione del piano può essere trovata sostituendo le coordinate del punto e del vettore
+normale nell'equazione:
+\[
+    a(x - x_0) + b(y - y_0) + c(z - z_0) = 0
+\]
+Espandendo e semplificando si ottiene:
+\[
+    ax + by + cz + d = 0
+\]
+dove \(d = -(ax_0 + by_0 + cz_0)\).
+
+\subsubsection{Esempio di determinazione dell'equazione di un piano}
+Supponiamo di avere un punto \((2, -1, 3)\) e un vettore normale \(\vec{n} = (1, 2, -1)\). L'equazione del piano è:
+\[
+    1(x - 2) + 2(y + 1) - 1(z - 3) = 0
+\]
+Espandendo e semplificando:
+\[
+    x + 2y - z + 3 = 0
+\]
+
+\subsubsection{Visualizzazione di un piano}
+Il grafico seguente mostra il piano \(x + 2y - z + 3 = 0\) nello spazio tridimensionale, con il vettore normale \(\vec{n} = (1, 2, -1)\) e il punto \((2, -1, 3)\) sul piano.
+\vspace*{0.5cm}
+\begin{center}
+    \begin{tikzpicture}
+        \begin{axis}[
+            view={60}{30},
+            axis lines=center,
+            xlabel={$x$},
+            ylabel={$y$},
+            zlabel={$z$},
+            grid=major,
+            xmin=-3, xmax=3,
+            ymin=-3, ymax=3,
+            zmin=-3, zmax=3,
+            width=10cm,
+            height=10cm,
+            ticklabel style={font=\small},
+            label style={font=\small},
+            xtick=\empty,
+            ytick=\empty,
+            ztick=\empty,
+        ]
+        % Draw the plane
+        \addplot3[surf, opacity=0.7, domain=-3:3, y domain=-3:3] {x + 2*y + 3};
+        % Draw the normal vector
+        \addplot3[->, thick, blue] coordinates {(2,-1,3) (3,-1,2)};
+        \node[below, blue] at (axis cs: 3,-1,2) {$\vec{n}$};
+        % Draw the point
+        \addplot3[only marks, mark=*] coordinates {(2,-1,3)} node[right] {$(2, -1, 3)$};
+        % Origin
+        \node[below left] at (axis cs: 0,0,0) {$(0,0,0)$};
+        \end{axis}
+    \end{tikzpicture}
+\end{center}
+
+\newpage
+\subsection{Semplici problemi di intersezione, di distanza e di angoli tra punti, rette o piani}
+
+\subsubsection{Problemi di intersezione}
+Per trovare il punto di intersezione tra una retta e un piano, si sostituisce l'equazione
+parametrica della retta nell'equazione cartesiana del piano e si risolve per il parametro.
+
+A parole, l'intersezione tra due entità geometriche nello spazio (come rette o piani) è il
+punto o la linea comune a entrambe. Determinare l'intersezione significa trovare questi punti
+o linee comuni.
+
+\subsubsection{Esempio di intersezione tra una retta e un piano}
+Supponiamo di avere una retta data da:
+\[
+    \vec{r}(t) = \begin{pmatrix} 1 \\ 2 \\ 3 \end{pmatrix}
+    + t \begin{pmatrix} 1 \\ -1 \\ 2 \end{pmatrix}
+\]
+e un piano dato da:
+\[
+    x + 2y - z - 1 = 0
+\]
+Per trovare il punto di intersezione, sostituiamo le coordinate parametriche della retta
+nell'equazione del piano:
+\[
+    (1 + t) + 2(2 - t) - (3 + 2t) - 1 = 0
+\]
+Risolviamo per \(t\):
+\[
+    1 + t + 4 - 2t - 3 - 2t - 1 = 0 \implies -2t + 1 = 0 \implies t = \frac{1}{2}
+\]
+Il punto di intersezione è:
+\[
+    \vec{r}\left(\frac{1}{2}\right) = \begin{pmatrix} 1 \\ 2 \\ 3 \end{pmatrix}
+    + \frac{1}{2} \begin{pmatrix} 1 \\ -1 \\ 2 \end{pmatrix} =
+    \begin{pmatrix} 1.5 \\ 1.5 \\ 4 \end{pmatrix}
+\]
+
+\subsubsection{Problemi di distanza}
+La distanza tra un punto e un piano può essere trovata usando la formula:
+\[
+    d = \frac{|ax_1 + by_1 + cz_1 + d|}{\sqrt{a^2 + b^2 + c^2}}
+\]
+
+A parole, la distanza tra un punto e un'entità geometrica (come una retta o un piano) è la
+lunghezza del segmento di linea perpendicolare che li unisce. È la misura più breve tra il
+punto e l'entità.
+
+\subsubsection{Esempio di distanza tra un punto e un piano}
+Supponiamo di avere un punto \(P(1, 2, 3)\) e un piano dato da \(x + 2y - z - 1 = 0\).
+La distanza è:
+\[
+    d = \frac{|1 \cdot 1 + 2 \cdot 2 - 1 \cdot 3 - 1|}{\sqrt{1^2 + 2^2 + (-1)^2}} =
+    \frac{|1 + 4 - 3 - 1|}{\sqrt{1 + 4 + 1}} = \frac{1}{\sqrt{6}}
+\]
+
+\subsubsection{Problemi di angoli}
+L'angolo tra due rette può essere trovato usando il prodotto scalare dei loro vettori
+direzionali, mentre l'angolo tra due piani può essere trovato usando il prodotto scalare dei
+loro vettori normali.
+
+A parole, l'angolo tra due entità geometriche (come rette o piani) è la misura
+dell'inclinazione tra di esse. Per le rette, è l'angolo tra i loro vettori direzionali.
+Per i piani, è l'angolo tra i loro vettori normali.
+
+\subsubsection{Esempio di angolo tra due rette}
+Supponiamo di avere due rette con vettori direzionali \(\vec{d}_1 = (1, 2, 3)\) e \(\vec{d}_2 = (4, -5, 6)\). L'angolo \(\theta\) tra le rette è dato da:
+\[
+    \cos \theta = \frac{\vec{d}_1 \cdot \vec{d}_2}{|\vec{d}_1||\vec{d}_2|} =
+    \frac{1 \cdot 4 + 2 \cdot (-5) + 3 \cdot 6}{\sqrt{1^2 + 2^2 + 3^2}
+    \sqrt{4^2 + (-5)^2 + 6^2}} = \frac{12}{\sqrt{1078}}
+\]
+\[
+    \theta = \cos^{-1} \left( \frac{12}{\sqrt{1078}} \right)
+\]
+
+\subsubsection{Visualizzazione di problemi geometrici}
+Il grafico seguente mostra una retta e un piano, illustrando l'intersezione e la distanza tra
+un punto e il piano.
+
+\begin{tikzpicture}
+    \begin{axis}[
+        view={60}{30},
+        axis lines=center,
+        xlabel={$x$},
+        ylabel={$y$},
+        zlabel={$z$},
+        grid=major,
+        xmin=-3, xmax=5,
+        ymin=-3, ymax=5,
+        zmin=-1, zmax=5,
+        width=10cm,
+        height=10cm,
+        ticklabel style={font=\small},
+        label style={font=\small},
+        xtick=\empty,
+        ytick=\empty,
+        ztick=\empty,
+    ]
+    % Draw the plane
+    \addplot3[surf, opacity=0.7, domain=-3:3, y domain=-3:3] {x + 2*y - 1};
+    % Draw the line
+    \addplot3[domain=-1:3, samples=50, thick, blue] ({1 + x}, {2 - x}, {3 + 2*x});
+    \node[below left, blue] at (axis cs: 2.5,0.5,7) {Retta $r$};
+    % Intersection point
+    \addplot3[only marks, mark=*] coordinates {(1.5,1.5,4)} node[below right] {$(1.5, 1.5, 4)$};
+    % Point
+    \addplot3[only marks, mark=*] coordinates {(1,2,3)} node[below right] {$(1, 2, 3)$};
+    % Origin
+    \node[left] at (axis cs: 0,0,0) {$(0,0,0)$};
+    \end{axis}
+\end{tikzpicture}
+
+\newpage
+\part{Trigonometria}
+
+\section{Funzioni trigonometriche}
+
+\subsection{Definizione delle funzioni trigonometriche}
+
+\subsubsection{Funzioni seno e coseno}
+Le funzioni seno e coseno sono definite come rapporti di lunghezze in un triangolo rettangolo.
+Per un angolo \(\theta\), il seno è il rapporto tra il cateto opposto e l'ipotenusa, mentre il
+coseno è il rapporto tra il cateto adiacente e l'ipotenusa:
+\[
+    \sin \theta = \frac{\text{cateto opposto}}{\text{ipotenusa}},
+    \quad \cos \theta = \frac{\text{cateto adiacente}}{\text{ipotenusa}}
+\]
+
+\subsubsection{Funzione tangente}
+La funzione tangente è definita come il rapporto tra il seno e il coseno dello stesso angolo:
+\[
+    \tan \theta = \frac{\sin \theta}{\cos \theta}
+\]
+
+\subsubsection{Funzioni trigonometriche nel cerchio unitario}
+Le funzioni trigonometriche possono essere estese agli angoli oltre \(0\) e \(90^\circ\)
+utilizzando il cerchio unitario. Per un angolo \(\theta\) nel cerchio unitario:
+\[
+    \sin \theta = y, \quad \cos \theta = x, \quad \tan \theta = \frac{y}{x}
+\]
+\begin{center}
+    \begin{tikzpicture}[scale=3.75]
+        \definecolor{darkgreen}{rgb}{0.0, 0.7, 0.0}
+        % Draw the x and y axes
+        \draw[thick, ->] (-1.5,0) -- (1.5,0) node[right] {\(x\)};
+        \draw[thick, ->] (0,-1.5) -- (0,1.5) node[above] {\(y\)};
+    
+        % Draw the unit circle
+        \draw (0,0) circle (1);
+    
+        % Draw the angle theta
+        \draw[thick, ->, blue] (0,0) -- (0.866,0.5) node[anchor=south west] {\(P(x,y)\)};
+    
+        % Draw dashed lines to indicate the projections on the axes
+        \draw[dashed] (0.866,0) -- (0.866,0.5) -- (0,0.5);
+    
+        % Label the angle theta
+        \draw (0.3,0) arc (0:30:0.3);
+        \node at (0.35,0.10) {\(\theta\)};
+    
+        % Label the origin
+        \node at (-0.05, -0.05) {O};
+    
+        % Draw the projections on the axes
+        \draw[thick, red] (0,0) -- (0.866, 0) node[midway, below] {\(\cos \theta\)};
+        \draw[thick, darkgreen] (0,0) -- (0, 0.5) node[midway, left] {\(\sin \theta\)};
+    
+        % Additional labels and lines
+        \node at (1.075, 0.05) {1};
+        \node at (-0.05, 1.1) {1};
+        \node at (-1.075, 0.05) {-1};
+        \node at (-0.05, -1.1) {-1};
+    
+        % Draw dashed unit distances
+        \draw[dashed] (0,0) -- (-1,0);
+        \draw[dashed] (0,0) -- (0,-1);
+    
+        % Labels for each quadrant
+        \node at (1, 1) {I};
+        \node at (-1, 1) {II};
+        \node at (-1, -1) {III};
+        \node at (1, -1) {IV};
+    \end{tikzpicture}
+\end{center}
+
+\newpage
+\subsection{Grafici e proprietà, funzioni trigonometriche inverse}
+
+\subsubsection{Grafico della funzione seno}
+Il grafico della funzione seno è una curva periodica che oscilla tra -1 e 1, con un periodo
+di \(2\pi\). Il seno di 0 è 0, e il seno di \(\pi/2\) è 1.
+
+\begin{tikzpicture}
+    \begin{axis}[
+        axis lines = middle,
+        xlabel = \(x\),
+        ylabel = {\(\sin x\)},
+        ymin=-1.5, ymax=1.5,
+        xtick={-3.14, -1.57, 0, 1.57, 3.14},
+        xticklabels={$-\pi$, $-\frac{\pi}{2}$, $0$, $\frac{\pi}{2}$, $\pi$},
+        ytick={-1, 0, 1},
+        grid=major,
+        width=12cm,
+        height=6cm
+    ]
+    \addplot[domain=-3.14:3.14, samples=100, blue, thick] {sin(deg(x))};
+    \end{axis}
+\end{tikzpicture}
+
+\subsubsection{Grafico della funzione coseno}
+Il grafico della funzione coseno è simile a quello del seno, ma è traslato di \(\pi/2\) a
+sinistra. Oscilla tra -1 e 1, con un periodo di \(2\pi\).
+
+\begin{tikzpicture}
+    \begin{axis}[
+        axis lines = middle,
+        xlabel = \(x\),
+        ylabel = {\(\cos x\)},
+        ymin=-1.5, ymax=1.5,
+        xtick={-3.14, -1.57, 0, 1.57, 3.14},
+        xticklabels={$-\pi$, $-\frac{\pi}{2}$, $0$, $\frac{\pi}{2}$, $\pi$},
+        ytick={-1, 0, 1},
+        grid=major,
+        width=12cm,
+        height=6cm
+    ]
+    \addplot[domain=-3.14:3.14, samples=100, red, thick] {cos(deg(x))};
+    \end{axis}
+\end{tikzpicture}
+
+\subsubsection{Funzioni trigonometriche inverse}
+Le funzioni trigonometriche inverse sono utilizzate per trovare l'angolo dato il valore di
+una funzione trigonometrica. Le funzioni inverse principali sono l'arcoseno, l'arcocoseno e
+l'arcotangente:
+\[
+    y = \sin^{-1} x, \quad y = \cos^{-1} x, \quad y = \tan^{-1} x
+\]
+
+\begin{tikzpicture}
+    \begin{axis}[
+        axis lines = middle,
+        xlabel = \(x\),
+        ylabel = {\(\sin^{-1} x\)},
+        ymin=-1.7, ymax=1.7,
+        xtick={-1, 0, 1},
+        ytick={-1.57, 0, 1.57},
+        yticklabels={$-\frac{\pi}{2}$, $0$, $\frac{\pi}{2}$},
+        grid=major,
+        width=12cm,
+        height=6cm,
+        domain=-1:1
+    ]
+    \addplot[domain=-1:1, samples=100, green, thick] {rad(asin(x))};
+    \end{axis}
+\end{tikzpicture}
+
+\newpage
+\subsection{Applicazione al triangolo rettangolo}
+
+\subsubsection{Teorema di Pitagora}
+Il teorema di Pitagora stabilisce che in un triangolo rettangolo, il quadrato dell'ipotenusa
+è uguale alla somma dei quadrati dei cateti:
+\[
+    c^2 = a^2 + b^2
+\]
+
+\begin{tikzpicture}[scale=0.8]
+    % Define coordinates
+    \coordinate (A) at (0, 0);
+    \coordinate (B) at (3, 0);
+    \coordinate (C) at (0, 3);
+
+    % Draw the triangle
+    \draw[thick] (A) -- (B) -- (C) -- cycle;
+
+    % Draw squares on the legs
+    \draw[fill=blue!20] (A) -- ++(-3,0) -- ++(0,3) -- ++(3,0) -- cycle;
+    \draw[fill=red!20] (B) -- ++(-3,0) -- ++(0,-3) -- ++(3,0) -- cycle;
+    \draw[fill=purple!20] (C) -- ++(3,-3) -- ++(3,3) -- ++(-3,3) -- cycle;
+
+    % Draw the triangle again to make sure it is on top
+    \draw[thick] (A) -- (B) -- (C) -- cycle;
+
+    % Label the sides
+    \node at (1.5, -0.3) {$a$};
+    \node at (-0.3, 1.5) {$b$};
+    \node at (1.75, 1.75) {$c$};
+
+    % Label the squares
+    \node at (1.5, -1.5) {$a^2$};
+    \node at (-1.5, 1.5) {$b^2$};
+    \node at (3, 3) {$c^2$};
+
+    % Right angle symbol
+    \draw (A) rectangle +(0.3,0.3);
+\end{tikzpicture}
+
+\subsubsection{Rapporti trigonometrici nel triangolo rettangolo}
+In un triangolo rettangolo, i rapporti trigonometrici delle funzioni seno, coseno e tangente
+si applicano come segue:
+\[
+    \sin \theta = \frac{\text{cateto opposto}}{\text{ipotenusa}},
+    \quad \cos \theta = \frac{\text{cateto adiacente}}{\text{ipotenusa}},
+    \quad \tan \theta = \frac{\text{cateto opposto}}{\text{cateto adiacente}}
+\]
+
+\subsubsection{Esempi di applicazione}
+Calcolare i lati di un triangolo rettangolo dati uno degli angoli acuti e un lato.
+Ad esempio, se \(\theta = 30^\circ\) e l'ipotenusa è 10, allora:
+\[
+    \sin 30^\circ = \frac{1}{2} = \frac{\text{cateto opposto}}{10} \implies
+    \text{cateto opposto} = 5
+\]
+\[
+    \cos 30^\circ = \frac{\sqrt{3}}{2} = \frac{\text{cateto adiacente}}{10} \implies
+    \text{cateto adiacente} = 5\sqrt{3}
+\]
+
+\newpage
+\subsection{Risoluzione di equazioni del tipo f(x) = k}
+\paragraph*{(dove \(f\) è una funzione trigonometrica e \(k \in \mathbb{R}\))}
+
+\subsubsection{Equazioni con la funzione seno}
+Per risolvere equazioni del tipo \(\sin x = k\), si considerano i valori di \(k\) che sono
+compresi tra -1 e 1. L'equazione ha soluzioni se \(-1 \leq k \leq 1\):
+\[
+    x = \sin^{-1} k + 2n\pi, \quad x = \pi - \sin^{-1} k + 2n\pi, \quad n \in \mathbb{Z}
+\]
+
+\subsubsection{Equazioni con la funzione coseno}
+Per risolvere equazioni del tipo \(\cos x = k\), si considerano i valori di \(k\) compresi
+tra -1 e 1. L'equazione ha soluzioni se \(-1 \leq k \leq 1\):
+\[
+    x = \cos^{-1} k + 2n\pi, \quad x = -\cos^{-1} k + 2n\pi, \quad n \in \mathbb{Z}
+\]
+
+\subsubsection{Equazioni con la funzione tangente}
+Per risolvere equazioni del tipo \(\tan x = k\), si considerano tutti i valori reali
+di \(k\). L'equazione ha soluzioni per tutti i valori di \(k\):
+\[
+    x = \tan^{-1} k + n\pi, \quad n \in \mathbb{Z}
+\]
+
+\subsubsection{Esempi di risoluzione}
+Risolviamo l'equazione \(\sin x = \frac{1}{2}\):
+\[
+    x = \sin^{-1} \frac{1}{2} + 2n\pi = \frac{\pi}{6} + 2n\pi,
+    \quad x = \pi - \sin^{-1} \frac{1}{2} + 2n\pi = \frac{5\pi}{6} + 2n\pi,
+    \quad n \in \mathbb{Z}
+\]
 
 
 
