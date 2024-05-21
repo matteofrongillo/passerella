@@ -1903,56 +1903,63 @@ Risolviamo l'equazione \(\sin x = \frac{1}{2}\):
 \section{Probabilità}
 
 \subsection{Spazio di probabilità e assiomi di Kolmogorov}
-Uno spazio di probabilità è una terna \((S, \mathcal{P}(S), p)\), dove:
+Uno spazio di probabilità è una terna \((\Omega, \mathcal{F}, \mathbb{P})\), dove:
 \begin{itemize}
-    \item \(S\) è lo spazio campionario, l'insieme di tutti i possibili esiti di un esperimento.
-    \item \(\mathcal{P}(S)\) è l'insieme delle parti di \(S\), contenente tutti i possibili eventi.
-    \item \(p\) è una misura di probabilità, una funzione che assegna a ciascun evento \(A \subseteq S\) un numero reale \(p(A)\), chiamato probabilità di \(A\).
+    \item \(\Omega\) è lo spazio campionario, l'insieme di tutti i possibili esiti di un esperimento.
+    \item \(\mathcal{F}\) è un insieme di sottoinsiemi di \(\Omega\), contenente tutti i possibili eventi.
+    \item \(\mathbb{P}\) è una funzione di probabilità, una funzione che assegna a ciascun evento \(a \in \mathcal{F}\)
+    un numero reale chiamato probabilità di \(a\). Per cui la funzione ha la forma \(\mathbb{P} \colon \mathcal{F} \to [0;1]\).
 \end{itemize}
-La funzione \(p\) deve soddisfare i seguenti assiomi di Kolmogorov:
+L'insieme \(\mathcal{F}\) deve soddisfare i seguenti assiomi:
 \begin{enumerate}
-    \item \(0 \leq p(A) \leq 1\) per ogni evento \(A \subseteq S\).
-    \item \(p(S) = 1\).
+    \item \(\Omega \in \mathcal{F}\)
+    \item Se un evento \(A\) è in \(\mathcal{F}\), allora anche il suo complemento \(A^c\) è in \(\mathcal{F}\)
+    \item Se due eventi \(A\) e \(B\) sono in \(\mathcal{F}\), allora \(A \cup B \in \mathcal{F}\)
+\end{enumerate}
+La funzione \(\mathbb{P}\) deve soddisfare i seguenti assiomi:
+\begin{enumerate}
+    \item \(\mathcal(\Omega) = 1\).
     \item Se \(A\) e \(B\) sono eventi incompatibili (cioè \(A \cap B = \emptyset\)), allora \(p(A \cup B) = p(A) + p(B)\).
 \end{enumerate}
 
 \subsubsection{Esempio di spazio di probabilità}
-Consideriamo il lancio di un dado. Lo spazio campionario è \(S = \{1, 2, 3, 4, 5, 6\}\). Ogni faccia ha la stessa probabilità di uscire, quindi \(p(\{i\}) = \frac{1}{6}\) per ogni \(i \in S\).
+Consideriamo il lancio di un dado. Lo spazio campionario è \(\Omega = \{1, 2, 3, 4, 5, 6\}\).
+Ogni faccia ha la stessa probabilità di uscire, quindi \(\mathbb{P}(\{i\}) = \frac{1}{6}\) per ogni \(i \in S\).
 
 \newpage
-\subsection{Probabilità dell’evento complementare}
+\subsection{Probabilità dell'evento complementare}
 La probabilità dell'evento complementare \(A^c\) è data da:
 \[
-p(A^c) = 1 - p(A)
+    \mathbb{P}(A^c) = 1 - \mathbb{P}(A)
 \]
 dove \(A^c\) rappresenta l'insieme degli esiti che non appartengono ad \(A\).
 
 \subsubsection{Teorema}
 Per ogni evento \(A\), si ha:
 \[
-p(A^c) = 1 - p(A)
+\mathbb{P}(A^c) = 1 - \mathbb{P}(A)
 \]
 
 \subsubsection{Dimostrazione}
 Sia \(A\) un evento, allora \(A \cup A^c = S\) e \(A \cap A^c = \emptyset\). Dunque, per gli assiomi di Kolmogorov:
 \[
-p(S) = p(A \cup A^c) = p(A) + p(A^c) = 1
+    \mathbb{P}(S) = \mathbb{P}(A \cup A^c) = \mathbb{P}(A) + \mathbb{P}(A^c) = 1
 \]
 da cui segue che:
 \[
-p(A^c) = 1 - p(A)
+    \mathbb{P}(A^c) = 1 - \mathbb{P}(A)
 \]
 
 \subsubsection{Esempio}
 Se la probabilità di estrarre una carta cuori da un mazzo di 52 carte è \(p(A) = \frac{13}{52} = \frac{1}{4}\), allora la probabilità di non estrarre una carta cuori è:
 \[
-p(A^c) = 1 - \frac{1}{4} = \frac{3}{4}
+    \mathbb{P}(A^c) = 1 - \frac{1}{4} = \frac{3}{4}
 \]
 
 \begin{tikzpicture}
     \draw[thick] (0,0) circle (2);
     \node at (0,0) {A};
-    \node at (2.5,0) {$S$};
+    \node at (2.5,0) {$\Omega$};
     \begin{scope}
         \clip (0,0) circle (2);
         \fill[blue!20] (-2,-2) rectangle (2,2);
@@ -1967,32 +1974,32 @@ p(A^c) = 1 - \frac{1}{4} = \frac{3}{4}
 \subsection{Probabilità di \(A \cup B\) e incompatibilità}
 La probabilità dell'unione di due eventi \(A\) e \(B\) è data da:
 \[
-p(A \cup B) = p(A) + p(B) - p(A \cap B)
+\mathbb{P}(A \cup B) = \mathbb{P}(A) + p(B) - \mathbb{P}(A \cap B)
 \]
 Se gli eventi \(A\) e \(B\) sono incompatibili, cioè \(A \cap B = \emptyset\), allora:
 \[
-p(A \cup B) = p(A) + p(B)
+    \mathbb{P}(A \cup B) = \mathbb{P}(A) + \mathbb{P}(B)
 \]
 
 \subsubsection{Teorema}
 Per ogni coppia di eventi \(A\) e \(B\), si ha:
 \[
-p(A \cup B) = p(A) + p(B) - p(A \cap B)
+    \mathbb{P}(A \cup B) = \mathbb{P}(A) + \mathbb{P}(B) - \mathbb{P}(A \cap B)
 \]
 
 \subsubsection{Dimostrazione}
 Dato che \(A \cup B = A + B - A \cap B\) e utilizzando la terza proprietà degli assiomi di Kolmogorov, si ottiene:
 \[
-p(A \cup B) = p(A) + p(B) - p(A \cap B)
+    \mathbb{P}(A \cup B) = \mathbb{P}(A) + \mathbb{P}(B) - \mathbb{P}(A \cap B)
 \]
 
 \subsubsection{Esempio}
 Consideriamo il lancio di un dado. Sia \(A\) l'evento che esce un numero pari (\{2, 4, 6\}), e \(B\) l'evento che esce un numero maggiore di 4 (\{5, 6\}). Allora:
 \[
-p(A) = \frac{3}{6} = \frac{1}{2}, \quad p(B) = \frac{2}{6} = \frac{1}{3}, \quad p(A \cap B) = p(\{6\}) = \frac{1}{6}
+    \mathbb{P}(A) = \frac{3}{6} = \frac{1}{2}, \quad \mathbb{P}(B) = \frac{2}{6} = \frac{1}{3}, \quad \mathbb{P}(A \cap B) = \mathbb{P}(\{6\}) = \frac{1}{6}
 \]
 \[
-p(A \cup B) = \frac{1}{2} + \frac{1}{3} - \frac{1}{6} = \frac{4}{6} = \frac{2}{3}
+    \mathbb{P}(A \cup B) = \frac{1}{2} + \frac{1}{3} - \frac{1}{6} = \frac{4}{6} = \frac{2}{3}
 \]
 
 \begin{tikzpicture}
@@ -2011,14 +2018,14 @@ p(A \cup B) = \frac{1}{2} + \frac{1}{3} - \frac{1}{6} = \frac{4}{6} = \frac{2}{3
 \subsection{Probabilità condizionata}
 La probabilità condizionata di \(A\) dato \(B\) è definita come:
 \[
-p(A | B) = \frac{p(A \cap B)}{p(B)}
+    \mathbb{P}(A | B) = \frac{\mathbb{P}(A \cap B)}{\mathbb{P}(B)}
 \]
-per \(p(B) > 0\).
+per \(\mathbb{P}(B) > 0\).
 
 \subsubsection{Teorema}
-Se \(p(B) > 0\), la probabilità condizionata di \(A\) dato \(B\) è:
+Se \(\mathbb{P}(B) > 0\), la probabilità condizionata di \(A\) dato \(B\) è:
 \[
-p(A | B) = \frac{p(A \cap B)}{p(B)}
+    \mathbb{P}(A | B) = \frac{\mathbb{P}(A \cap B)}{\mathbb{P}(B)}
 \]
 
 \subsubsection{Dimostrazione}
@@ -2027,7 +2034,7 @@ La dimostrazione segue direttamente dalla definizione di probabilità condiziona
 \subsubsection{Esempio}
 Consideriamo un mazzo di carte. La probabilità di estrarre un re (evento \(A\)) sapendo che la carta estratta è nera (evento \(B\)) è:
 \[
-p(A | B) = \frac{p(A \cap B)}{p(B)} = \frac{\frac{2}{52}}{\frac{26}{52}} = \frac{1}{13}
+    \mathbb{P}(A | B) = \frac{\mathbb{P}(A \cap B)}{\mathbb{P}(B)} = \frac{\frac{2}{52}}{\frac{26}{52}} = \frac{1}{13}
 \]
 
 \begin{tikzpicture}
@@ -2046,13 +2053,13 @@ p(A | B) = \frac{p(A \cap B)}{p(B)} = \frac{\frac{2}{52}}{\frac{26}{52}} = \frac
 \subsection{Probabilità di \(A \cap B\) e indipendenza}
 Due eventi \(A\) e \(B\) sono indipendenti se e solo se:
 \[
-p(A \cap B) = p(A) \cdot p(B)
+    \mathbb{P}(A \cap B) = \mathbb{P}(A) \cdot \mathbb{P}(B)
 \]
 
 \subsubsection{Teorema}
 Due eventi \(A\) e \(B\) sono indipendenti se:
 \[
-p(A \cap B) = p(A) \cdot p(B)
+    \mathbb{P}(A \cap B) = \mathbb{P}(A) \cdot \mathbb{P}(B)
 \]
 
 \subsubsection{Dimostrazione}
@@ -2061,7 +2068,7 @@ Se \(A\) e \(B\) sono indipendenti, allora la probabilità dell'intersezione dei
 \subsubsection{Esempio}
 Consideriamo il lancio di due monete. Sia \(A\) l'evento che la prima moneta è testa e \(B\) l'evento che la seconda moneta è testa. Poiché i due eventi sono indipendenti:
 \[
-p(A \cap B) = p(A) \cdot p(B) = \frac{1}{2} \cdot \frac{1}{2} = \frac{1}{4}
+    \mathbb{P}(A \cap B) = \mathbb{P}(A) \cdot \mathbb{P}(B) = \frac{1}{2} \cdot \frac{1}{2} = \frac{1}{4}
 \]
 
 \begin{tikzpicture}
