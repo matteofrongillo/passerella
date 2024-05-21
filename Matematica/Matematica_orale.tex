@@ -37,7 +37,7 @@
     colorlinks=true,
     linkcolor=black,
     urlcolor=blue,
-    pdftitle={Chimica}
+    pdftitle={Orale}
 }
 
 % === TEXT ===
@@ -657,7 +657,7 @@ Le sette forme indeterminate sono
     \]
 \end{center}
 
-\subsubsection{Definizione del teorema}
+\subsubsection{Enunciato del teorema}
 
 \stheorem{Teorema di Bernoulli-de l'Hôpital}{
     Consideriamo due funzioni reali \(f(x)\) e \(g(x)\) che sono differenziabili
@@ -676,10 +676,20 @@ Le sette forme indeterminate sono
 
 \newpage
 \subsection{Studio della monotonia e ricerca degli estremi di una funzione}
-\subsubsection{Definizione monotonia}
-PAOLO PORCODIO SCRIVI TU PF NN SO COSA sia
 
-\subsubsection{CACCA CULO?? NON SO CHE TITOLO METTERe}
+\subsubsection{Definizione monotonia}
+
+La monotonia della funziona centra con il suo comportamento di crescita o di decrescita.
+Una funzione può essere:
+\begin{itemize}
+    \item \textbf{monotona crescente} Se per ogni coppia \(x_1,x_2\) dove \(x_1 < x_2\) abbiamo che \(f(x_1) \leq f(x_2)\)
+    \item \textbf{monotona decrescente} Se per ogni coppia \(x_1,x_2\) dove \(x_1 < x_2\) abbiamo che \(f(x_1) \geq f(x_2)\) 
+    \item \textbf{strettamente crescente} Se per ogni coppia \(x_1,x_2\) dove \(x_1 < x_2\) abbiamo che \(f(x_1) < f(x_2)\)
+    \item \textbf{strettamente decrescente} Se per ogni coppia \(x_1,x_2\) dove \(x_1 < x_2\) abbiamo che \(f(x_1) > f(x_2)\)
+\end{itemize}
+Queste proprietà sono possono valere sia per tutto il dominio della funziona che solo su un sottointervallo.
+
+\subsubsection{Ricerca degli estremi}
 Poiché la derivata \(f'(x)\) rappresenta il tasso di variazione di \(f(x)\), assumendo che
 \(f(a)\) sia definita.
 
@@ -691,30 +701,80 @@ Poiché la derivata \(f'(x)\) rappresenta il tasso di variazione di \(f(x)\), as
     (punto angoloso)
 \end{itemize}
 
+È importante notare che se una funziona è continua, la derivata non è necessariamente continua.
+Esistono anche funzioni (molto strane) che sono continue ovunque ma la derivata non è definita da nessuna parte
+(funzioni di Weierstrass).
 
 \newpage
 \subsection{Studio della concavità e ricerca dei punti di flesso}
 \subsubsection{Definizione di concavità}
+
 La concavità di una funzione \(f(x)\) descrive la direzione della sua curvatura, che può
 essere verso l'alto quando \(f''(x)>0\) o verso il basso quando \(f''(x)<0\).\\
 Inoltre la concavità può essere crescente quando nel pressi della concavità \(f'(x)>0\) e 
 decrescente quando \(f'(x)<0\).
 
-\subsubsection{Definizione di punto di flesso}
-Il punto di flesso è il punto in cui la concavità della funzione cambia, ossia dove la
-funzione passa da concava verso l'alto a concava verso il basso o viceversa:
-\begin{equation*}
-    f''(c) = 0 \text{ e } f''(x) \text{ cambia segno in } x=c
-\end{equation*}
+\begin{minipage}{0.5\textwidth}
+    \begin{tikzpicture}[
+        scale=1.5,
+        declare function={
+            func(\x) = \x*\x*0.4;
+            Width=5;
+            Height=5;
+        }
+    ]
 
-\subsubsection{In più}
-Tutti i punti di flesso di una funzione \(f(x)\) sono determinati dove la seconda derivata
-della funzione si annulla \(f''(x)=0\), ma non tutte le seconde derivate che hanno valore 0
-\(f''(x)=0\) sono dei punti di flesso.
+        \draw[domain=0.25:2.25, smooth, variable=\x, blue, very thick] plot ({\x}, {func(\x - 2.5) + 2.75});
+        \draw[domain=2.75:4.75, smooth, variable=\x, blue, very thick] plot ({\x}, {func(\x - 2.5) + 2.75});
+        \draw[domain=0.25:2.25, smooth, variable=\x, blue, very thick] plot ({\x}, {-func(\x) + 2.25});
+        \draw[domain=2.75:4.75, smooth, variable=\x, blue, very thick] plot ({\x}, {-func(\x - 5) + 2.25});
+        
+        \node[right] at (0, Height) {\footnotesize Concave Up, Decreasing};
+        \node[right] at ({Width / 2}, Height) {\footnotesize Concave Up, Increasing};
+        \node[right] at (0, Height / 2 - 0.15) {\footnotesize Concave Down, Decreasing};
+        \node[right] at ({Width / 2}, {Height / 2 - 0.15}) {\footnotesize Concave Down, Increasing};
+        
+        \draw[->] ({Width / 2}, 0) -- ({Width / 2}, Height);
+        \draw[->] (0, {Height / 2}) -- (Width, {Height  / 2});
+    \end{tikzpicture}
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+    \phantom{ } \\
+    \begin{itemize}
+        \item \(f(x)\) è \textbf{convava verso l'alto} in un intervallo \(I\) se tutte le tangenti in \(I\) sono soto il grafico.
+        \item \(f(x)\) è \textbf{concave convava verso il basso} in un intervallo \(I\) se tutte le tangenti in \(I\) sono sopra il grafico.
+    \end{itemize}
+    \hphantom{ } \\
+    \begin{itemize}
+        \item Se \(f''(x)>0\) per tutte le \(x\) in un intervallo \(I\), allora \(f(x)\) è concava verso l'alto in \(I\)
+        \item Se \(f''(x)<0\) per tutte le \(x\) in un intervallo \(I\), allora \(f(x)\) è concava verso il basso in \(I\)
+    \end{itemize}
+
+    Questo funzione perché quando la funziona è concava in sù, cresce o decresce sempre di più. Per cui \(f'(x)\) 
+    ci dice che \(f(x)\) sta crescendo o decrescendo, e \(f''(x)\) ci dice l'incremento con il quale la funzione
+    sta crescendo o il decremento con la quale la funzione sta decrescendo.
+    Lo stesso vale per quando la funzione è concava verso il basso.
+\end{minipage}
+
+\subsubsection{Definizione di punto di flesso}
+
+\sdefinition{Punto di flesso}{
+    Un punto di flesso è un punto in cui la funziona è continua e la concavità della funzione cambia, ossia dove la
+    funzione passa da concava verso l'alto a concava verso il basso o viceversa.
+}
+
+I punti di flesso di una funzione \(f(x)\) sono presenti dove la seconda derivata
+della funzione cambia segno. Di conseguenza, i punti di flesso sono sempre presenti
+quando la seconda derivata è zero \(f''(x)=0\) oppure \(f''(x)\) è indefinita.
+Tuttavia, non tutti i punti dove la funzione è zero o è indefinita sono dei punti di flesso.
+Una volta trovati questi due tipi di punti critici è importante controllare
+che la funzione cambi quindi segno prima e dopo suddetto punto.
 
 \newpage
 \section{Integrali}
+
 \subsection{Integrale definito e sue applicazioni}
+
 \subsubsection{Definizione}
 Con integrale definito si può considerare quello di Riemann, il quale può essere definito
 con la somma infinitesimale di rettangoli con base tendente a 0 e l'altezza pari a un punto
@@ -775,13 +835,15 @@ Riemann, ad esempio una funzione:
 \]
 Questa funzione ha un integrale, ma non si può calcolare con la somma di Riemann.
 
-\subsubsection{Keep yapping}
+\subsubsection{Segno dell'integrale}
 L'integrale di una funzione non strettamente positiva può essere negativo, infatti i pezzi
 sotto l'asse delle x rappresentano aree con valori negativi, quindi l'integrale rappresenta
-l'area segnata sotto la curva.
+l'area segnata sotto la curva. parti di area con segno opposto si annullano.
+Per esempio, l'integrale da 0 a \(2\pi\) della funzioe \(\sin(x)\) è 0.
 
 \subsubsection{Le sue applicazioni}
-L'integrale di un intervallo di una funzione probabilistica rappresenta la probabilità di
+
+(Avanzato) L'integrale di un intervallo di una funzione probabilistica rappresenta la probabilità di
 ritrovarsi in suddetto intervallo.
 
 \newpage
@@ -895,9 +957,13 @@ aggiungendo una qualsiasi costante:
 \]
 
 \subsubsection{Esempio concreto}
-La derivata della posizione è la velocità, ma l'informazione della posizione iniziale \(x_0\)
-viene persa. Facendo l'integrale della velocità per ritrovare \(x(t)\), la costante \(C\)
-rappresenta la posizione iniziale \(x_0\)
+In fisica, quando abbiamo la funzione dell'accellerazione \(a(t)\), possiamo trovare la funzione della velocità
+\(v(t)\) facendo l'integrale, e quella della posizione \(x(t)\) facendo l'integrale di \(v(t)\).
+È importante notare che, quando facciamo la derivata della posizione o della velocità in funzione del tempo, la posizione
+iniziale o velocità iniziale viene persa. Infatti, la costante \(+C\) dell'integrale definitivo rappresenta proprio questa
+informazione perduta
+\[ \integral[a(t)][t] = v(t)+v_0 \] e 
+\[ \integral[v(t)][t] = x(t)+x_0 \]
 
 \newpage
 \part{Geometria}
