@@ -1905,86 +1905,131 @@ Risolviamo l'equazione \(\sin x = \frac{1}{2}\):
 \subsection{Spazio di probabilità e assiomi di Kolmogorov}
 Uno spazio di probabilità è una terna \((\Omega, \mathcal{F}, \mathbb{P})\), dove:
 \begin{itemize}
-    \item \(\Omega\) è lo spazio campionario, l'insieme di tutti i possibili esiti di un esperimento.
-    \item \(\mathcal{F}\) è un insieme di sottoinsiemi di \(\Omega\), contenente tutti i possibili eventi.
-    \item \(\mathbb{P}\) è una funzione di probabilità, una funzione che assegna a ciascun evento \(a \in \mathcal{F}\)
-    un numero reale chiamato probabilità di \(a\). Per cui la funzione ha la forma \(\mathbb{P} \colon \mathcal{F} \to [0;1]\).
+    \item \(\Omega\) è lo \textbf{spazio campionario}, l'insieme di tutti i possibili esiti di
+        un esperimento. Un particolare esito, ossia un elemento di \(\Omega\), è detto
+        \textbf{punto campionario} o \textbf{campione}.
+    \item \(\mathcal{F}\) è un insieme di sottoinsiemi di \(\Omega\), contenente tutti i
+        possibili eventi.
+
+    \item \(\mathbb{P}\) è una funzione di probabilità, una funzione che assegna a ciascun
+        evento \(a \in \mathcal{F}\) un numero reale chiamato probabilità di \(a\). Per cui la
+        funzione ha la forma \(\mathbb{P} \colon \mathcal{F} \to [0;1]\).
 \end{itemize}
 L'insieme \(\mathcal{F}\) deve soddisfare i seguenti assiomi:
 \begin{enumerate}
     \item \(\Omega \in \mathcal{F}\)
-    \item Se un evento \(A\) è in \(\mathcal{F}\), allora anche il suo complemento \(A^c\) è in \(\mathcal{F}\)
+    \item Se un evento \(A\) è in \(\mathcal{F}\), allora anche il suo complemento \(\overline{A}\) è in \(\mathcal{F}\)
     \item Se due eventi \(A\) e \(B\) sono in \(\mathcal{F}\), allora \(A \cup B \in \mathcal{F}\)
 \end{enumerate}
 La funzione \(\mathbb{P}\) deve soddisfare i seguenti assiomi:
 \begin{enumerate}
-    \item \(\mathcal(\Omega) = 1\).
-    \item Se \(A\) e \(B\) sono eventi incompatibili (cioè \(A \cap B = \emptyset\)), allora \(p(A \cup B) = p(A) + p(B)\).
+    \item \(\mathbb{P}(\Omega) = 1\).
+    \item Se \(A\) e \(B\) sono eventi incompatibili (cioè \(A \cap B = \emptyset\)), allora \(\mathbb{P}(A \cup B) = \mathbb{P}(A) + \mathbb{P}(B)\).
 \end{enumerate}
 
 \subsubsection{Esempio di spazio di probabilità}
 Consideriamo il lancio di un dado. Lo spazio campionario è \(\Omega = \{1, 2, 3, 4, 5, 6\}\).
-Ogni faccia ha la stessa probabilità di uscire, quindi \(\mathbb{P}(\{i\}) = \frac{1}{6}\) per ogni \(i \in S\).
+Ogni faccia ha la stessa probabilità di uscire, quindi \(\mathbb{P}(\{i\}) = \frac{1}{6}\)
+per ogni \(i \in \Omega\).
 
 \newpage
 \subsection{Probabilità dell'evento complementare}
-La probabilità dell'evento complementare \(A^c\) è data da:
-\[
-    \mathbb{P}(A^c) = 1 - \mathbb{P}(A)
-\]
-dove \(A^c\) rappresenta l'insieme degli esiti che non appartengono ad \(A\).
 
 \subsubsection{Teorema}
 Per ogni evento \(A\), si ha:
 \[
-\mathbb{P}(A^c) = 1 - \mathbb{P}(A)
+\mathbb{P}(\overline{A}) = 1 - \mathbb{P}(A)
 \]
+dove \(\overline{A}\) rappresenta l'insieme degli esiti che non appartengono ad \(A\).
 
 \subsubsection{Dimostrazione}
-Sia \(A\) un evento, allora \(A \cup A^c = S\) e \(A \cap A^c = \emptyset\). Dunque, per gli assiomi di Kolmogorov:
+Sia \(A\) un evento, allora \(A \cup \overline{A} = \Omega\) e \(A \cap \overline{A} = \emptyset\). Dunque, per gli assiomi di Kolmogorov:
 \[
-    \mathbb{P}(S) = \mathbb{P}(A \cup A^c) = \mathbb{P}(A) + \mathbb{P}(A^c) = 1
+    \mathbb{P}(S) = \mathbb{P}(A \cup \overline{A}) = \mathbb{P}(A) + \mathbb{P}(\overline{A}) = 1
 \]
 da cui segue che:
 \[
-    \mathbb{P}(A^c) = 1 - \mathbb{P}(A)
+    \mathbb{P}(\overline{A}) = 1 - \mathbb{P}(A)
 \]
 
 \subsubsection{Esempio}
-Se la probabilità di estrarre una carta cuori da un mazzo di 52 carte è \(p(A) = \frac{13}{52} = \frac{1}{4}\), allora la probabilità di non estrarre una carta cuori è:
+Se la probabilità di estrarre una carta cuori da un mazzo di 52 carte è \(\mathbb{P}(A) = \frac{13}{52} = \frac{1}{4}\), allora la probabilità di non estrarre una carta cuori è:
 \[
-    \mathbb{P}(A^c) = 1 - \frac{1}{4} = \frac{3}{4}
+    \mathbb{P}(\overline{A}) = 1 - \frac{1}{4} = \frac{3}{4}
 \]
 
-\begin{tikzpicture}
-    \draw[thick] (0,0) circle (2);
-    \node at (0,0) {A};
-    \node at (2.5,0) {$\Omega$};
-    \begin{scope}
-        \clip (0,0) circle (2);
-        \fill[blue!20] (-2,-2) rectangle (2,2);
-    \end{scope}
-    \begin{scope}
-        \fill[white] (0,0) circle (1.5);
-    \end{scope}
-    \node at (1.5,-1.5) {$A^c$};
-\end{tikzpicture}
+\begin{figure}[ht!]
+\begin{center}
+        \begin{tikzpicture}[scale=1.75]
+            
+            \draw[thick] (0, 0) rectangle (6, 4);
+    
+            \fill[red!20] (4, 2) circle (1.2);
+            \draw[thick] (4, 2) circle (1.2);
+            
+            \node at (1.5, 2) {\(A\)};
+            \node at (4.05, 2) {\(\overline{A}\)};
+                        
+            \node[overlay] at (-0.2,3.75) {\(\mathbf{\Omega}\)};
+        \end{tikzpicture}
+\end{center}
+\end{figure}
+
+\newpage
+\subsection{Probabilità di \(A \cap B\) e indipendenza}
+
+\subsubsection{Teorema}
+Due eventi \(A\) e \(B\) sono indipendenti se e solo se:
+\[
+    \mathbb{P}(A \cap B) = \mathbb{P}(A) \cdot \mathbb{P}(B)
+\]
+
+\subsubsection{Dimostrazione}
+Se \(A\) e \(B\) sono indipendenti, allora la probabilità dell'intersezione dei due eventi è
+il prodotto delle probabilità dei singoli eventi.
+
+\figbox{
+    \begin{tikzpicture}[scale=2]
+        
+        \draw[thick] (2, 2) circle (1.5);
+        \draw[thick] (4, 2) circle (1.5);
+        \begin{scope}
+            \clip (2, 2) circle (1.5);
+            \fill[blue!20] (4, 2) circle (1.5);
+        \end{scope}
+        
+        \node at (2, 3.7) {A};
+        \node at (4, 3.7) {B};
+        
+        \node at (1.5, 2) {\(A \cap \overline{B}\)};
+        \node at (4.5, 2) {\(\overline{A} \cap B\)};
+        \node at (3, 2) {\(A \cap B\)};
+        
+        \node at (3, 0.35) {};
+
+        \node[overlay] at (0.2,3.75) {\(\mathbf{\Omega}\)};
+    \end{tikzpicture}
+}
+
+\subsubsection{Esempio}
+Consideriamo il lancio di due monete. Sia \(A\) l'evento che la prima moneta è testa e \(B\) l'evento che la seconda moneta è testa. Poiché i due eventi sono indipendenti:
+\[
+    \mathbb{P}(A \cap B) = \mathbb{P}(A) \cdot \mathbb{P}(B) = \frac{1}{2} \cdot \frac{1}{2} = \frac{1}{4}
+\]
 
 \newpage
 \subsection{Probabilità di \(A \cup B\) e incompatibilità}
-La probabilità dell'unione di due eventi \(A\) e \(B\) è data da:
-\[
-\mathbb{P}(A \cup B) = \mathbb{P}(A) + p(B) - \mathbb{P}(A \cap B)
-\]
-Se gli eventi \(A\) e \(B\) sono incompatibili, cioè \(A \cap B = \emptyset\), allora:
-\[
-    \mathbb{P}(A \cup B) = \mathbb{P}(A) + \mathbb{P}(B)
-\]
+Due eventi A e B sono detti incompatibili se sono disgiunti, ossia se \(A \cap B = \emptyset\).\\
+In altri termini, \(A\) e \(B\) sono incompatibili se non possono verificarsi simultaneamente.
 
 \subsubsection{Teorema}
 Per ogni coppia di eventi \(A\) e \(B\), si ha:
 \[
-    \mathbb{P}(A \cup B) = \mathbb{P}(A) + \mathbb{P}(B) - \mathbb{P}(A \cap B)
+\mathbb{P}(A \cup B) = \mathbb{P}(A) + \mathbb{P}(B) - \mathbb{P}(A \cap B)
+\]
+Se gli eventi \(A\) e \(B\) sono incompatibili, cioè \(A \cap B = \emptyset\), allora:
+\[
+    \mathbb{P}(A \cup B) = \mathbb{P}(A) + \mathbb{P}(B)
 \]
 
 \subsubsection{Dimostrazione}
@@ -2049,42 +2094,7 @@ Consideriamo un mazzo di carte. La probabilità di estrarre un re (evento \(A\))
     \node at (0.5,0) {$A \cap B$};
 \end{tikzpicture}
 
-\newpage
-\subsection{Probabilità di \(A \cap B\) e indipendenza}
-Due eventi \(A\) e \(B\) sono indipendenti se e solo se:
-\[
-    \mathbb{P}(A \cap B) = \mathbb{P}(A) \cdot \mathbb{P}(B)
-\]
 
-\subsubsection{Teorema}
-Due eventi \(A\) e \(B\) sono indipendenti se:
-\[
-    \mathbb{P}(A \cap B) = \mathbb{P}(A) \cdot \mathbb{P}(B)
-\]
-
-\subsubsection{Dimostrazione}
-Se \(A\) e \(B\) sono indipendenti, allora la probabilità dell'intersezione dei due eventi è il prodotto delle probabilità dei singoli eventi.
-
-\subsubsection{Esempio}
-Consideriamo il lancio di due monete. Sia \(A\) l'evento che la prima moneta è testa e \(B\) l'evento che la seconda moneta è testa. Poiché i due eventi sono indipendenti:
-\[
-    \mathbb{P}(A \cap B) = \mathbb{P}(A) \cdot \mathbb{P}(B) = \frac{1}{2} \cdot \frac{1}{2} = \frac{1}{4}
-\]
-
-\begin{tikzpicture}
-    \begin{axis}[
-        width=10cm, height=10cm,
-        xlabel={$x$}, ylabel={$y$},
-        title={Eventi indipendenti},
-        domain=0:1, samples=100,
-        axis lines=center,
-        xtick=\empty, ytick=\empty,
-        enlargelimits=true,
-    ]
-    \addplot [only marks, mark=*, blue] coordinates {(0.5, 0.5)};
-    \node at (axis cs: 0.5, 0.5) [anchor=south west] {$p(A \cap B) = \frac{1}{4}$};
-    \end{axis}
-\end{tikzpicture}
 
 
 
