@@ -729,10 +729,10 @@ decrescente quando \(f'(x)<0\).
         \draw[domain=0.25:2.25, smooth, variable=\x, blue, very thick] plot ({\x}, {-func(\x) + 2.25});
         \draw[domain=2.75:4.75, smooth, variable=\x, blue, very thick] plot ({\x}, {-func(\x - 5) + 2.25});
         
-        \node[right] at (0, Height) {\footnotesize Concave Up, Decreasing};
-        \node[right] at ({Width / 2}, Height) {\footnotesize Concave Up, Increasing};
-        \node[right] at (0, Height / 2 - 0.15) {\footnotesize Concave Down, Decreasing};
-        \node[right] at ({Width / 2}, {Height / 2 - 0.15}) {\footnotesize Concave Down, Increasing};
+        \node[right] at (0, Height) {\footnotesize Verso l'alto, decrescente};
+        \node[right] at ({Width / 2}, Height) {\footnotesize Verso l'alto, crescente};
+        \node[right] at (0, Height / 2 - 0.15) {\footnotesize Verso il basso, decrescente};
+        \node[right] at ({Width / 2}, {Height / 2 - 0.15}) {\footnotesize Verso il basso, crescente};
         
         \draw[->] ({Width / 2}, 0) -- ({Width / 2}, Height);
         \draw[->] (0, {Height / 2}) -- (Width, {Height  / 2});
@@ -1918,7 +1918,7 @@ Uno spazio di probabilità è una terna \((\Omega, \mathcal{F}, \mathbb{P})\), d
 L'insieme \(\mathcal{F}\) deve soddisfare i seguenti assiomi:
 \begin{enumerate}
     \item \(\Omega \in \mathcal{F}\)
-    \item Se un evento \(A\) è in \(\mathcal{F}\), allora anche il suo complemento \(\overline{A}\) è in \(\mathcal{F}\)
+    \item Se un evento \(A\) è in \(\mathcal{F}\), allora anche il suo complemento \(\bar{A}\) è in \(\mathcal{F}\)
     \item Se due eventi \(A\) e \(B\) sono in \(\mathcal{F}\), allora \(A \cup B \in \mathcal{F}\)
 \end{enumerate}
 La funzione \(\mathbb{P}\) deve soddisfare i seguenti assiomi:
@@ -1935,48 +1935,72 @@ per ogni \(i \in \Omega\).
 \newpage
 \subsection{Probabilità dell'evento complementare}
 
+\subsubsection{Definizione}
+L'evento complementare, denotato come \(\bar{A}\), è l'insieme di tutti gli esiti che non
+appartengono all'evento \(A\). In altre parole, se \(A\) rappresenta un insieme di esiti in
+cui si verifica un determinato evento, \(\bar{A}\) rappresenta tutti gli altri esiti in cui
+tale evento non si verifica.
+
+Dato un evento \(A\) in uno spazio campionario \(\Omega\), l'evento complementare \(\bar{A}\) è
+definito come:
+\[
+\bar{A} = \Omega \setminus A
+\]
+dove \(\setminus\) indica la differenza tra insiemi. Graficamente, se consideriamo \(\Omega\)
+come l'intero spazio campionario e \(A\) come una regione all'interno di \(\Omega\), \(\bar{A}\)
+sarà la regione rimanente.
+
 \subsubsection{Teorema}
 Per ogni evento \(A\), si ha:
 \[
-\mathbb{P}(\overline{A}) = 1 - \mathbb{P}(A)
+\mathbb{P}(\bar{A}) = 1 - \mathbb{P}(A)
 \]
-dove \(\overline{A}\) rappresenta l'insieme degli esiti che non appartengono ad \(A\).
+dove \(\bar{A}\) rappresenta l'insieme degli esiti che non appartengono ad \(A\).
 
 \subsubsection{Dimostrazione}
-Sia \(A\) un evento, allora \(A \cup \overline{A} = \Omega\) e \(A \cap \overline{A} = \emptyset\). Dunque, per gli assiomi di Kolmogorov:
+Sia \(A\) un evento, allora \(A \cup \bar{A} = \Omega\) e \(A \cap \bar{A} = \emptyset\).
+Dunque, secondo il terzo assioma di Kolmogorov:
 \[
-    \mathbb{P}(S) = \mathbb{P}(A \cup \overline{A}) = \mathbb{P}(A) + \mathbb{P}(\overline{A}) = 1
+    \mathbb{P}(S) = \mathbb{P}(A \cup \bar{A}) = \mathbb{P}(A) + \mathbb{P}(\bar{A}) = 1
 \]
 da cui segue che:
 \[
-    \mathbb{P}(\overline{A}) = 1 - \mathbb{P}(A)
+    \mathbb{P}(\bar{A}) = 1 - \mathbb{P}(A)
 \]
+
+\begin{figure}[ht!]
+    \begin{center}
+            \begin{tikzpicture}[scale=1.75]
+                
+                \fill[red!20] (0, 0) rectangle (6, 3);
+                \draw[thick] (0, 0) rectangle (6, 3);
+        
+                \fill[white] (4, 1.5) circle (1.2);
+                \draw[thick] (4, 1.5) circle (1.2);
+                
+                \node at (1.5, 1.5) {\(A\)};
+                \node at (4.05, 1.5) {\(\bar{A}\)};
+                            
+                \node[overlay] at (-0.2,2.75) {\(\mathbf{\Omega}\)};
+            \end{tikzpicture}
+    \end{center}
+    \end{figure}
 
 \subsubsection{Esempio}
 Se la probabilità di estrarre una carta cuori da un mazzo di 52 carte è \(\mathbb{P}(A) = \frac{13}{52} = \frac{1}{4}\), allora la probabilità di non estrarre una carta cuori è:
 \[
-    \mathbb{P}(\overline{A}) = 1 - \frac{1}{4} = \frac{3}{4}
+    \mathbb{P}(\bar{A}) = 1 - \frac{1}{4} = \frac{3}{4}
 \]
-
-\begin{figure}[ht!]
-\begin{center}
-        \begin{tikzpicture}[scale=1.75]
-            
-            \draw[thick] (0, 0) rectangle (6, 4);
-    
-            \fill[red!20] (4, 2) circle (1.2);
-            \draw[thick] (4, 2) circle (1.2);
-            
-            \node at (1.5, 2) {\(A\)};
-            \node at (4.05, 2) {\(\overline{A}\)};
-                        
-            \node[overlay] at (-0.2,3.75) {\(\mathbf{\Omega}\)};
-        \end{tikzpicture}
-\end{center}
-\end{figure}
 
 \newpage
 \subsection{Probabilità di \(A \cap B\) e indipendenza}
+
+\subsubsection{Definizione}
+La probabilità dell'intersezione di due eventi \(A\) e \(B\), denotata come \(A \cap B\),
+rappresenta la probabilità che entrambi gli eventi si verifichino simultaneamente.
+
+Due eventi \(A\) e \(B\) sono detti indipendenti se il verificarsi di uno non influenza la
+probabilità del verificarsi dell'altro.
 
 \subsubsection{Teorema}
 Due eventi \(A\) e \(B\) sono indipendenti se e solo se:
@@ -1985,8 +2009,20 @@ Due eventi \(A\) e \(B\) sono indipendenti se e solo se:
 \]
 
 \subsubsection{Dimostrazione}
-Se \(A\) e \(B\) sono indipendenti, allora la probabilità dell'intersezione dei due eventi è
-il prodotto delle probabilità dei singoli eventi.
+Per dimostrare che due eventi \(A\) e \(B\) sono indipendenti, consideriamo la definizione di
+probabilità condizionata:
+\[
+    \mathbb{P}(B|A) = \frac{\mathbb{P}(A \cap B)}{\mathbb{P}(A)}
+\]
+Se \(A\) e \(B\) sono indipendenti, allora \(\mathbb{P}(B|A) = \mathbb{P}(B)\).
+Sostituendo nella formula della probabilità condizionata otteniamo:
+\[
+    \mathbb{P}(B) = \frac{\mathbb{P}(A \cap B)}{\mathbb{P}(A)}
+\]
+da cui segue che:
+\[
+    \mathbb{P}(A \cap B) = \mathbb{P}(A) \cdot \mathbb{P}(B)
+\]
 
 \figbox{
     \begin{tikzpicture}[scale=2]
@@ -2001,8 +2037,8 @@ il prodotto delle probabilità dei singoli eventi.
         \node at (2, 3.7) {A};
         \node at (4, 3.7) {B};
         
-        \node at (1.5, 2) {\(A \cap \overline{B}\)};
-        \node at (4.5, 2) {\(\overline{A} \cap B\)};
+        \node at (1.5, 2) {\(A \cap \bar{B}\)};
+        \node at (4.5, 2) {\(\bar{A} \cap B\)};
         \node at (3, 2) {\(A \cap B\)};
         
         \node at (3, 0.35) {};
@@ -2012,88 +2048,177 @@ il prodotto delle probabilità dei singoli eventi.
 }
 
 \subsubsection{Esempio}
-Consideriamo il lancio di due monete. Sia \(A\) l'evento che la prima moneta è testa e \(B\) l'evento che la seconda moneta è testa. Poiché i due eventi sono indipendenti:
+Consideriamo il lancio di due monete. Sia \(A\) l'evento che la prima moneta è testa (\{T, C\}) e \(B\) l'evento che la seconda moneta è testa (\{C, T\}). Poiché il lancio delle due monete è un evento indipendente, abbiamo:
 \[
     \mathbb{P}(A \cap B) = \mathbb{P}(A) \cdot \mathbb{P}(B) = \frac{1}{2} \cdot \frac{1}{2} = \frac{1}{4}
 \]
 
 \newpage
-\subsection{Probabilità di \(A \cup B\) e incompatibilità}
-Due eventi A e B sono detti incompatibili se sono disgiunti, ossia se \(A \cap B = \emptyset\).\\
-In altri termini, \(A\) e \(B\) sono incompatibili se non possono verificarsi simultaneamente.
-
-\subsubsection{Teorema}
-Per ogni coppia di eventi \(A\) e \(B\), si ha:
-\[
-\mathbb{P}(A \cup B) = \mathbb{P}(A) + \mathbb{P}(B) - \mathbb{P}(A \cap B)
-\]
-Se gli eventi \(A\) e \(B\) sono incompatibili, cioè \(A \cap B = \emptyset\), allora:
-\[
-    \mathbb{P}(A \cup B) = \mathbb{P}(A) + \mathbb{P}(B)
-\]
-
-\subsubsection{Dimostrazione}
-Dato che \(A \cup B = A + B - A \cap B\) e utilizzando la terza proprietà degli assiomi di Kolmogorov, si ottiene:
-\[
-    \mathbb{P}(A \cup B) = \mathbb{P}(A) + \mathbb{P}(B) - \mathbb{P}(A \cap B)
-\]
-
-\subsubsection{Esempio}
-Consideriamo il lancio di un dado. Sia \(A\) l'evento che esce un numero pari (\{2, 4, 6\}), e \(B\) l'evento che esce un numero maggiore di 4 (\{5, 6\}). Allora:
-\[
-    \mathbb{P}(A) = \frac{3}{6} = \frac{1}{2}, \quad \mathbb{P}(B) = \frac{2}{6} = \frac{1}{3}, \quad \mathbb{P}(A \cap B) = \mathbb{P}(\{6\}) = \frac{1}{6}
-\]
-\[
-    \mathbb{P}(A \cup B) = \frac{1}{2} + \frac{1}{3} - \frac{1}{6} = \frac{4}{6} = \frac{2}{3}
-\]
-
-\begin{tikzpicture}
-    \draw[thick] (0,0) circle (2);
-    \draw[thick] (2,0) circle (2);
-    \begin{scope}
-        \clip (0,0) circle (2);
-        \fill[blue!20] (2,0) circle (2);
-    \end{scope}
-    \node at (-1,0) {A};
-    \node at (3,0) {B};
-    \node at (1,0) {$A \cap B$};
-\end{tikzpicture}
-
-\newpage
 \subsection{Probabilità condizionata}
-La probabilità condizionata di \(A\) dato \(B\) è definita come:
-\[
-    \mathbb{P}(A | B) = \frac{\mathbb{P}(A \cap B)}{\mathbb{P}(B)}
-\]
-per \(\mathbb{P}(B) > 0\).
+
+\subsubsection{Definizione}
+La probabilità condizionata descrive la probabilità di un evento \(A\) sapendo che un altro
+evento \(B\) è già avvenuto.
 
 \subsubsection{Teorema}
 Se \(\mathbb{P}(B) > 0\), la probabilità condizionata di \(A\) dato \(B\) è:
 \[
-    \mathbb{P}(A | B) = \frac{\mathbb{P}(A \cap B)}{\mathbb{P}(B)}
+    \mathbb{P}(A|B) = \frac{\mathbb{P}(A \cap B)}{\mathbb{P}(B)}
 \]
 
 \subsubsection{Dimostrazione}
-La dimostrazione segue direttamente dalla definizione di probabilità condizionata.
-
-\subsubsection{Esempio}
-Consideriamo un mazzo di carte. La probabilità di estrarre un re (evento \(A\)) sapendo che la carta estratta è nera (evento \(B\)) è:
+Supponiamo di avere due eventi \(A\) e \(B\). La probabilità dell'intersezione \(\mathbb{P}(A \cap B)\)
+rappresenta la probabilità che entrambi gli eventi si verifichino. Dividendo questa probabilità
+per \(\mathbb{P}(B)\), che è la probabilità che \(B\) si verifichi, otteniamo la probabilità di \(A\)
+all'interno del contesto in cui \(B\) è già avvenuto:
 \[
-    \mathbb{P}(A | B) = \frac{\mathbb{P}(A \cap B)}{\mathbb{P}(B)} = \frac{\frac{2}{52}}{\frac{26}{52}} = \frac{1}{13}
+    \mathbb{P}(A|B) = \frac{\mathbb{P}(A \cap B)}{\mathbb{P}(B)}
 \]
 
-\begin{tikzpicture}
-    \draw[thick] (0,0) circle (2);
-    \draw[thick] (1,0) circle (2);
-    \begin{scope}
-        \clip (0,0) circle (2);
-        \fill[blue!20] (1,0) circle (2);
-    \end{scope}
-    \node at (-1,0) {A};
-    \node at (2,0) {B};
-    \node at (0.5,0) {$A \cap B$};
-\end{tikzpicture}
+\subsubsection{Esempio}
+Consideriamo un mazzo di 52 carte. Sia \(A\) l'evento ``estrarre un re'' e \(B\) l'evento
+``estrarre una carta nera''. La probabilità di estrarre una carta nera è:
+\[
+    \mathbb{P}(B) = \frac{26}{52} = \frac{1}{2}
+\]
+La probabilità di estrarre un re nero (uno dei due re neri nel mazzo) è:
+\[
+    \mathbb{P}(A \cap B) = \frac{2}{52} = \frac{1}{26}
+\]
+Quindi, la probabilità condizionata di estrarre un re dato che sappiamo che la carta è nera è:
+\[
+    \mathbb{P}(A|B) = \frac{\mathbb{P}(A \cap B)}{\mathbb{P}(B)} =
+    \frac{\frac{1}{26}}{\frac{1}{2}} = \frac{2}{26} = \frac{1}{13}
+\]
 
+\begin{center}
+    \begin{tikzpicture}
+        \draw[thick] (0,0) circle (2);
+        \draw[thick] (1,0) circle (2);
+        \begin{scope}
+            \clip (0,0) circle (2);
+            \fill[blue!20] (1,0) circle (2);
+        \end{scope}
+        \node at (-1.5,0) {A};
+        \node at (2.5,0) {B};
+        \node at (0.5,0) {$A \cap B$};
+    \end{tikzpicture}
+\end{center}
+
+\newpage
+\subsection{Probabilità di \(A \cup B\) e incompatibilità}
+
+\subsubsection{Definizione}
+La probabilità dell'unione di due eventi \(A\) e \(B\), denotata come \(A \cup B\),
+rappresenta la probabilità che almeno uno dei due eventi si verifichi.
+
+Due eventi \(A\) e \(B\) sono detti incompatibili se non possono verificarsi
+contemporaneamente, ovvero se la loro intersezione è vuota:
+\[
+A \cap B = \emptyset
+\]
+In questo caso, la probabilità dell'unione di due eventi incompatibili è semplicemente la
+somma delle probabilità dei singoli eventi:
+\[
+\mathbb{P}(A \cup B) = \mathbb{P}(A) + \mathbb{P}(B)
+\]
+
+\subsubsection{Teorema}
+Per ogni coppia di eventi \(A\) e \(B\), la probabilità dell'unione è data da:
+\[
+\mathbb{P}(A \cup B) = \mathbb{P}(A) + \mathbb{P}(B) - \mathbb{P}(A \cap B)
+\]
+
+Questo teorema tiene conto del fatto che la probabilità dell'intersezione \(A \cap B\) viene
+sommata due volte quando sommiamo \(\mathbb{P}(A)\) e \(\mathbb{P}(B)\), quindi dobbiamo sottrarla una volta per
+ottenere la probabilità corretta.
+
+\subsubsection{Dimostrazione}
+Per dimostrare questa formula, consideriamo che l'unione di \(A\) e \(B\) può essere suddivisa
+in tre parti: la parte di \(A\) che non è in \(B\) (\(A \setminus B\)), la parte di \(B\) che
+non è in \(A\) (\(B \setminus A\)), e l'intersezione \(A \cap B\). Matematicamente, possiamo
+scrivere:
+\[
+    A \cup B = (A \setminus B) \cup (B \setminus A) \cup (A \cap B)
+\]
+Poiché le tre parti sono incompatibili, possiamo usare gli assiomi di Kolmogorov per sommare
+le loro probabilità:
+\[
+    \mathbb{P}(A \cup B) = \mathbb{P}(A \setminus B) + \mathbb{P}(B \setminus A) +
+    \mathbb{P}(A \cap B)
+\]
+Notiamo ora che:
+\[
+    \mathbb{P}(A) = \mathbb{P}(A \setminus B) + \mathbb{P}(A \cap B)
+\]
+\[
+    \mathbb{P}(B) = \mathbb{P}(B \setminus A) + \mathbb{P}(A \cap B)
+\]
+Sommando queste due equazioni, otteniamo:
+\[
+    \mathbb{P}(A) + \mathbb{P}(B) = \mathbb{P}(A \setminus B) + \mathbb{P}(A \cap B) +
+    \mathbb{P}(B \setminus A) + \mathbb{P}(A \cap B)
+\]
+\[
+    \mathbb{P}(A) + \mathbb{P}(B) = \mathbb{P}(A \cup B) + \mathbb{P}(A \cap B)
+\]
+da cui segue che:
+\[
+    \mathbb{P}(A \cup B) = \mathbb{P}(A) + \mathbb{P}(B) - \mathbb{P}(A \cap B)
+\]
+
+\begin{center}
+    \begin{tikzpicture}
+        \draw[thick] (0,0) circle (2);
+        \draw[thick] (2,0) circle (2);
+        \begin{scope}
+            \clip (0,0) circle (2);
+            \fill[blue!20] (2,0) circle (2);
+        \end{scope}
+        \node at (-1,0) {A};
+        \node at (3,0) {B};
+        \node at (1,0) {$A \cap B$};
+    \end{tikzpicture}
+\end{center}
+
+\subsubsection{Esempio di probabilità di \(A \cup B\)}
+Consideriamo il lancio di un dado. Sia \(A\) l'evento che esce un numero pari (\{2, 4, 6\}),
+e \(B\) l'evento che esce un numero maggiore di 4 (\{5, 6\}). Allora:
+\[
+    \mathbb{P}(A) = \frac{3}{6} = \frac{1}{2}, \quad \mathbb{P}(B) = \frac{2}{6} = \frac{1}{3},
+    \quad \mathbb{P}(A \cap B) = \mathbb{P}(\{6\}) = \frac{1}{6}
+\]
+Utilizzando la formula per l'unione di due eventi, otteniamo:
+\[
+    \mathbb{P}(A \cup B) = \mathbb{P}(A) + \mathbb{P}(B) - \mathbb{P}(A \cap B) =
+    \frac{1}{2} + \frac{1}{3} - \frac{1}{6} = \frac{4}{6} = \frac{2}{3}
+\]
+
+\subsubsection{Esempio di eventi incompatibili}
+Sia \(A\) l'evento che esce un numero pari (\{2, 4, 6\}) e \(B\) l'evento che esce un numero
+dispari (\{1, 3, 5\}) nel lancio di un dado. Questi due eventi sono incompatibili perché non
+possono verificarsi contemporaneamente. In questo caso, l'intersezione \(A \cap B\) è vuota,
+e la probabilità dell'unione è:
+\[
+    \mathbb{P}(A \cup B) = \mathbb{P}(A) + \mathbb{P}(B)
+\]
+Poiché:
+\[
+    \mathbb{P}(A) = \frac{3}{6} = \frac{1}{2}, \quad \mathbb{P}(B) = \frac{3}{6} = \frac{1}{2}
+\]
+Allora:
+\[
+    \mathbb{P}(A \cup B) = \frac{1}{2} + \frac{1}{2} = 1
+\]
+
+\begin{center}
+    \begin{tikzpicture}
+        \draw[thick] (0,0) circle (2);
+        \draw[thick] (4,0) circle (2);
+        \node at (-1,0) {A};
+        \node at (5,0) {B};
+    \end{tikzpicture}
+\end{center}
 
 
 
