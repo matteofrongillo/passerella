@@ -1,0 +1,113 @@
+\ProvidesPackage{frongillo}[2024/01/01 Comandi utili]
+
+\RequirePackage{url}
+\RequirePackage{graphicx}
+\RequirePackage{enumitem}
+\RequirePackage{parskip}
+\RequirePackage{chemfig}
+\RequirePackage{pdfpages}
+\RequirePackage{xcolor}
+\RequirePackage{tikz}
+\usetikzlibrary{decorations.pathreplacing}
+\RequirePackage{fancybox}
+\RequirePackage{soul}
+\RequirePackage{ulem}
+\RequirePackage{wrapfig}
+\RequirePackage{subcaption}
+\usepackage{multicol}
+\usepackage[fleqn]{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage[italian]{babel}
+\usepackage{makecell}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+\usepackage[utf8]{inputenc}
+\usepackage{lipsum}
+\usepackage{setspace}
+\usepackage{etoolbox}
+
+% === COMMANDS ===
+\geometry{
+    a4paper,
+    total={170mm, 257mm},
+    left=20mm,
+    top=20mm
+}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=blue
+}
+
+%%figbox
+
+\newcommand{\figbox}[1]{ 
+    \begin{figure*}[h!]        
+        \begin{center}            
+            \fbox{#1}        
+        \end{center}    
+    \end{figure*}
+}
+
+%%CIRCLED
+
+\newcommand*\circled[1]{
+    \tikz[baseline=(char.base)]{            
+        \node[shape=circle,draw,inner sep=1.1pt] (char) {#1};
+    }
+}
+
+%%HR
+
+\newcommand\hr{\vspace{0.1cm}\par\vspace{-.5\ht\strutbox}\noindent\hrulefill\par\vspace{0.1cm}}
+
+%%wrapfill
+
+% Fill the remaining space of a wrapfigure
+\newcommand{\wrapfill}{
+    \par
+    \ifnum \value{WF@wrappedlines} > 0
+        \addtocounter{WF@wrappedlines}{-1}%
+        \null\vspace{
+            \arabic{WF@wrappedlines}
+            \baselineskip
+        }
+        \WFclear
+    \fi
+    \phantom{}
+}
+
+% Integral command
+\ExplSyntaxOn
+\DeclareDocumentCommand{\integral}{d[] d[] d[] d[]}
+{
+    \IfNoValueTF { #4 }
+    {
+        \IfNoValueTF { #3 }
+        { \int #1\,d#2 }
+        { \text{Either\,\,2\,\,or\,\,4\,\,arguments\,\,must\,\,be\,\,passed} }
+    }
+    {
+        \int\limits\c_math_subscript_token{#1}^{#2} #3 \,d#4
+        % In Expl Syntax characters as '_' or ':' are used as letters in command names
+        % hence the \c_math_subscript_token{#1} rather than _{#1}
+    }
+}
+\ExplSyntaxOff
+
+%POETRY
+
+% Definizione del comando \poetry
+\newcommand{\poetry}[1]{%
+  \vspace{0.5\baselineskip} % Spazio prima del testo
+  \begin{center}
+    \itshape #1
+  \end{center}
+  \vspace{0.5\baselineskip} % Spazio dopo il testo
+}
+
+%%
+
