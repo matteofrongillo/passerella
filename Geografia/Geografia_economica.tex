@@ -21,7 +21,12 @@
 \usepackage{ulem}
 \usepackage{wrapfig}
 \usepackage{subcaption}
+\usepackage{svg}
+
+\usetikzlibrary{shapes.geometric, arrows}
 \usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{arrows.meta}
+
 \geometry{    
     a4paper,    
     total={170mm, 257mm},    
@@ -166,7 +171,7 @@ L'Organizzazione delle Nazioni Unite è costituita da:
 \end{itemize}
 
 \subsection{L'età dell'oro (1946-1973)}
-\subsubsection{La cortina di ferro}
+\hypertarget{cortina}{\subsubsection{La cortina di ferro}}
 A fine della Seconda guerra mondiale, l'Europa si divise in due:
 \figbox{
     \begin{tikzpicture}
@@ -2058,71 +2063,7 @@ Dal documento: \href{https://github.com/matteofrongillo/passerella/blob/main/Geo
 \end{itemize}
 
 \newpage
-\begin{figure*}[ht!]
-    \definecolor{darkgreen}{rgb}{0.0, 0.5, 0.0}
-    \centering
-    \begin{tikzpicture}
-    \begin{axis}[
-        width=\textwidth,
-        height=0.6\textwidth,
-        xlabel={Anno},
-        ylabel={Abbonamenti per 100 persone},
-        xmin=1960, xmax=2022,
-        ymin=0, ymax=140,
-        xtick={1960,1970,...,2020},
-        ytick={20,40,...,140},
-        tick label style={/pgf/number format/1000 sep=},
-        legend pos=north west,
-        ymajorgrids=true,
-        grid style=dashed,
-        line width=1pt,
-        label style={font=\small},
-        tick label style={font=\small},
-        legend style={font=\small},
-        legend cell align={left},
-        title={Adozione delle tecnologie di comunicazione per 100 persone, Svizzera}
-    ]
-    
-    \addplot[
-        color=purple,
-        mark=square,
-        ]
-        coordinates {
-        (1960, 20.475208)(1965, 25.029675)(1970, 31.466244)(1975, 38.969635)(1980, 44.927193)(1985, 50.65093)(1990, 58.743763)(1995, 63.65176)(2000, 72.90017)(2005, 69.32465)(2010, 62.739708)(2015, 49.989544)(2020, 35.466366)(2021, 33.992706)
-        };
-        \addlegendentry{Abbonamenti telefonici fissi}
-    
-    \addplot[
-        color=orange,
-        mark=triangle,
-        ]
-        coordinates {
-        (1960, 0)(1965, 0)(1970, 0)(1975, 0)(1980, 0)(1985, 1)(1990, 1.8631216)(1995, 6.353341)(2000, 64.58481)(2005, 92.00099)(2010, 123.28843)(2015, 135.75916)(2020, 127.4054)(2021, 123.433754)
-        };
-        \addlegendentry{Abbonamenti telefonici mobili}
-    
-    \addplot[
-        color=darkgreen,
-        mark=o,
-        ]
-        coordinates {
-        (2000, 0.7855129)(2005, 22.470644)(2010, 37.24565)(2015, 44.68344)(2020, 46.491966)(2021, 48.029457)
-        };
-        \addlegendentry{Abbonamenti Internet fissi}
-    
-    \addplot[
-        color=blue,
-        mark=diamond,
-        ]
-        coordinates {
-        (1990, 0.5957142)(1995, 3.5520072)(2000, 47.1)(2005, 70.1)(2010, 83.9)(2015, 87.47906)(2020, 94.34995)(2021, 95.569374)
-        };
-        \addlegendentry{Utenti Internet}
-    
-    \end{axis}
-    \end{tikzpicture}
-    \label{fig:communication-tech}
-\end{figure*} \phantom{}
+\includegraphics[width=\textwidth]{media/ict-adoption-per-100-people.pdf}
 
 \textbf{Deduzioni dall'analisi del grafico:}
 \begin{itemize}
@@ -2185,28 +2126,672 @@ Dal documento: \href{https://github.com/matteofrongillo/passerella/blob/main/Geo
 
 \newpage
 \section{Geografia urbana}
+Dal documento: \href{https://github.com/matteofrongillo/passerella/blob/main/Geografia/media/053_Materiale OLE_Pass 06e GeografiaUrbana 23-24_Pass_06e_GeografiaUrbana_23-24.pdf?raw=true}
+{La definizione di città / Urbanesimo e urbanizzazione / I modelli del ``ciclo di vita delle città''}
 
+\subsection{La definizione di città}
+\subsubsection{Importanza relativa}
+\begin{itemize}
+    \item Non è il numero di abitanti a definire una città, ma la sua importanza rispetto agli
+        insediamenti circostanti;
+    \item Un centro che offre servizi diversificati a piccoli nuclei e paesi può essere definito
+        ``città'';
+    \item Le città influenzano attività, comportamenti e decisioni anche a notevole distanza,
+        organizzando il territorio circostante.
+\end{itemize}
 
+\subsubsection{Raggio di influenza}
+\begin{itemize}
+    \item Il raggio di influenza di una città varia a seconda della funzione urbana
+        (es. economica, culturale, sanitaria);
+    \item Città globali come Londra, New York e Tokyo estendono la loro influenza a livello
+        mondiale.
+\end{itemize}
 
+\subsubsection{Caratteristiche comuni delle città}
+\begin{enumerate}
+    \item Elevata densità di popolazione (abitanti/km$^2$);
+    \item Dimensione demografica significativa;
+    \item Complessità di funzioni culturali, sociali ed economiche a cui corrispondono usi
+        del suolo specializzati;
+    \item Essere centri di potere connessi all'esercizio di queste varie funzioni;
+    \item Alto numero di servizi (popolazione, posti di lavoro, pernottamenti, ...);
+    \item Essere connesse ad altri luoghi urbani e rurali attraverso una fitta rete di
+        relazioni e di flussi di persone, beni, servizi, informazioni e denaro;
+    \item Essere luoghi di contraddizioni e conflitti, poiché offrono opportunità e speranze,
+        ma sono allo stesso tempo luoghi di povertà, privazioni, disperazione e rivolte.
+\end{enumerate}
 
+\subsubsection{Fattori di attrazione e di abbandono}
+\paragraph*{Fattori di attrrazione verso le città} \phantom{}
 
+Maggior beneficio dei servizi e dei beni, maggiori posti di lavoro, stipendio più alto, ...
 
+\paragraph*{Fattori di abbandono delle campagne} \phantom{}
 
+Il fattore principale è il land grabbing, ossia l'espropriazione di terreni per urbanizzarli.
 
+\subsection{Urbanesimo e urbanizzazione}
+\paragraph*{Inurbimento} \phantom{}
 
+L'inurbimento è il trasferimento di individui dalla campagna ai centri abitati, con mutamento
+di residenza e occupazione. È, inoltre, un fenomeno storico legato a disparità di reddito e
+opportunità tra città e campagna.
 
+\paragraph*{Urbanizzazione} \phantom{}
 
+L'urbanizzazione è la trasformazione fisica del territorio per dotarlo di caratteristiche di.
+una città, creando infrastrutture urbanistiche (strade, reti idriche, servizi pubblici, ...)
 
+\paragraph*{Urbanesimo} \phantom{}
 
+L'urbanesimo è un periodo, un contesto storico o un lasso di tempo che raggruppa una grande
+urbanizzazione e una grande concentrazione crescente di abitanti nei centri urbani.
+È rilevante storicamente, es. Roma imperiale, e modernamente è legato alla produzione
+capitalistica e all'industrializzazione.
 
+\subsection{Modelli urbani}
+\paragraph*{Metropoli} \phantom{}
 
+Città di grandi dimensioni il cui agglomerato urbano supera 1 milione di abitanti, centro
+economico e culturale e nodo di comunicazioni internazionali.
 
+Metropolizzazione $\neq$ Urbanizzazione
 
+\paragraph*{Megacity} \phantom{}
 
+Agglomerati urbani con più di 10 milioni di abitanti.
 
+\paragraph*{Megalopoli} \phantom{}
 
+Insieme di aree urbane e metropolitane prossime e collegate tra loro, tra le quali il confine
+è difficilmente tracciabile.
 
+\hypertarget{città globale}{\paragraph*{Città globale} \phantom{}}
 
+Città molto dinamiche che svolgono un ruolo centrale nelle reti dell'economia globale,
+indipendentemente dalla situazione economica e politica dello Stato a cui appartengono.
 
+Metropoli, Megalopoli o Megacity $\neq$ Città globale
+
+\subsection{Ciclo di vita delle città (Van den Berg, 1982)}
+\begin{enumerate}
+    \item Urbanizzazione:
+        \begin{itemize}
+            \item Formazione dell'area metropolitana con attrazione di popolazione e attività;
+            \item Scopo e fattori: immagine della città, sovrappopolazione delle campagne, aumento
+                produttività agricola, economie di scala;
+        \end{itemize}
+    \item Suburbanizzazione:
+        \begin{itemize}
+            \item Crescita dei Comuni limitrofi rispetto al nucleo centrale;
+            \item Aumento di nuovi residenti e rilocazione dell'apparato produttivo;
+        \end{itemize}
+    \item Disurbanizzazione (periurbanizzazione):
+        \begin{itemize}
+            \item Urbanizzazione di aree rurali per scopi residenziali;
+            \item Decrescita demografica del nucleo centrale dei Comuni circostanti;
+            \item Formazione di città diffuse con bassa densità abitativa;
+        \end{itemize}
+    \item Riurbanizzazione:
+        \begin{itemize}
+            \item Ritorno della popolazione al centro città grazie a politiche di riqualifica;
+            \item Recupero leggero di abitanti e attività nel nucleo centrale.
+        \end{itemize}
+\end{enumerate}
+
+\subsection{Attualizzazione 2020}
+Dal documento: \href{https://github.com/matteofrongillo/passerella/blob/main/Geografia/media/052_Materiale OLE_BFS SpazioCarattereUrbano Attualizzazione-2020 8pp_BFS_SpazioCaratter.pdf?raw=true}
+{Attualizzazione 2020 dei livelli geografici non istituzionali}
+
+\subsection{Introduzione}
+\begin{itemize}
+    \item Analisi statistiche:
+    \begin{itemize}
+        \item Mettono in luce nessi o strutture regionali.
+        \item Importanza di osservare variabili a livello nazionale e negli agglomerati.
+    \end{itemize}
+    \item Rapporto 2014:
+    \begin{itemize}
+        \item Nuova definizione di spazio a carattere urbano basata su criteri morfologici e
+            funzionali.
+        \item Utilizzo di un algoritmo documentato con criteri uniformi.
+    \end{itemize}
+    \item Tipologie 2017:
+    \begin{itemize}
+        \item Revisione delle tipologie dei Comuni e urbano-rurale.
+        \item Strumenti moderni per rappresentare realisticamente le caratteristiche
+            territoriali.
+    \end{itemize}
+    \item Attualizzazione ogni 10 anni:
+    \begin{itemize}
+        \item Basata sui dati più recenti per riflettere l'evoluzione del territorio.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Metodo di calcolo}
+\begin{itemize}
+    \item Identificazione delle zone nucleo:
+    \begin{itemize}
+        \item Basata su criteri di densità e valori soglia.
+        \item Utilizzo di una griglia di 300x300 metri.
+        \item Variabile AIP (abitanti, impieghi, pernottamenti alberghieri).
+    \end{itemize}
+    \item Comuni nucleo dell’agglomerato:
+    \begin{itemize}
+        \item Più del 50\% degli AIP in una zona nucleo.
+        \item Zona nucleo con almeno 15.000 AIP.
+        \item Suddivisi in città nucleo, comuni nucleo principali e comuni nucleo secondari.
+    \end{itemize}
+    \item Comuni della cintura dell’agglomerato:
+    \begin{itemize}
+        \item Funzionalmente legati al Comune nucleo.
+        \item Più di un terzo delle persone occupate lavorano nei Comuni nucleo.
+    \end{itemize}
+    \item Comuni pluriorientati:
+    \begin{itemize}
+        \item Più di un terzo delle persone occupate lavorano in Comuni nucleo di almeno due
+            agglomerati diversi.
+    \end{itemize}
+    \item Comuni nucleo al di fuori dell’agglomerato:
+    \begin{itemize}
+        \item Densità sufficiente per essere considerati nucleo.
+        \item Almeno 12.000 AIP nella zona nucleo e 14.000 sull’intero territorio.
+    \end{itemize}
+    \item Agglomerato:
+    \begin{itemize}
+        \item Gruppo di Comuni con più di 20.000 abitanti.
+        \item Composto da un centro densamente popolato e una cintura dell’agglomerato.
+    \end{itemize}
+    \item Città statistica:
+    \begin{itemize}
+        \item Comune con zona nucleo di almeno 12.000 AIP e 14.000 AIP all’interno dei confini
+            comunali.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Risultati}
+\begin{itemize}
+    \item Distribuzione della popolazione e degli impieghi:
+    \begin{itemize}
+        \item Comuni nucleo dell’agglomerato: 13\% del territorio, 61\% della popolazione,
+            72\% degli impieghi.
+        \item Cinture degli agglomerati: 17\% del territorio, 14\% della popolazione.
+        \item 74\% della popolazione vive in agglomerati, 4\% in Comuni nucleo al di fuori
+            degli agglomerati.
+        \item Regioni rurali senza carattere urbano: 57\% del territorio, 14\% della
+            popolazione.
+    \end{itemize}
+    \item Agglomerati transfrontalieri:
+    \begin{itemize}
+        \item Undici agglomerati transfrontalieri, cinque con maggioranza di popolazione
+            all’estero.
+    \end{itemize}
+    \item Classificazione dei Comuni:
+    \begin{itemize}
+        \item Comune nucleo dell’agglomerato.
+        \item Comune della cintura dell’agglomerato.
+        \item Comune pluriorientato.
+        \item Comune nucleo al di fuori dell’agglomerato.
+        \item Comune rurale senza carattere urbano.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Risposte alle domande}
+\begin{enumerate}
+    \item Quali sono le caratteristiche necessarie, secondo l’UFS, per considerare uno spazio
+        come “urbano”?
+        \begin{itemize}
+            \item Zone nucleo urbanizzate contigue con densità elevata di popolazione e
+                impieghi.
+            \item Comuni con più del 50\% degli AIP in una zona nucleo.
+            \item Zone nucleo con almeno 15.000 AIP.
+        \end{itemize}
+    \item Che cosa distingue un comune nucleo da un comune della cintura di un agglomerato
+        secondo l’UFS?
+        \begin{itemize}
+            \item Comune nucleo:
+                \begin{itemize}
+                    \item Situato in una zona nucleo con alta densità di popolazione e impieghi.
+                    \item Almeno 15.000 AIP.
+                \end{itemize}
+            \item Comune della cintura:
+                \begin{itemize}
+                    \item Funzionalmente legato al comune nucleo.
+                    \item Più di un terzo delle persone occupate lavorano nei comuni nucleo.
+                \end{itemize}
+        \end{itemize}
+\end{enumerate}
+
+\subsection{I protagonisti del sistema mondo - una panoramica}
+I protagonisti del sistema mondo:
+\begin{itemize}
+    \item ONU (Organizzazione delle Nazioni Unite): È un'organizzazione internazionale fondata
+        nel 1945 per promuovere la pace, la sicurezza e la cooperazione internazionale.
+    \item UNESCO (Organizzazione delle Nazioni Unite per l'Educazione, la Scienza e la Cultura):
+        Si occupa di promuovere l'educazione, il patrimonio culturale e la collaborazione
+        scientifica a livello internazionale.
+    \item UE (Unione Europea): È un'unione politica ed economica di 27 stati membri che sono
+        situati principalmente in Europa.
+    \item NATO (Organizzazione del Trattato del Nord Atlantico): Un'alleanza militare
+        transatlantica composta da 30 paesi, creata per la difesa collettiva contro la minaccia
+        di un attacco esterno.
+    \item G7 (Gruppo dei Sette): Un forum informale di sette grandi economie avanzate del mondo,
+        che discutono e cooperano su questioni economiche globali.
+    \item WEF (World Economic Forum): Organizzazione internazionale per la cooperazione
+        pubblico-privato che si incontra annualmente a Davos, in Svizzera, per discutere le
+        principali questioni economiche globali.
+    \item WTO (World Trade Organization): Organizzazione internazionale che si occupa delle
+        regole del commercio tra le nazioni con l'obiettivo di assicurare che i flussi
+        commerciali procedano il più possibile agevolmente, prevedibilmente e liberamente
+        possibile.
+    \item OPEC (Organizzazione dei Paesi Esportatori di Petrolio): Gruppo di 13 paesi che
+        esportano petrolio e che coordinano e unificano le politiche petrolifere dei paesi
+        membri.
+    \item G20 (Gruppo dei Venti): Forum internazionale che riunisce le 19 economie più grandi
+        del mondo più l'Unione Europea. Si occupa di politica economica e finanziaria.
+    \item BRICS (Brasile, Russia, India, Cina e Sudafrica): Gruppo di cinque grandi economie
+        emergenti che cercano di promuovere la pace, la sicurezza, lo sviluppo e la
+        cooperazione.
+    \item Amnesty International: Organizzazione non governativa che si occupa di diritti umani
+        con l'obiettivo di fare ricerca e azione per prevenire e porre fine a gravi abusi dei
+        diritti civili.
+    \item FMI (Fondo Monetario Internazionale): Organizzazione internazionale che lavora per
+        stabilizzare il sistema monetario internazionale e che fornisce prestiti e assistenza
+        finanziaria ai paesi membri.
+    \item WWF (World Wide Fund for Nature): Organizzazione non governativa internazionale che
+        si occupa della conservazione, ricerca e ripristino dell'ambiente naturale.
+\end{itemize}
+
+\newpage
+\subsection{Forum esclusivi e organizzazioni internazionali}
+Dal documento: \href{https://github.com/matteofrongillo/passerella/blob/main/Geografia/media/061_Materiale OLE_Pass 06f OrganizzazioniEForum 23-24 schede_Pass_06f_OrganizzazioniEFo.pdf?raw=true}
+{Forum esclusivi e organizzazioni internazionali}
+
+\subsubsection{Definizione di Organizzazione Internazionale Intergovernativa (OIG)}
+È un'associazione di Stati creata e basata su un trattato. L'organizzazione ha personalità
+giuridica distinta dagli Stati membri e funziona grazie a organi comuni previsti dagli statuti.
+Inoltre funge da esempio di cooperazione tra Stati per scopi comuni.
+
+\subsubsection{Evoluzione delle Organizzazioni Internazionali}
+\begin{itemize}
+    \item Nascono nel XIX secolo per facilitare il commercio e la navigazione;
+    \item Il Congresso di Vienna del 1815 crea la prima commissione fluviare internazionale;
+    \item Le guerre mondiali spingono la creazione di istituti per la pace e per la risoluzione
+        dei conflitti, come la Società delle Nazioni nel 1919.
+\end{itemize}
+
+\subsubsection{Distinzioni legali}
+\begin{itemize}
+    \item Le OIG devono essere distinte dai semplici raggruppamenti di stati, come il G7 e il
+        G8, che sono fori informali di discussione;
+    \item Devono anche essere distinte da trattati, che non stabiliscono un'organizzazione
+        internazionale (es. NAFTA, GATT).
+\end{itemize}
+
+\subsubsection{Forum internazionali}
+\begin{itemize}
+    \item Incontri periodici delle principali esperienze in determinati settori (es. Forum
+        economico mondiale a Davos);
+    \item Caratteri dall'analisi generica delle questioni importanti e dall'adozione di
+        documenti di indirizzo, raramente decisioni vincolanti.
+\end{itemize}
+
+\subsubsection{Globalizzazione e nuove regionalizzazioni}
+\begin{itemize}
+    \item Rafforzamento delle organizzazioni che raggruppano diversi Stati;
+    \item Formazione di nuove regionalizzazioni dopo la Seconda guerra mondiale e la Guerra
+        fredda (es. Comunità economica europea, 1957);
+    \item Raggruppamenti di Stati con scopi differenziati (zone di libero scambio, mercati
+        comuni, unioni economiche).
+\end{itemize}
+
+\subsubsection{Metodo di classificazione per le organizzazioni internazionali}
+\begin{enumerate}
+    \item Criterio funzionale:
+        \begin{itemize}
+            \item Organizzazioni che facilitano il commercio e l'economia tra Stati membri
+                (es. WTO, NAFTA);
+            \item Organizzazioni che mirano a mantenere la pace e la sicurezza internazionale
+                (es. NATO, ONU);
+            \item Organizzazioni che promuovono la collaborazione in specifici settori tecnici
+                o scientifici;
+        \end{itemize}
+    \item Criterio spaziale:
+        \begin{itemize}
+            \item Globale: Organizzazioni con membri da tutto il mondo e scopi globali
+                (es. ONU, FMI);
+            \item Regionali: Organizzazioni con membri di una specifica regione geografica
+                (es. UE, MERCOSUR);
+        \end{itemize}
+    \item Natura giuridica (composizione):
+        \begin{itemize}
+            \item Organizzazioni Intergovernative (OIG): Create da trattati tra Stati, con
+                personalità giuridica propria (es. ONU, NATO);
+            \item Organizzazioni Non Governative (ONG): Create da persone private o enti non
+                statali per scopi vari (es. Amnesty International, Greenpeace).
+            \item Forums di discussione informali: Non create da un atto istitutivo formale,
+                esistenti come piattaforme di dialogo (es. G7, G20);
+        \end{itemize}
+\end{enumerate}
+
+\subsubsection{Forum e Organizzazioni in breve}
+\textbf{Statuto giuridico:} Atto formale (es. trattato) che conferisce personalità giuridica.
+
+Le organizzazioni con personalità giuridica hanno una struttura legale definita e operano
+secondo le regole e statuti ufficiali. Al contrario, le organizzazioni che non sono costituite
+tramite un atto formale non hanno una personalità giuridica riconosciuta e spesso si trattano
+di forums informali di discussione e cooperazione tra stati senza una struttura legale.
+\vspace*{.5cm}
+
+\begin{figure*}[ht!]
+    \begin{center}
+        \begin{tikzpicture}[node distance=3cm,
+            every node/.style={fill=white, font=\sffamily}, align=center]
+
+            \tikzset{%
+            >={Latex[width=2mm,length=2mm]},
+            % Specifications for style of nodes:
+                        base/.style = {rectangle, draw=black,
+                                        minimum width=3cm, minimum height=1cm,
+                                        text centered, font=\sffamily},
+            decision/.style = {diamond, draw, text centered, inner sep=1pt, aspect=2, font=\sffamily},
+            block/.style    = {rectangle, draw, text centered, minimum height=2em, font=\sffamily},
+            line/.style     = {draw, -Latex},
+            }
+
+          % Specification of nodes (position, etc.)
+          \node [decision] (statuto) {statuto giuridico};
+          \node [block, right of=statuto, node distance=4cm] (forum) {forum informale};
+          \node [decision, below of=statuto] (composizione) {composizione};
+          \node [block, below left of=composizione, node distance=3cm and 2cm] (oig) {OIG};
+          \node [block, below right of=composizione, node distance=3cm and 2cm] (ong) {ONG};
+        
+          % Specification of lines between nodes specified above
+          % with additional nodes for description 
+          \draw[line] (statuto) -- node[midway, above] {no} (forum);
+          \draw[line] (statuto) -- node[midway, left] {sì} (composizione);
+          \draw[line] (composizione) -- node[midway, left] {stati} (oig);
+          \draw[line] (composizione) -- node[midway, right] {non stati} (ong);
+        \end{tikzpicture}
+    \end{center}
+\end{figure*}
+\vspace*{.5cm}
+
+\textbf{Statuto giuridico sì: }
+\begin{tabular}{|l|l|l|} 
+    \hline & globale & regionale \\
+    \hline economico & FMI, ONU & UE, MERCOSUR \\
+    \hline commerciale & WTO, ONU & UE \\
+    \hline sociale / & UNESCO & UE \\ ambientale & & \\
+    \hline militare & ONU & NATO \\
+    \hline
+\end{tabular}
+
+\textbf{Statuto giuridico no: }
+\begin{tabular}{|l|}
+    \hline forum informale \\
+    \hline G7 \\ G8 \\ G20 \\ WEF \\ BRICS+ \\ OPEC (cartello) \\
+    \hline
+\end{tabular} \\
+\phantom{}
+
+\subsection{Organizzazione delle Nazioni Unite (ONU)}
+\setlength{\intextsep}{0pt}%
+\begin{wrapfigure}{l}{.25\textwidth}
+    \begin{tikzpicture}
+        \tikzstyle{box} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=white, text width=3.5cm, align=center]
+        \tikzstyle{arrow} = [thick,->,>=stealth]
+    
+        % Nodes
+        \node (onu) [box, fill=purple!30] {\large \textbf{ONU}};
+        \node (assemblea) [box, below of=onu, node distance=1.7cm] {\textbf{Assemblea Generale}\\193 paesi membri\\+2 paesi osservatori};
+        \node (segreteria) [box, below of=assemblea, node distance=1.9cm] {\textbf{Segretariato Generale}\\un segretario};
+        \node (sicurezza) [box, below of=segreteria, node distance=1.7cm] {\textbf{Consiglio di Sicurezza}\\15 paesi membri};
+        \node (giustizia) [box, below of=sicurezza, node distance=2.1cm] {Corte di Giustizia\\Consiglio Economico\\e Sociale\\Consiglio per i Diritti Umani};
+    
+        % Arrows
+        \draw [arrow] (onu) -- (assemblea);
+        \draw [arrow] (assemblea) -- (segreteria);
+        \draw [arrow] (segreteria) -- (sicurezza);
+        \draw [arrow] (sicurezza) -- (giustizia);
+    \end{tikzpicture}
+    \vspace{-2.4cm}
+\end{wrapfigure}
+
+L'ONU nasce nel 1920 come ``Società delle Nazioni'', con lo scopo quello di accrescere il
+benessere e la qualità della vita degli esseri umani.
+La Società delle Nazioni cesserà la sua attività nel 1946, a seguito della Seconda guerra
+mondiale, e verrà sostituita dall'ONU, attiva tutt'oggi, aggiungendo però ai suoi scopi anche
+il garantire la pace e la sicurezza nel mondo, oltre a promuovere lo sviluppo sostenibile.
+
+\textbf{Obiettivi:} Garantire pace e sicurezza nel mondo e promuovere lo sviluppo
+    sostenibile.
+
+\textbf{Membri:} 193 paesi + 2 osservatori (Vaticano e Palestina).
+
+\textbf{Consiglio di sicurezza:} 15 paesi membri, dei quali 5 permanenti e 10 in rotazione.
+
+\textbf{Ruolo della Svizzera:} CH è un membro dell'ONU dal 2002.\\
+    Dal 2023 al 2024 occupa un seggio non permanente nel Consiglio di sicurezza.
+
+\textbf{Diritto di veto:} Diritto di opposizione a una legge alla decisione finale.
+\wrapfill
+
+\begin{figure*}
+    \begin{center}
+        \includegraphics[width=.75\textwidth]{media/ONU.png}
+    \end{center}
+    \caption*{Ruoli del Consiglio di sicurezza dell'ONU}
+\end{figure*}
+
+\subsection{Unione Europea}
+\subsubsection{La nascita e l'evoluzione dell'UE}
+\begin{itemize}
+    \item 1952 - Comunità europea del carbone e dell'acciaio (CECA);
+    \item 1958 - Trattati di Roma:
+        \begin{itemize}
+            \item Comunità economica europea (CEE);
+            \item Comunità europea dell'energia atomica (EURATOM);
+        \end{itemize}
+    \item 1987 - Atto unico europeo: nasce il Mercato unico;
+    \item 1993 - Trattato sull'Unione europea: Trattato del Maastricht.
+\end{itemize}
+
+\subsubsection{Paesi fondatori}
+I paesi che hanno fondato la CECA, di conseguenza l'Unione europea sono:\\
+Germania, BeNeLux (Belgio + Paesi Bassi + Lussemburgo), Francia e Italia.
+
+\subsubsection{Trattato di Maastricht e conseguenze}
+\begin{itemize}
+    \item Unione di CECA, CEE e EURATOM in UE
+    \item Ha introdotto l'unione economica e monetaria, con l'euro come moneta unica dal 2002;
+    \item Unione politica tra i paesi aderenti;
+    \item Ha creato la Banca Centrale Europea (BCE);
+    \item L'UE si è ampliata da 6 a 28 membri, poi ridotti a 27 dopo la Brexit;
+    \item L'UE rappresenta circa il 17\% del PIL mondiale;
+    \item È la seconda potenza economica dopo gli USA, ma superiore alla Cina in termini di PIL.
+\end{itemize}
+
+\subsubsection{Politica agricola comune (1962)}
+\begin{itemize}
+    \item Produzione agricola notevolmente aumentata;
+    \item Autosufficienza alimentare per i beni largo consumo (grano, patate, zucchero, ortaggi,
+        carne, latte).
+\end{itemize}
+
+\subsubsection{Fondo europeo di sviluppo regionale (FESR)}
+
+\setlength{\intextsep}{0pt}%
+\begin{wrapfigure}{l}{.4\textwidth}
+    \includegraphics[width=.4\textwidth]{media/FESR.png}
+    \vspace{-2.4cm}
+\end{wrapfigure}
+
+\textbf{Fondo europeo di sviluppo regionale:}
+\begin{itemize}
+    \item Garantisce finanziamenti e aiuti;
+    \item Serve a ridurre le differenze di sviluppo tra gli Stati dell'UE;
+    \item Serve a migliorare le capacità di competere delle aziende europee a livello
+        economico mondiale.
+\end{itemize}
+\wrapfill
+
+\subsubsection{Centro del commercio}
+
+\setlength{\intextsep}{0pt}%
+\begin{wrapfigure}{l}{.5\textwidth}
+    \includegraphics[width=.5\textwidth]{media/centro di commercio.png}
+    \vspace{-2.1cm}
+\end{wrapfigure}
+
+\textbf{Centro del commercio}
+
+Il centro del commercio si espande principalmente nei pressi delle
+\hyperlink{città globale}{\color{blue} città globali}.
+
+I paesi dell'est Europa sono ancora sottosviluppati. La causa principale della loro difficoltà
+a svilupparsi è stata la \hyperlink{cortina}{\color{blue} Cortina di ferro}.
+\wrapfill
+
+\newpage
+\subsubsection{Svizzera e Unione Europea}
+\begin{itemize}
+    \item 1999 - Accordi bilaterali I:
+        \begin{enumerate}
+            \item Libera circolazione delle persone (ALC);
+            \item Ostacoli tecnici al commercio;
+            \item Appalti pubblici;
+            \item Agricoltura;
+            \item Ricerca;
+            \item Trasporto aereo;
+            \item Trasporti terrestri.
+        \end{enumerate}
+        \textbf{Significato}: accesso più semplice ai mercati del lavoro, delle merci e dei
+        servizi.
+    \item 2004 - Accordi bilaterali II:
+        \begin{enumerate}
+            \item Schengen/Dublino;
+            \item Fiscalità del risparmio;
+            \item Lotta contro la frode;
+            \item Prodotti agricoli trasformati;
+            \item MEDIA (Europa creativa);
+            \item Ambiente;
+            \item Statistica;
+            \item Pensioni;
+            \item Instrizuone, formazione professionale, gioventù
+        \end{enumerate}
+        \textbf{Significato:} collaborazione approfondita in ulteriori settori, miglioramento
+        delle condizioni quadro economiche.
+    \end{itemize}
+
+\subsubsection{Area Schengen}
+
+\setlength{\intextsep}{0pt}%
+\begin{wrapfigure}{l}{.6\textwidth}
+    \includegraphics[width=.6\textwidth]{media/schengen.png}
+    \vspace{-2.1cm}
+\end{wrapfigure}
+
+\textbf{Area Schengen:}
+\begin{itemize}
+    \item Libera circolazione nei paesi membri dell'Area;
+    \item Facilità di richiesta d'asilo in più paesi per i richiedenti.
+\end{itemize}
+
+\textbf{Accordi di Dublino:}
+
+La richiesta d'asilo viene gestita dal primo paese al quale il richiedente ha depositato la
+richiesta.
+\wrapfill
+
+\newpage
+\subsubsection{Futuro dell'UE}
+\begin{itemize}
+    \item Successi:
+        \begin{itemize}
+            \item Stati che collaborano e vivono in pace;
+            \item Risultati in campo economico;
+        \end{itemize}
+    \item Difficoltà e divisioni:
+        \begin{itemize}
+            \item Ruolo politico a livello mondiale;
+            \item Movimenti indipendentisti;
+            \item Gestione di problemi comuni (profughi);
+            \item Crisi economica e finanziaria e tagli;
+            \item Brexit
+        \end{itemize}
+\end{itemize}
+
+\subsection{Forme alternative di globalizzazione}
+Dal documento:\\ \href{https://github.com/matteofrongillo/passerella/blob/main/Geografia/media/080_Materiale OLE_Pass 06h ProspettiveFuture 23-24_Pass_06h_ProspettiveFuture_23-24.pdf?raw=true}
+{La globalizzazione e i suoi oppositori / L'Occidente e l'ascesa globale del resto del mondo /
+Una nuova globalizzazione tra paesi amici}
+
+\subsubsection{La globalizzazione e i suoi oppositori - \textit{J. Stiglitz}}
+\begin{itemize}
+    \item Maggiore integrazione economica globale, riduzione dei costi delle merci;
+    \item Malcontento nei paesi in via di sviluppo e nei ceti medi e bassi dei paesi avanzati;
+    \item Trump critica gli accordi commerciali, ritenuti ingiunsti per gli Stati Uniti;
+    \item Regole scritte dai paesi avanzati a discapito dei più deboli;
+    \item Gli accordi favoriscono le multinazionali, penalizando i lavoratori;
+    \item La globalizzazione può giovare a tutti se ben gestita, serve un sistema più equo.
+\end{itemize}
+
+\subsubsection{L'Occidente e l'ascesa globale del resto del mondo - \textit{G. Sabattini}}
+\begin{itemize}
+    \item Supremazia occidentale per due secoli, valori occidentali prevalenti dopo la Guerra
+        fredda;
+    \item Declino della supremazia occidentale, crescita di potenze emergenti;
+    \item Futuro multipolare e politicamente plurale, diverse potenze coesisteranno;
+    \item Transizione pacifica richiede collaborazione e nuove regole per le relazioni
+        internazionali;
+    \item Accettazione della diverstià politica per una governance globale inclusiva.
+\end{itemize}
+
+\subsubsection{Una nuova globalizzazione tra paesi amici - \textit{F. Rampini}}
+\begin{itemize}
+    \item Concetto di ``Friend-shoring'': spostamento delle fabbriche verso paesi amici e
+        alleati per ridurre la dipendenza da paesi considerati ostili (es. Russia e Cina);
+    \item Pandemia e sanzioni evidenziano i rischi delle catene produttive globali;
+    \item Delocalizzazioni hanno causato perdita di posti di lavoro e inflazione;
+    \item Riportare produzioni nei paesi democratici può creare più posti di lavoro;
+    \item Nuova geopolitica della globalizzazione complessa e costosa, ma potenzialmente
+        benefica per la sicurezza economica.
+\end{itemize}
+
+\newpage
+\subsubsection{Forme alternative di globalizzazione in breve}
+\phantom{}\\
+\begin{table*}[ht!]
+    \centering
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabular}{| m{2cm} | m{4cm} | m{4cm} | m{4cm} |}
+    \hline
+    \textbf{} & \textbf{Principali critiche all’attuale realtà globale} & \textbf{Altre caratteristiche (neutre o positive) attribuite al mondo globalizzato attuale} & \textbf{Fondamentali cambiamenti auspicabili e possibili per una globalizzazione più soddisfacente} \\
+    \hline
+    \textbf{Joseph \ Stiglitz \ (2018)} & 
+    - Malcontento nei paesi in via di sviluppo e nei ceti medi e bassi dei paesi avanzati. \newline
+    - Accordi commerciali favorevoli alle multinazionali, non ai lavoratori. & 
+    - Maggiore integrazione economica. \newline
+    - Riduzione dei costi delle merci. & 
+    - Gestire meglio la globalizzazione per renderla più equa ed efficiente. \\
+    \hline
+    \textbf{Charles Kupchan \ (2017)} & 
+    - Declino dell'egemonia occidentale. \newline
+    - Futuro multipolare con potenze emergenti che sfidano l'Occidente. & 
+    - Varietà di concezioni politiche ed economiche nel futuro multipolare. & 
+    - Collaborazione tra l'Occidente e le potenze emergenti. \newline
+    - Accettazione della diversità politica. \\
+    \hline
+    \textbf{Federico Rampini \ (2022)} & 
+    - Dipendenza economica da paesi ostili. \newline
+    - Delocalizzazioni che causano perdita di posti di lavoro e inflazione. & 
+    - Potenziale creazione di nuovi posti di lavoro nei paesi democratici. & 
+    - "Friend-shoring" per ridurre la dipendenza da paesi ostili. \newline
+    - Nuova geopolitica della globalizzazione più sicura ma complessa. \\
+    \hline
+    \end{tabular}
+\end{table*}
 
 \end{document}
