@@ -1,0 +1,950 @@
+\documentclass{article}
+
+\usepackage[fleqn]{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage[italian]{babel}
+\usepackage{enumitem}
+\usepackage{parskip}
+\usepackage{chemfig}
+\usepackage{pdfpages}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{fancybox}
+\usepackage{makecell}
+\usepackage{soul}
+\usepackage{ulem}
+\usepackage{wrapfig}
+\usepackage{subcaption}
+\usepackage{svg}
+
+\usetikzlibrary{shapes.geometric, arrows}
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{positioning}
+
+\geometry{    
+    a4paper,    
+    total={170mm, 257mm},    
+    left=20mm,    
+    top=20mm
+}
+\hypersetup{    
+    colorlinks=true,    
+    linkcolor=black,    
+    urlcolor=blue,    
+    pdftitle={Storia}
+}
+
+% === COMMANDS ===
+\newcommand{\figbox}[1]{ 
+    \begin{figure*}[h!]        
+        \begin{center}            
+            \fbox{#1}        
+        \end{center}    
+    \end{figure*}
+}
+
+\newcommand*\circled[1]{
+    \tikz[baseline=(char.base)]{            
+        \node[shape=circle,draw,inner sep=1.1pt] (char) {#1};
+    }
+}
+
+\newcommand\hr{\vspace{0.1cm}\par\vspace{-.5\ht\strutbox}\noindent\hrulefill\par\vspace{0.1cm}}
+
+% Fill the remaining space of a wrapfigure
+\newcommand{\wrapfill}{
+    \par
+    \ifnum \value{WF@wrappedlines} > 0
+        \addtocounter{WF@wrappedlines}{-1}%
+        \null\vspace{
+            \arabic{WF@wrappedlines}
+            \baselineskip
+        }
+        \WFclear
+    \fi
+    \phantom{}
+}
+
+% === TEXT ===
+
+\title{\textbf{Storia\\Passerella 23-24}}
+\author{Matteo Frongillo}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\newpage
+\part{Restaurazione e moti rivoluzionari}
+
+\section{Restaurazione (1815-1848)}
+La Restaurazione è il periodo storico dopo la sconfitta di Napoleone, il quale inizia nel 1815
+con il Congresso di Vienna e termina con le rivoluzioni del 1848.
+
+\subsection{Principi della Restaurazione}
+\begin{itemize}
+    \item Legittimità tradizionale, ossia il ritorno delle dinastie legittime al potere;
+    \item Principio monarchico, che riafferma il potere monarchico.
+\end{itemize}
+
+\subsection{Storia della Restaurazione}
+\begin{itemize}
+    \item La restaurazione mirava a ristabilire l'ordine pre-rivoluzionario, trasformando i
+        cittadini in sudditi obbedienti;
+    \item Volontà dei popoli:
+        \begin{itemize}
+            \item Periodo caratterizzato da movimenti nazionalisti e liberali che si opponevano
+                alla restaurazione;
+            \item Richiesta di maggiori diritti civili e nazionali;
+        \end{itemize}
+    \item Santa Alleanza:
+        \begin{itemize}
+            \item Coalizione formata da Austria, Prussia e Russia (successivamente anche la
+                Francia)
+            \item Obiettivo comune di mantenere lo status quo e prevenire rivoluzioni;
+            \item L'Inghilterra non era membro ufficiale della Santa Alleanza, ma collaborava
+                per mantenere l'equilibrio di potere;
+        \end{itemize}
+    \item Movimenti politici:
+        \begin{itemize}
+            \item \textbf{Movimento liberale:} promuoveva le libertà individuali, costituzioni
+                e governi rappresentativi;
+            \item \textbf{Movimento conservatore:} sosteneva la conservazione delle monarchie
+                e delle strutture sociali tradizionali.
+        \end{itemize}
+\end{itemize}
+
+\section{Liberalismo}
+\subsection{Origine del liberalismo}
+\begin{itemize}
+    \item Si forma in età moderna come dottrina politica contro l'assolutismo monarchico;
+    \item Si oppone al giogo delle autorità.
+\end{itemize}
+
+\subsection{``Libertà da''}
+\begin{enumerate}
+    \item Più lo stato è limitato, più l'uomo è libero di agire (in contrapposizione con
+        l'assolutismo);
+    \item Libertà da uno Stato oppressore (contro l'assolutismo):
+        \begin{itemize}
+            \item Liberali conservatori o moderati;
+            \item Libertà negativa, che si riferisce alla protezione dell'individuo
+                dall'interferenza o coercizione dello Stato o di altri individui;
+            \item Indotta dalla richiesta di un minor intervento dello Stato nella vita delle
+                persone;
+            \item Libertà moderata con libertà di voto solo per possidenti;
+            \item Realizzazione graduale del liberalismo, con la possibilità di scendere a 
+                compromessi con l'Antico Regime; 
+        \end{itemize}
+    \item Aspirazioni della ricca borghesia;
+    \item Divisione dei poteri (Monarchia costituzionale):
+        \begin{itemize}
+            \item Parlamento eletto a suffragio censitario;
+            \item Sovranità nazionale;
+            \item Potere dello Stato limitato;
+            \item Stato favorente della libertà d'azione.
+        \end{itemize}
+\end{enumerate}
+
+\subsection{``Libertà di''}
+\begin{enumerate}
+    \item L'uomo è tanto più libero se può esercitare le proprie libertà, se non è limitato o
+        escluso dalla povertà o dalla malattia;
+    \item Chi non è limitato ha i mezzi per poter godere delle proprie libertà;
+    \item Trasformazione rapida della società con cambiamenti decisi e con la volontà di
+        stravolgere la società dell'Antico Regime;
+    \item Volontà di coinvolgere tutta la popolazione (democratici) tramite referendum e
+        suffragio universale; 
+    \item Libertà di parola, riunione e associazione:
+        \begin{itemize}
+            \item Partecipare, ossia essere inclusi nelle decisioni politiche e civili;
+            \item Diritti individuali:
+                \begin{itemize}
+                    \item Libertà di parola, riunione, associazione;
+                    \item Libertà di stampa, culto, attività economica;
+                \end{itemize}
+        \end{itemize}
+    \item Ideologie associate:
+        \begin{itemize}
+            \item Liberali conservatori/moderati: sostengono un equilibrio tra libertà e ordine;
+            \item Liberali radicali/democratici: promuovono cambiamenti più profondi e
+                partecipazione diretta.
+        \end{itemize}
+    \item Libera circolazione delle merci:
+        \begin{itemize}
+            \item ``Laissez-faire, Laissez-passer'': transizioni libere tra gruppi privati;
+            \item Nessun intervento dello Stato nell'economia.
+        \end{itemize}
+\end{enumerate}
+
+\subsection{Liberalismo in breve}
+\begin{figure*}[ht!]
+    \vspace*{.5cm}
+    \begin{center}
+        \begin{tikzpicture}
+            % Draw the central ellipse
+            \draw[thick] (0,0) ellipse (3 and 1.5);
+            
+            % orizzontali
+            \draw[->, thick] (-6,0) -- (-3,0);
+            \draw[->, thick] (3,0) -- (6,0);
+        
+            %oblique
+            \draw[->, thick] (-3,0.7) -- (-2.3,1.3);
+            \draw[->, thick] (-3,-0.7) -- (-2.3,-1.3);
+            \draw[->, thick] (2.3,1.3) -- (3,0.7);
+            \draw[->, thick] (2.3,-1.3) -- (3,-0.7);
+        
+            %verticali
+            \draw[->, thick] (-4.5, 0) -- (-4.5, -1.3);
+            \draw[->, thick] (0, 1.5) -- (0, 2.5);
+            \draw[->, thick] (0, -1.5) -- (0, -2.5);
+            
+            % Labels
+            \node at (-4.5, 0.3) {liberalismo};
+            \node at (-4.5, -2.9) {\makecell[c]{libera circolazione\\delle merci\\``laissez-faire''\\``laissez-aller''\\ \textdownarrow \\ no interventi dello\\stato nell'economia}};
+            \node at (0, -4.5) {\makecell[c]{libertà di\\partecipare\\ \textdownarrow\\liberali radicali,\\democratici\\ \textdownarrow\\ universatilità,\\uguaglianza\\politica}};
+            \node at (0, 3.4) {\makecell[c]{liberali conservatori\\o moderati\\ \textuparrow\\ libertà da}};
+            
+            \end{tikzpicture}
+    \end{center}
+\end{figure*}
+
+\newpage
+\section{Mappa delle ideologie conservatrici e liberali}
+
+\begin{figure*}[ht!]
+    \vspace*{1cm}
+    \begin{center}
+            \begin{tikzpicture}
+                \draw[->, thick] (0,0) -- (-11.5,0);
+
+                \draw[thick] (-1,-0.15) -- (-1,0.15);
+                \node at (-1,0.5) {Reazionari};
+                \node at (-1,-0.9) {\makecell[c]{restaurare\\ciò che\\c'era prima}};
+
+                \draw[thick] (-4,-0.15) -- (-4,0.15);
+                \node at (-4,0.5) {Conservatori};
+                \node at (-4,-1.1) {\makecell[c]{mutare il\\presente nel\\rispetto delle\\tradizioni}};
+
+                \draw[thick] (-7,-0.15) -- (-7,0.15);
+                \node at (-7,0.5) {Progressisti};
+                \node at (-7,-1.1) {\makecell[c]{cambiamenti\\graduali,\\tramite\\riforme}};
+
+                \draw[thick] (-10,-0.15) -- (-10,0.15);
+                \node at (-10,0.5) {Rivoluzionari};
+                \node at (-10,-1.3) {\makecell[c]{cambiamenti\\radicali\\e forzati,\\uso della\\violenza}};
+            \end{tikzpicture}
+    \end{center}
+\end{figure*}
+
+\begin{table*}[ht!]
+    \begin{center}
+        \begin{tabular}{| m{5cm} | m{5cm} |}
+            \hline \; \textbf{Conservatori} & \; \textbf{Liberali} \\
+            \hline - Monarchia assoluta; & - Monarchia costituzionale; \\
+            \hline - Rafforzamento delle gerarchie & - Rispetto dell'autonomia \\
+                    \; di potere (clero e nobilità); & \; dell'individuo e della ragione; \\
+            \hline - Difesa della tradizione; & - Idea di progresso; \\
+            \hline - Potere per diritto divino, & - Potere delle élite \\
+                    \; nessuna rappresentanza & \; borghesi, che devono essere \\
+                    \; popolare. & \; rappresentate. \\
+            \hline
+        \end{tabular}
+    \end{center}
+\end{table*}
+
+\section{Socialismo}
+\begin{itemize}
+    \item Ruolo dello Stato nell'economia;
+    \item Meno individualismo;
+    \item No liberalismo economico;
+    \item Diritti dei lavoratori;
+    \item Abolizione della proprietà privata;
+    \item Redistribuzione della ricchezza;
+    \item Proletari vs. borghesia 
+\end{itemize}
+
+\subsection{Assieme alla rivoluzione industriale}
+\begin{itemize}
+    \item Mutano in modo drastico milioni di vite;
+    \item Radicale cambiamento nel sistema di produzione;
+    \item Massiccio impiego di donne e bambini nei lavori;
+    \item Nelle città sorgono quartieri operai privi di servizi elementari;
+    \item Trasformazione dal mondo agricolo a quello industriale, con conseguente mutamento
+        della società e la creazione di nuove classi sociali.
+    \item Trade unions: si creano nuovi sindacati rappresentativi delle classi operaie;
+    \item Leggi a tutela dei lavoratori.
+\end{itemize}
+
+\section{Socialismo scientifico}
+\subsection{Prima idea - Contro il capitalismo}
+\begin{itemize}
+    \item Il socialismo sfutta le contraddizioni e il fallimento del capitalismo per crescere;
+    \item Scontro tra borghesia e proletariato;
+    \item Attuazione del socialismo e poi del comunismo:
+        \begin{itemize}
+            \item Socialismo: si riceve in base al proprio lavoro;
+            \item Comunismo: si riceve in base alla propria necessità.
+        \end{itemize}
+\end{itemize}
+
+\subsection{Seconda idea - Lotta tra classi}
+\begin{itemize}
+    \item La società umana è passata attraverso 4 fasi caratterizzate dalle lotte tra gli
+        oppressi e gli oppressori:
+        \begin{enumerate}
+            \item Communità primitive;
+            \item Regime di schiavitù;
+            \item Società feudale;
+            \item Società borghese;
+        \end{enumerate} 
+    \item Scontro tra oppressi e oppressione:
+        \begin{itemize}
+            \item Maturazione delle condizioni strutturali;
+            \item Cambiamento nei mezzi di produzione della ricchezza.
+        \end{itemize}
+\end{itemize}
+
+\subsection{Terza idea - Modi di produzione della ricchezza}
+\begin{itemize}
+    \item Concettro di struttura e sovrastruttura:
+        \begin{itemize}
+            \item Struttura: rapporti economici;
+            \item Sovrastruttura: tutto il resto (cultura, Stato, religione, politica);
+            \item Gli uomini e la loro organizzazione dipendono dal modo in cui producono ciò
+                di cui necessitano;
+            \item Attività condizionata dai mezzi di produzione di cui gli uomini dispongono
+        \end{itemize}
+    \item 4 fasi della rivoluzione comunista:
+        \begin{enumerate}
+            \item Rivoluzione della classe operaia;
+            \item Dittatura del proletariato;
+            \item Società socialista;
+            \item Società comunista:
+                \begin{itemize}
+                    \item Abolizione della proprietà privata;
+                    \item Creazione di una società priva di classi e distinzioni sociali.
+                \end{itemize}
+        \end{enumerate}
+\end{itemize}
+
+\section{Concetti del socialismo}
+\subsection{Concetto naturalistico}
+\begin{itemize}
+    \item Fattore etnici:
+        \begin{itemize}
+            \item Profilo etnico o consanguineità;
+            \item Legame con il territorio;
+            \item Lingua;
+            \item Cultura;
+            \item Consuetudini;
+            \item Esperienze storiche;
+            \item Tradizioni civili e religiose.
+        \end{itemize}
+    \item Stirpe originale;
+    \item Recupero dell'identità originaria della nazione;
+    \item Non c'è una scelta volontaria del popolo, poiché la nascita dell'idea precede la
+        costituzione di uno stato e l'appartenenza nazionale di una persona è predestinata;
+    \item Romanticismo e Restaurazione ne sono il contesto storico (concezione tedesca).
+\end{itemize}
+
+\subsection{Concetto volontaristico}
+\begin{itemize}
+    \item Prodotto culturale: stare assieme sulla base di esperienze comuni;
+    \item Caratteristiche legate alla volontà di condividere cultura e storia;
+    \item Eredità di ricordi e consenso attuale:
+        \begin{itemize}
+            \item Eredi di un patrimonio comune;
+            \item La nazione esiste finché trova posto nella mente e nel cuore delle persone;
+        \end{itemize}
+    \item È una scelta.
+    \item Illuminismo e Riv. Francese come radici culturali di questo concetto (concezione
+        francese).
+\end{itemize}
+
+\newpage
+\part{La Svizzera della vecchia confedazione al 1848}
+\section{Differenza tra i tipi di Stato}
+
+\textbf{Confederazione:} Alleanza tra Stati autonomi
+
+\textbf{Federazione:} Unico Stato composto da più parti che godono di una larga autonomia
+
+\textbf{Repubblica:} Unico Paese composto da più Stati confederati
+
+\section{Ancien Régime (fino al 1798)}
+
+\subsection{Confederazione dei 13 Cantoni}
+
+La Confederazione dei 13 Cantoni era basata su:
+
+\subsubsection{Tre gruppi territoriali}
+\begin{enumerate}
+    \item Cantoni sovrani (13);
+    \item Territori soggetti (baliaggi):
+        \begin{itemize}
+            \item Per amministrare il baliaggio, i cantori sovrani mandavano un responsabile
+                chiamato Landfogto;
+        \end{itemize}
+    \item 11 alleati;
+\end{enumerate}
+
+\subsubsection{Ampia autonomia delle comunità locali}
+(Entità indipendente del Sacro Romano Impero Germanico [SRIG] dal 1648).
+
+Esistevano tre tipi di governo:
+\begin{enumerate}
+    \item Governi oligarchici;
+    \item “Landsgemeinde” = Assemblee di contadini proprietari;
+    \item Dieta = Assemblea dei delegati dei 13 Cantoni e di alcuni paesi alleati;
+\end{enumerate}
+
+Ultima Dieta nel 1798
+
+\subsubsection{Mercenariato}
+I soldati svizzeri venivano pagati per prestare servizio in altri eserciti.
+\begin{itemize}
+    \item Club Elvetico in Francia → Intellettuali svizzeri che vivono in Francia per
+        amministrare come ambasciata estera il rapporto tra Francia e Svizzera.
+\end{itemize}
+
+\subsection{Riassunto}
+\begin{itemize}
+    \item Tipo di Stato: Confederazione dei 13 Cantoni e 11 alleati;
+    \item Legge fondamentale: Patti tra i cantoni. I cantoni sono sovrani (Confederazione);
+    \item Potere centrale: Dieta (ev. anche Club Elvetici);
+    \item Confederazione: La Svizzera è come un grappolo d’uva, tutti gli acini sono separati
+        l’uno dall’altro ma tenuti assieme dallo stesso ramo;
+\end{itemize}
+
+\newpage
+\section{Repubblica Elvetica (1798 – 1802)}
+La Svizzera venne invasa e conquistata dalla Repubblica francese di Napoleone Bonaparte,
+spronata anche dai Club Elvetici, i quali aderivano fortemente al potere napoleonico.
+
+La Svizzera viene conquistata dai francesi nel 1798 e diventa una Repubblica con una
+costituzione fornita dalla Francia.
+
+\subsection{Dalla Costituzione della Repubblica Elvetica, 1798}
+\begin{itemize}
+    \item La Svizzera è una e indivisibile;
+    \item È un Regime imposto dalla Francia;
+    \item Forte potere centrale;
+    \item Divisione territoriale (suddiviso in Cantoni);
+    \item Ordinamento istituzionale;
+    \item Abolizione dei baliaggi → i Cantoni sono unità amministrative.
+\end{itemize}
+
+\subsection{Riforme introdotte con la Repubblica}
+\begin{itemize}
+    \item Uguaglianza dei cittadini di fronte alla legge;
+    \item Suffragio universale maschile;
+    \item Libertà di pensiero, di stampa e di religione;
+    \item Libertà di domicilio e industria;
+    \item Cittadinanza svizzera: Le persone non sono più cittadine unicamente nei loro cantoni;
+    \item Divisione dei poteri secondo il principio di Montesquieu;
+    \item Unificazione dei paesi, delle misure e della moneta;
+    \item Soppressione delle dogane interne;
+    \item Obbligatorietà dell’insegnamento elementare.
+\end{itemize}
+
+\subsection{Riassunto}
+\begin{itemize}
+    \item Tipo di stato: Stato Unitario, Repubblica una e indivisibile;
+    \item Legge fondamentale: Tutte le riforme citate;
+    \item Potere centrale: Esiste un Potere centrale con tutte le competenze per governare:
+    \begin{itemize}
+        \item Esecutivo: Direttorio (5 membri);
+        \item Legislativo: Senato (4 membri/cant.) e Gran Consiglio (8 membri/cant.);
+        \item Giudiziario: Tribunale elvetico (19 membri, 1 per cantone);
+    \end{itemize}
+    \item Repubblica: La Svizzera è come una mela, compatta e unificata. Il torsolo è il potere
+        centrale.
+\end{itemize}
+
+\newpage
+\section{La Costituzione della Mediazione (1802)}
+Napoleone ritira tutte le truppe dalla Svizzera, ciò porta a conflitti civili nei cantoni.
+Dopo due mesi di guerre, le truppe napoleoniche tornano nella Repubblica elvetica per mediare
+gli scontri interni.
+
+\subsection{Suddivisioni interne}
+
+\subsubsection{Federalisti (cattolici)}
+Cantoni attaccati alle tradizioni cattoliche;
+\begin{itemize}
+    \item Ampia autonomia cantonale;
+    \item Sovranità cantonale.
+\end{itemize}
+
+\subsubsection{Repubblicani (centralisti)}
+Cantoni attaccati a una Svizzera unita e con un potere centrale unico;
+\begin{itemize}
+    \item Governo indivisibile;
+    \item Cantoni amministrativi senza autonomia.
+\end{itemize}
+
+\subsection{Atto di Mediazione (1803 – 1810)}
+L’atto di Mediazione è stato ideato a Parigi nel 1803 e sarebbe stato un intervento per
+pacificare le fazioni svizzere in conflitto.
+
+\subsubsection{Obiettivi}
+\begin{itemize}
+    \item Ristabilire la pace e l’ordine in Svizzera;
+    \item Conciliare le diverse fazioni politiche;
+    \item Preservare l’indipendenza e l’integrità della Svizzera.
+\end{itemize}
+
+\subsubsection{Principali provvedimenti}
+\begin{itemize}
+    \item Libertà fondamentali vengono garantite (Repubblicano);
+    \item Ogni Cantone ha la propria costituzione (Federalista);
+    \item Ogni Cantone ha un’ampia autonomia (Repubblicano);
+    \item Una parte del potere è amministrato da un’autorità federativa (Federalista);
+    \item Dieta ridotta.
+\end{itemize}
+
+\subsubsection{Ruolo della Dieta ridotta}
+N.B.: La Dieta NON è un parlamento, ma un’autorità centrale (Congresso dei delegati)
+\begin{itemize}
+    \item Può dichiarare guerra;
+    \item Può promulgare decreti con il 75\% dei voti favorevoli;
+    \item Regolare conflitti tra cantoni.
+\end{itemize}
+
+\subsubsection{Ruolo del Cantone Ticino}
+\begin{itemize}
+    \item Partecipare al Potere Legislativo: Gran Consiglio (110 deputati);
+    \item Partecipare al Potere Esecutivo: Piccolo Consiglio (9 deputati).
+\end{itemize}
+
+\subsection{Riassunto}
+\begin{itemize}
+    \item Tipo di stato: Stato Federale con 19 cantoni che hanno libertà nel gestire al meglio
+        la loro costituzione, il loro territorio e la loro indipendenza;
+    \item Legge fondamentale: Atto di Mediazione, libertà fondamentali, uguaglianza dei
+        cittadini di fronte alle leggi, soppressione delle dogane interne;
+    \item Potere centrale: Autorità centrale → Dieta ridotta;
+    \item Federazione: La Svizzera è come un mandarino, gli spicchi (Cantoni) sono divisi tra
+        loro ma sostenuti assieme dalla buccia (Autorità centrale/Dieta ridotta).
+\end{itemize}
+
+\newpage
+\section{La Restaurazione e la Rigenerazione}
+
+\subsection{Restaurazione: Patto del 1815}
+
+\subsubsection{Congresso di Vienna (1815)}
+\begin{itemize}
+    \item Ridisegno della cartina europea;
+    \item Viene riconosciuta a livello internazionale la neutralità elvetica perpetua:
+        \begin{itemize}
+            \item Durante l’invasione di Napoleone la Svizzera è stata costretta ad allearsi con
+                la Francia, dunque non è stata sempre neutrale.
+        \end{itemize}
+    \item Confederazione:
+    \begin{itemize}
+        \item Dieta (75\% dei voti) → Politica estera:
+            \begin{itemize}
+                \item La Dieta rimarrà sempre un’assemblea dei delegati;
+            \end{itemize}
+        \item Esercito comune.
+    \end{itemize}
+\end{itemize}
+
+\subsection{Rigenerazione (1831 – 1848)}
+\begin{itemize}
+    \item Nuove costituzioni più liberali per una decina di cantoni.
+\end{itemize}
+
+\subsubsection{Cantoni radicali (liberali)}
+\begin{itemize}
+    \item Revisione del Patto del 1815;
+    \item Più accentramento;
+    \item Stato e società laici.
+\end{itemize}
+
+\subsubsection{Cantoni conservatori (leghisti)}
+\begin{itemize}
+    \item Unione di difesa:
+        \begin{itemize}
+            \item Guerra del Sonderbund;
+        \end{itemize}
+    \item Forte autonomia centrale;
+    \item Difesa del cattolicesimo.
+\end{itemize}
+
+\subsubsection{Guerra del Sonderbund}
+Il conflitto del Sonderbund avvenne a causa della Dieta che votò per lo scioglimento della Lega
+(1847) poiché la riteneva anticostituzionale.\\
+I militi leghisti si unirono per combattere e preservare la propria ideologia.\\
+La guerra fu tra l’Esercito confederale condotto da Dufour e i militi del Sonderbund.
+
+\subsubsection{Riassunto}
+\begin{itemize}
+    \item Tipo di stato: Confederazione di 22 Cantoni sovrani;
+    \item Legge fondamentale Restaurazione: Congresso di Vienna e Patto del 1815, i Cantoni 
+        tornano sovrani. Viene imposta una certa censura e viene ristretta la libertà generale
+        per paura delle innovazioni portate dalla Rivoluzione Francese;
+    \item Legge fondamentale Rigenerazione: Una decina di Cantoni promulga nuove costituzioni
+        più liberali;
+    \item Potere centrale: Dieta con poteri limitati, Esercito comune;
+    \item Confederazione: La Svizzera è come un grappolo d’uva, tutti gli acini sono separati
+        l’uno dall’altro ma tenuti assieme dallo stesso ramo.
+\end{itemize}
+
+\newpage
+\section{Svizzera Moderna (1848 – oggi)}
+
+\subsection{La Costituzione del 1848}
+La Svizzera torna una Federazione:
+\begin{itemize}
+    \item Nel 1848 la Dieta accetta la nuova Costituzione;
+    \item Referendum nei cantoni: 15 cantoni + 1 semi-cantone a favore;
+    \item 12 Settembre 1848: La Svizzera ritorna uno Stato federale.
+\end{itemize}
+
+\subsection{Poteri suddivisi}
+\begin{itemize}
+    \item Potere legislativo: Assemblea federale:
+        \begin{itemize}
+            \item I cittadini eleggono:
+            \begin{itemize}
+                \item Consiglio nazionale: In proporzione al numero di abitanti;
+                \item Consiglio degli Stati: 2 rappresentanti per Cantone;
+            \end{itemize}
+        \end{itemize}
+    \item Potere esecutivo: Consiglio Federale (7 membri):
+        \begin{itemize}
+            \item Vengono eletti dal Potere legislativo;
+        \end{itemize}
+    \item Potere giudiziario: Tribunale Federale:
+        \begin{itemize}
+            \item Vengono eletti dal Potere legislativo.
+        \end{itemize}
+\end{itemize}
+
+\subsection{La democrazia semi-diretta}
+\begin{itemize}
+    \item Sovranità popolare per mezzo di rappresentanti eletti (intermediari);
+    \item Referendum e Iniziativa.
+\end{itemize}
+
+\subsubsection{Introduzione al diritto di referendum (1874)}
+Facoltativo. Con 30'000 firme (50'000 dal 1977) è possibile sottoporre al voto del popolo una
+legge già accettata dal parlamento federale.
+
+\subsubsection{Introduzione al diritto di iniziativa costituzionale (1891)}
+Con una richiesta approvata da 50'000 svizzeri (100'000 dal 1977) i cittadini possono proporre
+l’introduzione, l’abrogazione o la modifica di un articolo della costituzione.
+
+\subsection{Composizione politica}
+\begin{itemize}
+    \item Politica su tre livelli: comunale, cantonale e confederale;
+    \item A livello federale divisione dei poteri:
+        \begin{itemize}
+            \item Esecutivo: Consiglio federale formato da 7 membri eletti ogni 4 anni;
+            \item Legislativo bicamerale: Consiglio nazionale e Consiglio degli Stati;
+            \item Giudiziario: Tribunale federale.
+        \end{itemize}
+\end{itemize}
+
+\subsection{I movimenti politici della Svizzera}
+
+\subsubsection{Tendenza liberale-radicale}
+\begin{itemize}
+    \item Favorevole al rafforzamento dello Stato Federale all’affermazione dei diritti
+        individuali e politici;
+    \item 1894 → Partito radical-democratico.
+\end{itemize}
+
+\subsubsection{Tendenza conservatrice}
+\begin{itemize}
+    \item Difende l’autonomia dei cantoni e la libertà delle chiese.
+\end{itemize}
+
+\subsubsection{Cattolici conservatori}
+\begin{itemize}
+    \item Mirano alla riconciliazione tra Chiesa e Stato;
+    \item 1894 → Partito Popolare Cattolico.
+\end{itemize}
+
+\subsubsection{Partito Socialdemocratico svizzero}
+\begin{itemize}
+    \item Risponde ai problemi sorti dall’industrializzazione del 1888.
+\end{itemize}
+
+\subsection{La formula magica}
+\begin{itemize}
+    \item Per alcuni decenni: tutte le poltrone dei governi in mano ai liberal-radicali;
+    \item 1891: Entra per la prima volta un cattolico-conservatore (Joseph Zemp);
+    \item 1959-2003: La composizione partitica del Consiglio Federale è rimasta immutata
+        (formula magica):
+        \begin{itemize}
+            \item 2 liberali;
+            \item 2 PPD;
+            \item 2 socialisti;
+            \item 1 UDC.
+        \end{itemize}
+\end{itemize}
+
+\subsection{Riassunto}
+\begin{itemize}
+    \item Tipo di stato: Stato federale (chiamato per motivi pratici Confederazione) di 26
+        Cantoni. Regime di democrazia semidiretta;
+    \item Legge fondamentale: Costituzione federale. Potere ripartito tra cantoni e
+        confederazione. Cantoni sovrani fin dove la loro sovranità non è limitata dalla
+        Costituzione federale. Le costituzioni dei cantoni sono repubblicane e democratiche;
+    \item Potere centrale: Federazione suddiviso in Potere esecutivo, legislativo e giudiziario;
+    \item Federazione: La Svizzera è come un mandarino, gli spicchi (Cantoni) sono divisi tra
+        loro ma sostenuti assieme dalla buccia (Autorità centrale).
+\end{itemize}
+
+\newpage
+\part{L'età dell'Imperialismo}
+\section{Definizione di Imperialismo}
+``Momento volto alla costituzione di Imperi coloniali da parte delle potenze industriali europee
+con lo scopo di procurarsi materie prime necessarie all’industria ed esportarvi prodotti finiti''.
+
+\section{Imperialismo}
+\subsection{Paesi sovrani}
+
+\subsubsection{Dal 1830}
+\begin{itemize}
+    \item Stati Uniti d’America;
+    \item Giappone.
+\end{itemize}
+
+\subsubsection{Dal 1870 – 1914 (1945)}
+\begin{itemize}
+    \item Francia;
+    \item Gran Bretagna;
+    \item Germania;
+    \item Belgio;
+    \item Olanda;
+    \item Italia.
+\end{itemize}
+
+\subsection{Dottrina Monroe (1823)}
+``L’America agli Americani''.
+\begin{itemize}
+    \item Problema: Gli USA non tollerano nessuna intromissione nell’emisfero occidentale da
+        parte delle potenze europee;
+    \item Soluzione: I paesi europei puntano alla colonizzazione del continente africano.
+\end{itemize}
+
+\subsection{Grande Depressione (1873)}
+
+\subsubsection{Problema della sovrapproduzione}
+\begin{itemize}
+    \item Problema: I materiali prodotti non trovano più acquirenti nei paesi di produzione;
+    \item Soluzione: Vendita dei prodotti e investimento dei capitali alle colonie.
+\end{itemize}
+
+\subsection{Conferenza di Berlino (1884 / 1885)}
+\begin{itemize}
+    \item Obbligo di notifica da parte di uno Stato verso gli altri Stati in caso di occupazione
+        di un territorio nel continente africano;
+    \item Il Congo, conteso da molti Stati, viene donato all’Imperatore belga Re Leopoldo II:
+        \begin{itemize}
+            \item Diventa Stato Indipendente del Congo (1885).
+        \end{itemize}
+\end{itemize}
+
+\newpage
+\section{La storia del Congo}
+
+\subsection{Conseguenze della colonizzazione congolese}
+
+\subsubsection{Conferenza di Berlino (1885)}
+\begin{itemize}
+    \item Il Congo viene donato all’Imperatore belga Re Leopoldo II
+    \item Il Congo diventa Stato Indipendente del Congo
+\end{itemize}
+
+\subsection{Arricchimento dal Congo}
+\begin{itemize}
+    \item Caucciù → Gomma → Pneumatici
+    \item Avorio
+\end{itemize}
+
+\subsection{Creazione della “Force publique” (Polizia autoctona)}
+\begin{itemize}
+    \item Presa in ostaggio di chi non è abile al lavoro
+    \begin{itemize}
+        \item Gli idonei dovevano fornire un quantitativo di gomma per salvare gli ostaggi
+    \end{itemize}
+    \item La violenza non giustificata da parte della F.P. veniva punita
+    \begin{itemize}
+        \item Per verificare che i proiettili sparati fossero stati usati contro una rivolta, gli agenti della F.P. dovevano mutilare e consegnare la mano destra del bersaglio
+    \end{itemize}
+\end{itemize}
+
+\subsection{Discorso al parlamento francese (1885)}
+“Discorso al parlamento francese” di Jules Ferry
+
+\section{Le cause (e motivazioni) dell’Imperialismo}
+
+\subsection{Fattori economici}
+\begin{itemize}
+    \item Ricerca di materie prime e di mercati (IIa rivoluzione industriale)
+    \item Sbarchi commerciali
+    \item Espansione del capitalismo
+    \item Investimenti
+\end{itemize}
+
+\subsection{Fattori culturali e ideologici}
+\begin{itemize}
+    \item Aspetto umanitario e civilizzatore
+    \item “Razze superiori” che hanno il compito e il dovere di civilizzare quelle “inferiori”
+\end{itemize}
+
+\subsection{Fattori politici (nazionalismo e militarismo)}
+\begin{itemize}
+    \item Gli Stati tra loro sono rivali
+    \begin{itemize}
+        \item Per non soccombere è necessario attuare una politica di potenza
+        \item La politica coloniale è un mezzo per dimostrare la propria potenza e la propria supremazia come Stato
+    \end{itemize}
+\end{itemize}
+
+\section{Insegnare il concetto di Nazione}
+
+\subsection{Rafforzamento del proprio Stato}
+\begin{itemize}
+    \item Stato forte
+    \begin{itemize}
+        \item Rafforzamento dell’esecutivo
+        \item Politica estera più aggressiva
+        \item Rafforzamento del nazionalismo
+        \begin{itemize}
+            \item Superiorità nazionale
+            \item Esecutivismo nazionale
+            \item Dovere di insegnare la Nazione allo Stato debole
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+\subsection{Metodo di insegnamento tramite sistemi politici}
+\begin{itemize}
+    \item Discorso nazionalistico che dà una base di legittimazione per le élite politiche
+    \begin{itemize}
+        \item Scuola
+        \item Esercito
+        \item Rituali pubblici
+    \end{itemize}
+\end{itemize}
+
+\subsection{Scolarizzazione}
+\begin{itemize}
+    \item Sistemi educativi elementari obbligatori
+    \item Storia e letteratura nazionale
+    \begin{itemize}
+        \item Sentimenti patriottici → esaltazione ad essere eroi nazionali
+    \end{itemize}
+\end{itemize}
+
+\subsection{Esercito}
+\begin{itemize}
+    \item Nazionalizzazione delle masse
+    \begin{itemize}
+        \item Servizio militare obbligatorio per la patria, dunque anche per lo Stato debole poiché fa parte della patria
+    \end{itemize}
+\end{itemize}
+
+\subsection{Rituali pubblici}
+\begin{itemize}
+    \item Bandiera nazionale
+    \item Inni nazionali
+    \item Feste nazionali
+\end{itemize}
+
+\subsection{Movimenti nazionalisti}
+\begin{itemize}
+    \item Esasperazione del sentimento di comune appartenenza
+    \item Superiorità della propria nazione
+    \item Politica di potenza per sottolineare la propria superiorità
+    \item IMPERIALISMO
+\end{itemize}
+
+\section{Il razzismo scientifico}
+
+\subsection{Illuminismo (1694)}
+
+\subsubsection{Pensiero razionale}
+\begin{itemize}
+    \item Pone l’uomo al centro dell’universo
+    \item L’uomo viene classificato secondo due macrocategorie:
+    \begin{itemize}
+        \item Natura
+        \item Classici
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Scienza $\leftrightarrow$ Estetica}
+\begin{itemize}
+    \item Scienza: Classificazione delle razze in base al loro posto nel mondo
+    \item Estetica: È manifestata in modo tangibile, dunque misurabile con l’appagamento dell’occhio verso gli individui
+\end{itemize}
+
+\subsection{Darwinismo sociale}
+
+\subsubsection{Teorie razziste}
+\begin{itemize}
+    \item Applicazione allo studio delle società umane i principi darwiniani della lotta per l’esistenza e della selezione naturale
+    \item Ideologia razzista
+    \begin{itemize}
+        \item Superiorità culturale $\leftrightarrow$ Superiorità biologica
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Passaggio dalla teoria razziale al razzismo (J. A. Gobineau)}
+
+\subsubsection{Classificazione delle razze}
+\begin{itemize}
+    \item Al mondo esistono 3 razze:
+    \begin{itemize}
+        \item Bianca → Superiore (Razza che deve essere preservata)
+        \item Gialla → Inferiore
+        \item Nera → Inferiore
+    \end{itemize}
+    \item Preservazione della razza dominante
+    \begin{itemize}
+        \item Gli ariani non si devono mischiare con altre razze
+        \item Rischio di DEGENERAZIONE
+        \item Eugenetica → Sterilizzazione chimica delle persone “anormali”
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Popolazioni ebraiche}
+\begin{itemize}
+    \item Sghettizzazione → Ghetti vengono smantellati e gli ebrei si reintegrano nella popolazione
+\end{itemize}
+
+\subsubsection{Zoo umani → Esposizioni universali (expo)}
+\begin{itemize}
+    \item Padiglioni che ricreavano gli “habitat” delle diverse popolazioni e razze
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
