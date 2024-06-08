@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appunti Personali</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            margin: 0;
+            height: 100vh;
+            background-color: #f4f4f9;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #2c3e50;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            padding-top: 20px;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .sidebar a {
+            padding: 15px;
+            text-decoration: none;
+            color: white;
+            display: block;
+            transition: background-color 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #34495e;
+        }
+
+        .content {
+            flex-grow: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .content h1 {
+            color: #2c3e50;
+        }
+
+        .content p {
+            color: #34495e;
+        }
+
+        .active {
+            background-color: #34495e;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Argomenti</h2>
+        <a href="#biologia" class="active" onclick="showContent('biologia')">Biologia</a>
+        <a href="#chimica" onclick="showContent('chimica')">Chimica</a>
+        <a href="#fisica" onclick="showContent('fisica')">Fisica</a>
+        <a href="#geografia" onclick="showContent('geografia')">Geografia</a>
+        <a href="#inglese" onclick="showContent('inglese')">Inglese</a>
+        <a href="#italiano" onclick="showContent('italiano')">Italiano</a>
+        <a href="#matematica" onclick="showContent('matematica')">Matematica</a>
+        <a href="#storia" onclick="showContent('storia')">Storia</a>
+    </div>
+    <div class="content">
+        <div id="biologia">
+            <h1>Biologia</h1>
+            <p>Contenuti di biologia...</p>
+        </div>
+        <div id="chimica" style="display:none;">
+            <h1>Chimica</h1>
+            <p>Contenuti di chimica...</p>
+        </div>
+        <div id="fisica" style="display:none;">
+            <h1>Fisica</h1>
+            <p>Contenuti di fisica...</p>
+        </div>
+        <div id="geografia" style="display:none;">
+            <h1>Geografia</h1>
+            <p>Contenuti di geografia...</p>
+        </div>
+        <div id="inglese" style="display:none;">
+            <h1>Inglese</h1>
+            <p>Contenuti di inglese...</p>
+        </div>
+        <div id="italiano" style="display:none;">
+            <h1>Italiano</h1>
+            <p>Contenuti di italiano...</p>
+        </div>
+        <div id="matematica" style="display:none;">
+            <h1>Matematica</h1>
+            <p>Contenuti di matematica...</p>
+        </div>
+        <div id="storia" style="display:none;">
+            <h1>Storia</h1>
+            <p>Contenuti di storia...</p>
+        </div>
+    </div>
+
+    <script>
+        function showContent(subject) {
+            var contents = document.querySelectorAll('.content > div');
+            contents.forEach(function(content) {
+                content.style.display = 'none';
+            });
+            document.getElementById(subject).style.display = 'block';
+
+            var links = document.querySelectorAll('.sidebar a');
+            links.forEach(function(link) {
+                link.classList.remove('active');
+            });
+            document.querySelector('.sidebar a[href="#' + subject + '"]').classList.add('active');
+        }
+    </script>
+</body>
+</html>
