@@ -39,7 +39,8 @@
 \hypersetup{
     colorlinks=true,
     linkcolor=black,
-    urlcolor=blue
+    urlcolor=blue,
+    pdftitle={Italiano}
 }
 
 %%figbox
@@ -108,6 +109,15 @@
   \end{center}
   \vspace{0.5\baselineskip} % Spazio dopo il testo
 }
+
+%% SUBENUMERATE
+
+\newenvironment{subenumerate}{%
+  \begin{enumerate}[label*=\arabic*.]%
+}{%
+  \end{enumerate}%
+}
+
 
 %%
 
