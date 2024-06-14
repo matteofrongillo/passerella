@@ -59,11 +59,11 @@
 \subsubsection{Determinare la definizione formale di limite}
 
 \sdefinition{Limite di una funzione reale}{
-    Data una funzione \(f:D\to \mathbb{R}\),
-    il limte \[L=\lim_{x\to c}f(x)\] esiste se dato un
+    Data una funzione \(f:D\to \mathbb{R}\) e un punto un punto \(c\),
+    il limte \[L=\lim_{x\to c}f(x)\] con \(x\) tendente a \(c\) esiste se dato un
     \(\epsilon >0\) arbitrariamente piccolo, esiste un altro valore \(\delta >0\) tale che
     \[
-        0<|x-c|<\delta
+        |x-c|<\delta
         \implies
         |f(x)-L|<\epsilon
     \]
@@ -103,13 +103,13 @@
 A parole possiamo dire che il limite esiste (ed è pari ad un valore che chiamiamo \(L\))
 se la seguente condizione è soddisfatta:
 \begin{enumerate}
-    \item Scegliamo un \(\epsilon\) arbitrariamente piccolo e costruiamo l'intervallo \([L-\epsilon;L+\epsilon]\).
+    \item Scegliamo un \(\epsilon\) arbitrariamente piccolo e costruiamo l'intervallo \(]L-\epsilon;L+\epsilon[\).
         Questo intervallo è un range attorno al valore effettivo del limite,
         ossia un intervallo nell'immagini della nostra funzione, come da disegno (striscia verde).
     \item Se il limite esiste effettivamente, allora possiamo trovare un'altro intervallo (questa volta
         nel dominio, ossia sull'asse x al posto che sull'asse y) tale che le \textit{immagini}
         della funzione date dalle x in questo intervallo, siano un sottoinsieme dell'intervallo
-        \([L-\epsilon;L+\epsilon]\). Questo intervallo è rappresentato dalla striscia rossa nel disegno,
+        \(]L-\epsilon;L+\epsilon[\). Questo intervallo è rappresentato dalla striscia rossa nel disegno,
         e possiamo definirne la grandezza scegliendo un \(\delta > 0\).
 \end{enumerate}
 
@@ -117,11 +117,11 @@ In maniera informale, possiamo dire che il limite esiste se per ogni striscia ve
 esiste una striscia rossa tale che le immagini della striscia rossa facciano interamente parte della striscia verde.
 Ciò viene precisamente espresso dall'espressione
 \[
-    0<|x-c|<\delta
+    |x-c|<\delta
     \implies
     |f(x)-L|<\epsilon
 \]
-Che significa: Quando ci troviamo nella striscia rossa (\(0<|x-c|<\delta\)),
+Che significa: Quando ci troviamo nella striscia rossa (\(|x-c|<\delta\)),
 ossia quando la distanza assoluta dal punto del limite \(c\) è minore di \(\delta\),
 allora avremo necessariamente la condizione che le immagini si trovino nella striscia verde
 (\(|f(x)-L|<\epsilon\)), ossia che la differenza fra i valori della funzione nei nostri punti e il
@@ -158,7 +158,7 @@ verso destra, sinistra o ambo le direzioni.
 
 Per studiare gli asintoti obliqui dobbiamo studiare più in generale il concetto di equivalenza asintotica.
 
-\sdefinition{Equivalenza sintotica}{
+\sdefinition{Equivalenza asintotica}{
     Siano \(f(x)\) e \(g(x)\) due funzioni definite in un intorno di \(x_0\)
     e \(g(x)\neq 0\) se \(x \neq x_0\).
     Diciamo che \(f(x)\) e \(g(x)\) sono asintoticamente equivalenti per \(x \to x_0\)
@@ -181,14 +181,14 @@ Dal momento che non conosciamo la pendenza \(m\) possiamo scrivere
 e controllare che \(m\) sia un numero finito.
 È da notare come abbiamo tralasciato il termine \(q\) in quanto l'equivalenza asintotica ne è indipendente.
 
-Una volta stabilistico che \(f(x)\) è asintoticamente equivalente ad una retta con pendenza \(m\),
+Una volta stabilito che \(f(x)\) è asintoticamente equivalente ad una retta con pendenza \(m\),
 possiamo trovare l'ordinata all'origine \(q\) calcolando la differenza fra
 \(f(x)\) e \(mx+q\) con \(x \to \infty\).
 \[
     q = \lim_{x\to\infty} \left(f(x)-mx\right)
 \]
 E per cui abbiamo stabilito la presenza di un asintoto obliquo verso destra
-con funzione \(y=mx\).
+con funzione \(y=mx+q\).
 
 \subsubsection{Come trovare gli asintoti verticali}
 
@@ -271,7 +271,8 @@ Ci sono quindi quattro tipi di geometria attorno all'asintoto a seconda del valo
 \end{tikzpicture}
 
 Oltre a questi tipi di geometria, è possibile che la funzione tenda a \(\pm\infty\)
-solo da una parte, come per esempio la funzione \(y=\ln(x)\).
+solo da una parte, come per esempio la funzione \(y=\ln(x)\). Oppure, la funzione potrebbe anche tendere
+a qualsiasi altro numero finito come \(10\) o \(e^\pi\).
 
 \newpage
 
@@ -280,27 +281,33 @@ solo da una parte, come per esempio la funzione \(y=\ln(x)\).
 \subsubsection{Definizione di funzione continua}
 
 \sdefinition{Continuità di una funzione reale}{
-    Data una funzione reale \(f(x)\), la funzione è continua nel punto \(x=c\) se
+    Data una funzione reale \(f\colon D \to C\), la funzione è continua nel punto \(x=c\) dove \(c\in D\) se
     \[
-        \lim_{x\to c} = f(c)
+        \lim_{x\to c} f(x) = f(c)
     \]
+    e quindi se il limite esiste ed è uguale al valore della funzione in quel punto.
 }
 
 In altre parole la funzione è continua nel punto se il limite esiste (sia da destra che da sinistra, coincidendo)
 e la funzione è in qul punto è equivalente al valore del limite.
-Una funzione è continua in un intervallo se è continua in tutti i punti dell'intervallo.
+\begin{itemize}
+    \item Si dice che una funzione è continua in un punto se il limite in quel punto esiste ed è uguale al valore della funzione nel punto;
+    \item si dice che una funzione è continua in un sottointervallo del dominio se è continua in tutti i punti di suddetto intervallo;
+    \item si dice che una funzione è continua se è continua in tutti i punti nel suo intervallo. 
+\end{itemize}
 
 \subsubsection{Esempi di funzione continua}
 \begin{enumerate}
     \item La funzione \(f(x)=x^4\) ha come \(\lim_{x \to 0} x^4=0\) e \(f(0)=0\):\\
     \textrightarrow La funzione è continua nel punto 0.
+    \item La funzione \(f(x)=\frac{1}{x}\) è continua nonostante \(f(0)=\text{indeterminato}\).\\
+        Ciò è dato dal fatto che la funzione è continua su tutto il piano sinistro, ed è anche continua su tutto il piano destro.
+        Nonostante ci sia un distacco fra i valori negativi e positivi, il punto \(x=0\) non è compreso nel dominio.
+        Di conseguenza, anche se la funzione è costituita da due parti staccate, è comunque continua in quanto è continua su tutti i punti \underline{del dominio}.
 \end{enumerate}
 
 \subsubsection{Esempi di funzione discontinua}
 \begin{enumerate}
-    \item La funzione \(f(x)=\frac{1}{x}\) non è continua poiche \(f(0)=\text{indeterminato}\).\\
-        Essa è però continua localmente in tutti gli intervalli che non comprendono il suo
-        asintoto verticale, come ad esempio l'intervallo \(x \in [1, +\infty[\).
     \item Generalmente, se si moltiplica una funzione \(f(x) \cdot \frac{x}{x}\), la funzione
         rimane la stessa ma si introduce un punto di discontinuità in 0, poiché il limite
         a 0 potrebbe esistere ma la funzione è indeterminata in quel punto indeterminato.
@@ -390,6 +397,7 @@ che \(\lim_{x \to a} f(x)\) e \(\lim_{x \to a} g(x)\) esistano dove \(c \in \mat
     \[
         f'(x) = \lim_{\Delta x \to 0} \frac{f(x + \Delta x) - f(x)}{\Delta x}
     \]
+    se il limite esiste.
 }
 
 La derivata può essere scritta in diversi modi.
@@ -475,7 +483,7 @@ per rappresentarne la prima derivata.
     
     \begin{minipage}{0.5\textwidth}
         Quando il \(\Delta x\) della pendenza è infinitesimamente piccolo, abbiamo la pendenza precisa in un punto (istantanea).
-        Questa pendenza è rappresentata dalla retta tangente, che è parallela al punto sulla funzione.
+        Questa pendenza è rappresentata dalla retta tangente.
         \[
             \lim_{\Delta x \to 0} \frac{\Delta y}{\Delta x}
         \]
@@ -541,7 +549,7 @@ per rappresentarne la prima derivata.
 \subsubsection{Esempio applicazione}
 
 In fisica, la funzione della velocità \(v(t)\) rappresenta in ogni punto il cambiamento istantaneo
-della posizione \(x(t)\), e l'accellerazione \(a(t)\) rappresenta in ogni punto il cambiamento
+della posizione \(x(t)\), e l'accelerazione \(a(t)\) rappresenta in ogni punto il cambiamento
 istantanea della velocità \(v(t)\).
 Di conseguenza abbiamo quindi che \(x'(t)=v(t)\) e \(v'(t)=a(t)\).
 Nota che quando facciamo la derivata della posizione o della velocità, l'informazione
@@ -551,7 +559,7 @@ sono indipendenti da quanto la funzione è spostata in alto o in basso.
 \subsubsection{Procedimento per calcolare la tangente}
 
 Data una funzione \(f(x)\), vogliamo trovare l'equazione della retta tangente al punto \(a\).
-Assumiamo quindi che \(f'(a)\) non sia indeterminato:
+Assumiamo quindi che \(f'(a)\) esista e non sia \(\pm \infty\):
 \begin{enumerate}
     \item Calcolare \(f'(a)\) e trovare la pendenza (m) della tangente in quel punto;
     \item Usare la pendenza per (m) per scrivere l'equazione della tangente
@@ -567,6 +575,8 @@ Assumiamo quindi che \(f'(a)\) non sia indeterminato:
             y=f'(a)(x-a)+f(a)
         \end{equation*}
 \end{enumerate}
+
+\textbf{\color{red}Importante:} La tangente potrebbe essere verticale, in tal caso ha una funzione del tipo \(x=a\).
 
 \newpage
 
@@ -661,11 +671,12 @@ Le sette forme indeterminate sono
 
 \stheorem{Teorema di Bernoulli-de l'Hôpital}{
     Consideriamo due funzioni reali \(f(x)\) e \(g(x)\) che sono differenziabili
-    in un intorno di \(x_0\in\mathbb{R}\) (non necessariamente in \(c\)).
+    in un intorno di \(x_0\in\mathbb{R}\) (non necessariamente in \(x_0\)).
     Senza perdita di generalità, se abbiamo un limite
     \[ \lim_{x \to x_0} \frac{f(x)}{g(x)} \]
     dove \(\frac{f(x_0)}{g(x_0)}\) risulta in una forma indeterminata, allora
     \[ \lim_{x \to x_0} \frac{f(x)}{g(x)} = \lim_{x \to x_0} \frac{f'(x)}{g'(x)} \]
+    se il limite esiste.
 }
 
 \subsubsection{Esempio}
@@ -679,7 +690,7 @@ Le sette forme indeterminate sono
 
 \subsubsection{Definizione monotonia}
 
-La monotonia della funziona centra con il suo comportamento di crescita o di decrescita.
+La monotonia della funzione centra con il suo comportamento di crescita o di decrescita.
 Una funzione può essere:
 \begin{itemize}
     \item \textbf{monotona crescente} Se per ogni coppia \(x_1,x_2\) dove \(x_1 < x_2\) abbiamo che \(f(x_1) \leq f(x_2)\)
@@ -687,18 +698,22 @@ Una funzione può essere:
     \item \textbf{strettamente crescente} Se per ogni coppia \(x_1,x_2\) dove \(x_1 < x_2\) abbiamo che \(f(x_1) < f(x_2)\)
     \item \textbf{strettamente decrescente} Se per ogni coppia \(x_1,x_2\) dove \(x_1 < x_2\) abbiamo che \(f(x_1) > f(x_2)\)
 \end{itemize}
-Queste proprietà sono possono valere sia per tutto il dominio della funziona che solo su un sottointervallo.
+Queste proprietà sono possono valere sia per tutto il dominio della funzione che solo su un sottointervallo.
 
 \subsubsection{Ricerca degli estremi}
 Poiché la derivata \(f'(x)\) rappresenta il tasso di variazione di \(f(x)\), assumendo che
 \(f(a)\) sia definita.
 
 \begin{itemize}
-    \item Se \(f'(a) >; 0\), allora \(f(x)\) è crescente in \(x = a\)
-    \item Se \(f'(a) <; 0\), allora \(f(x)\) è decrescente in \(x = a\)
-    \item Se \(f'(a) = 0\), allora \(f(x)\) è un punto critico in \(x = a\)
-    \item Se \(f'(a)\) non è definita, allora \(f(x)\) è un punto critico in \(x = a\)
-    (punto angoloso)
+    \item Se \(f'(a) > 0\), allora \(f(x)\) è crescente in \(x = a\)
+    \item Se \(f'(a) < 0\), allora \(f(x)\) è decrescente in \(x = a\)
+    \item Se \(f'(a) = 0\), allora \(f(x)\) è un punto critico in \(x = a\). Questo è un punto in cui la funzione va in stallo, e quindi
+        potrebbe trattarsi di un punto di massimo, di minimo, di flesso, o semplicemente un punto dove la funzione è piana.
+    \item Se \(f'(a)\) non è definita, allora \(f(x)\) è un punto critico in \(x = a\).
+    Questo punto potrebbe presentare varie geometrie, come punti angolosi, punti cuspidali, o altre geometrie.
+    In generale, dovete immaginarvi che la derivata non esista (il limite geometrico non esiste), e quindi esistono infinite casistiche.
+    Magari, dalla parte sinistra la funzione è totalmente normale e tende a un valore finito, mentre dall'alto la funzione tende a \(-\infty\) (TODO: mettere alcune illustrazioni
+    della spettacolare varietà di questi tipi di punti).
 \end{itemize}
 
 È importante notare che se una funziona è continua, la derivata non è necessariamente continua.
@@ -741,8 +756,8 @@ decrescente quando \(f'(x)<0\).
 \begin{minipage}{0.5\textwidth}
     \phantom{ } \\
     \begin{itemize}
-        \item \(f(x)\) è \textbf{convava verso l'alto} in un intervallo \(I\) se tutte le tangenti in \(I\) sono soto il grafico.
-        \item \(f(x)\) è \textbf{concave convava verso il basso} in un intervallo \(I\) se tutte le tangenti in \(I\) sono sopra il grafico.
+        \item \(f(x)\) è \textbf{concava verso l'alto} in un intervallo \(I\) se tutte le tangenti in \(I\) sono soto il grafico.
+        \item \(f(x)\) è \textbf{concava verso il basso} in un intervallo \(I\) se tutte le tangenti in \(I\) sono sopra il grafico.
     \end{itemize}
     \hphantom{ } \\
     \begin{itemize}
@@ -750,7 +765,7 @@ decrescente quando \(f'(x)<0\).
         \item Se \(f''(x)<0\) per tutte le \(x\) in un intervallo \(I\), allora \(f(x)\) è concava verso il basso in \(I\)
     \end{itemize}
 
-    Questo funzione perché quando la funziona è concava in sù, cresce o decresce sempre di più. Per cui \(f'(x)\) 
+    Questo funzione perché quando la funzione è concava in sù, cresce o decresce sempre di più. Per cui \(f'(x)\) 
     ci dice che \(f(x)\) sta crescendo o decrescendo, e \(f''(x)\) ci dice l'incremento con il quale la funzione
     sta crescendo o il decremento con la quale la funzione sta decrescendo.
     Lo stesso vale per quando la funzione è concava verso il basso.
@@ -759,8 +774,8 @@ decrescente quando \(f'(x)<0\).
 \subsubsection{Definizione di punto di flesso}
 
 \sdefinition{Punto di flesso}{
-    Un punto di flesso è un punto in cui la funziona è continua e la concavità della funzione cambia, ossia dove la
-    funzione passa da concava verso l'alto a concava verso il basso o viceversa.
+    Un punto di flesso è un punto in cui la funzione è continua e la concavità della funzione cambia, ossia dove la
+    funzione passa da concava verso l'alto a concava verso il basso o viceversa. Inoltre, la funzione deve essere derivabile in quel punto.
 }
 
 I punti di flesso di una funzione \(f(x)\) sono presenti dove la seconda derivata
@@ -957,7 +972,7 @@ aggiungendo una qualsiasi costante:
 \]
 
 \subsubsection{Esempio concreto}
-In fisica, quando abbiamo la funzione dell'accellerazione \(a(t)\), possiamo trovare la funzione della velocità
+In fisica, quando abbiamo la funzione dell'accelerazione \(a(t)\), possiamo trovare la funzione della velocità
 \(v(t)\) facendo l'integrale, e quella della posizione \(x(t)\) facendo l'integrale di \(v(t)\).
 È importante notare che, quando facciamo la derivata della posizione o della velocità in funzione del tempo, la posizione
 iniziale o velocità iniziale viene persa. Infatti, la costante \(+C\) dell'integrale definitivo rappresenta proprio questa
